@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stuffies - Tienda de Ropa Urbana</title>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <header>
+        <div class="container header-content">
+            <div class="logo">
+                <h1>STUFFIES</h1>
+            </div>
+            <nav class="main-nav">
+                <ul>
+                    <li><a href="index.html" class="active">Home</a></li>
+                    <li><a href="productos.html">Productos</a></li>
+                    <li><a href="nosotros.html">Nosotros</a></li>
+                    <li><a href="blogs.html">Blogs</a></li>
+                    <li><a href="contacto.html">Contacto</a></li>
+                </ul>
+            </nav>
+            <div class="header-actions">
+                <a href="carrito.html" class="cart-icon">
+                    <span class="cart-count">0</span>
+                    🛒
+                </a>
+                <a href="login.html" class="btn btn-outline">Iniciar Sesión</a>
+            </div>
+        </div>
+    </header>
+ 
+    
+    <main>
+        <section class="hero">
+            <div class="container">
+                <div class="hero-content">
+                    <h2>ROPA URBANA CON ESTILO</h2>
+                    <p>Descubre nuestra colección de poleras, polerones, jeans y accesorios con estilo estadounidense</p>
+                    <a href="productos.html" class="btn btn-primary">Ver productos</a>
+                </div>
+            </div>
+        </section>
+
+        <section class="featured-products">
+            <div class="container">
+                <h2>Productos Destacados</h2>
+                <div class="products-grid" id="featured-products">
+                    <!-- Los productos se cargarán con JavaScript -->
+                </div>
+            </div>
+        </section>
+
+        <section class="about-preview">
+            <div class="container">
+                <div class="about-content">
+                    <div class="about-text">
+                        <h2>Stuffies - Moda Urbana Chilena</h2>
+                        <p>Desde nuestro lanzamiento en junio de 2024, nos dedicamos a crear ropa moderna y de calidad con estilo estadounidense para que todos puedan vestir a la última moda.</p>
+                        <a href="nosotros.html" class="btn btn-outline">Conoce más</a>
+                    </div>
+                    <div class="about-image">
+                        <img src="assets/imagenes/about-preview.jpg" alt="Stuffies estilo" onerror="this.src='https://via.placeholder.com/400x300?text=Imagen+no+disponible'">
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>STUFFIES</h3>
+                    <p>Tienda online de ropa urbana y casual en Chile</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Enlaces</h4>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="productos.html">Productos</a></li>
+                        <li><a href="nosotros.html">Nosotros</a></li>
+                        <li><a href="blogs.html">Blogs</a></li>
+                        <li><a href="contacto.html">Contacto</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Contacto</h4>
+                    <p>Email: info@stuffies.cl</p>
+                    <p>Teléfono: +56 9 1234 5678</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Suscríbete</h4>
+                    <form class="subscribe-form" id="subscribe-form">
+                        <input type="email" placeholder="Ingresa tu email" required>
+                        <button type="submit">Suscribirse</button>
+                    </form>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 Stuffies. Todos los derechos reservados.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript se enlaza correctamente con la etiqueta <script> -->
+    <script src="js/main.js"></script>
+    <script src="js/productos.js"></script>
+    <script src="js/carrito.js"></script>
+    <script src="js/validaciones.js"></script>
+</body>
+</html>
