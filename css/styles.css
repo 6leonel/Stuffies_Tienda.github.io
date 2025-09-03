@@ -473,3 +473,13 @@ footer {
         text-align: center;
     }
 }
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 1px; /* espacio entre el texto y el GIF */
+}
+
+.logo-gif {
+    width: 1px; /* ajusta el tamaño deseado */
+    height: auto;
+}
