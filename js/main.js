@@ -10,7 +10,7 @@ const productos = [
         imagen: "https://stuffiesconcept.com/cdn/shop/files/WhiteDice1.png?v=1753404231&width=1426",
         descripcion: "POLERÓN BOXIFIT AZUL MARINO 'WHITE DICE'.",
         tallas: ["S", "M", "L", "XL"],
-        colores: ["Negro", "Blanco", "Gris"],
+        colores: ["azul"],
         destacado: true
     },
     {
@@ -21,7 +21,7 @@ const productos = [
         imagen: "https://stuffiesconcept.com/cdn/shop/files/1_594f01e1-55e5-4516-b0af-d2befc1aa113.png?v=1748653006&width=1100",
         descripcion: "La Star Player T-Shirt  nace de la unión entre la nostalgia del fútbol clásico y la energía del streetwear actual. Inspirada en conceptos vintage y modernos del Futbol, esta camiseta es una reinterpretación fresca de los kits que marcaron época, llevada al terreno urbano..",
         tallas: ["M", "L", "XL"],
-        colores: ["Gris", "Negro"],
+        colores: ["azul"],
         destacado: true
     },
     {
@@ -32,7 +32,7 @@ const productos = [
         imagen: "https://stuffiesconcept.com/cdn/shop/files/1_8ee3f1b2-2f8a-45ba-bb78-a2f4ba49c4d5.png?v=1756936574&width=600",
         descripcion: "Logos y diseños implementados con serigrafía y bordado para una mayor calidad y durabilidad.",
         tallas: ["28", "30", "32", "34", "36"],
-        colores: ["Azul oscuro", "Azul claro", "Negro"],
+        colores: ["Negro"],
         destacado: true
     },
     {
@@ -43,29 +43,29 @@ const productos = [
         imagen: "https://stuffiesconcept.com/cdn/shop/files/3_0f38dc89-f9f8-4998-be22-b2e0122e8816.png?v=1756936601&width=600",
         descripcion: "Polera con estampado minimalista en la pecho.",
         tallas: ["S", "M", "L"],
-        colores: ["Blanco", "Negro"],
+        colores: ["Blanco"],
         destacado: true
     },
     {
         id: 5,
-        nombre: "Shorts Deportivos",
+        nombre: "Star Player 'Black Team' t-shirt",
         precio: 15990,
-        categoria: "deportiva",
-        imagen: "assets/imagenes/shorts-deportivos.jpg",
+        categoria: "poleras",
+        imagen: "https://stuffiesconcept.com/cdn/shop/files/3_f5bf3ad8-c122-436f-8eee-1483a3f383da.png?v=1748652948&width=600",
         descripcion: "Shorts deportivos con tecnología de secado rápido.",
         tallas: ["S", "M", "L", "XL"],
-        colores: ["Negro", "Gris", "Azul"],
+        colores: ["Negro"],
         destacado: false
     },
     {
         id: 6,
-        nombre: "Gorra Ajustable",
+        nombre: "HOODIE BOXIFIT RED DICE V2",
         precio: 12990,
-        categoria: "accesorios",
-        imagen: "assets/imagenes/gorra.jpg",
-        descripcion: "Gorra ajustable con logo bordado de Stuffies.",
-        tallas: ["Única"],
-        colores: ["Negro", "Blanco", "Rojo"],
+        categoria: "polerones",
+        imagen: "https://stuffiesconcept.com/cdn/shop/files/RedDice1.png?v=1753404319&width=600",
+        descripcion: "POLERÓN BOXIFIT NEGRO RED DICE.",
+        tallas: ["S", "M", "L", "XL"],
+        colores: ["Negro"],
         destacado: false
     }
 ];

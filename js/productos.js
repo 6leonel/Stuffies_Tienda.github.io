@@ -1,146 +1,109 @@
-// Datos de productos con imágenes externas (NO dependen de /assets)
-const IMG = "https://stuffiesconcept.com/cdn/shop/files/WhiteDice1.png?v=1753404231&width=1426";
+// js/render-productos.js
+// Requiere que js/productos.js exponga window.PRODUCTOS = [ { id, nombre, precio, moneda?, imagenPrincipal, agotado?, ... } ]
 
-const productos = [
-  {
-    id: 1,
-    nombre: "Polera Oversize Negra",
-    precio: 19990,
-    categoria: "poleras",
-    imagen: IMG,
-    descripcion: "Polera oversize de algodón 100% con estampado frontal.",
-    tallas: ["S", "M", "L", "XL"],
-    colores: ["Negro", "Blanco", "Gris"]
-  },
-  {
-    id: 2,
-    nombre: "Polerón Boxy Fit Gris",
-    precio: 39990,
-    categoria: "polerones",
-    imagen: IMG,
-    descripcion: "Polerón con capucha y bolsillo canguro, corte boxy fit.",
-    tallas: ["M", "L", "XL"],
-    colores: ["Gris", "Negro"]
-  },
-  {
-    id: 3,
-    nombre: "Jeans Slim Fit",
-    precio: 45990,
-    categoria: "jeans",
-    imagen: IMG,
-    descripcion: "Jeans slim fit de tiro medio con stretch para mayor comodidad.",
-    tallas: ["28", "30", "32", "34", "36"],
-    colores: ["Azul oscuro", "Azul claro", "Negro"]
-  },
-  {
-    id: 4,
-    nombre: "Polera Estampada",
-    precio: 22990,
-    categoria: "poleras",
-    imagen: IMG,
-    descripcion: "Polera con estampado artístico en la espalda y detalles en mangas.",
-    tallas: ["S", "M", "L"],
-    colores: ["Blanco", "Negro"]
-  }
-];
+(function () {
+  const $grid = document.getElementById("all-products");
+  const $buscador = document.getElementById("buscador");
+  const $orden = document.getElementById("orden");
+  const $noResults = document.getElementById("no-results");
 
-// Cargar productos destacados en la página principal
-function cargarProductosDestacados() {
-  const contenedor = document.getElementById('featured-products');
-  if (!contenedor) return;
+  if (!$grid) return;
 
-  const productosDestacados = productos.slice(0, 4);
+  // Fuente de datos
+  const DATA = (window.PRODUCTOS || []).slice(); // copia
 
-  contenedor.innerHTML = productosDestacados.map(producto => `
-    <div class="product-card">
-      <div class="product-image">
-        <img src="${producto.imagen}" alt="${producto.nombre}"
-             onerror="this.src='https://via.placeholder.com/600x400?text=Sin+imagen'">
+  const fmt = (valor, moneda = "CLP") =>
+    new Intl.NumberFormat("es-CL", {
+      style: "currency",
+      currency: moneda,
+      maximumFractionDigits: 0
+    }).format(Number(valor) || 0);
+
+  function plantillaCard(p) {
+    return `
+      <div class="col-12 col-sm-6 col-lg-4">
+        <article class="card h-100 shadow-sm product-card" data-id="${p.id}">
+          <img src="${p.imagenPrincipal}" class="card-img-top" alt="${p.nombre}">
+          <div class="card-body d-flex flex-column">
+            <h5 class="card-title">${p.nombre}</h5>
+            <p class="card-text mb-3">${fmt(p.precio, p.moneda)}</p>
+            <div class="mt-auto d-flex gap-2">
+              <a href="producto.html?id=${encodeURIComponent(p.id)}"
+                 class="btn btn-outline-primary rounded-pill px-4">
+                Ver detalles
+              </a>
+              <button class="btn btn-primary rounded-pill px-4 btn-add"
+                      ${p.agotado ? "disabled" : ""}>
+                ${p.agotado ? "Agotado" : "Añadir"}
+              </button>
+            </div>
+          </div>
+        </article>
       </div>
-      <div class="product-info">
-        <h3 class="product-title">${producto.nombre}</h3>
-        <p class="product-price">$${producto.precio.toLocaleString('es-CL')}</p>
-        <div class="product-actions">
-          <a href="detalle-producto.html?id=${producto.id}" class="btn btn-outline">Ver detalles</a>
-          <button class="btn btn-primary" onclick="agregarAlCarrito(${producto.id})">Añadir</button>
-        </div>
-      </div>
-    </div>
-  `).join('');
-}
-
-// Cargar todos los productos en la página de productos
-function cargarTodosLosProductos() {
-  const contenedor = document.getElementById('todos-productos');
-  if (!contenedor) return;
-
-  contenedor.innerHTML = productos.map(producto => `
-    <div class="product-card">
-      <div class="product-image">
-        <img src="${producto.imagen}" alt="${producto.nombre}"
-             onerror="this.src='https://via.placeholder.com/600x400?text=Sin+imagen'">
-      </div>
-      <div class="product-info">
-        <h3 class="product-title">${producto.nombre}</h3>
-        <p class="product-price">$${producto.precio.toLocaleString('es-CL')}</p>
-        <div class="product-actions">
-          <a href="detalle-producto.html?id=${producto.id}" class="btn btn-outline">Ver detalles</a>
-          <button class="btn btn-primary" onclick="agregarAlCarrito(${producto.id})">Añadir</button>
-        </div>
-      </div>
-    </div>
-  `).join('');
-}
-
-// Cargar detalles de un producto específico
-function cargarDetalleProducto() {
-  const urlParams = new URLSearchParams(window.location.search);
-  const productId = parseInt(urlParams.get('id'));
-
-  if (!productId) {
-    window.location.href = 'productos.html';
-    return;
+    `;
   }
 
-  const producto = productos.find(p => p.id === productId);
-  if (!producto) {
-    window.location.href = 'productos.html';
-    return;
+  function pintar(lista) {
+    if (!lista.length) {
+      $grid.innerHTML = "";
+      $noResults?.classList.remove("d-none");
+      return;
+    }
+    $noResults?.classList.add("d-none");
+    $grid.innerHTML = lista.map(plantillaCard).join("");
   }
 
-  const contenedor = document.getElementById('detalle-producto');
-  if (!contenedor) return;
+  function filtrarYOrdenar() {
+    const q = ($buscador?.value || "").trim().toLowerCase();
 
-  contenedor.innerHTML = `
-    <div class="product-detail-image">
-      <img src="${producto.imagen}" alt="${producto.nombre}"
-           onerror="this.src='https://via.placeholder.com/800x800?text=Sin+imagen'">
-    </div>
-    <div class="product-detail-info">
-      <h1>${producto.nombre}</h1>
-      <p class="product-price">$${producto.precio.toLocaleString('es-CL')}</p>
-      <p class="product-description">${producto.descripcion}</p>
+    let out = DATA.filter(p =>
+      p.nombre?.toLowerCase().includes(q)
+    );
 
-      <div class="product-options">
-        <div class="form-group">
-          <label for="talla">Talla:</label>
-          <select id="talla" name="talla">
-            ${producto.tallas.map(t => `<option value="${t}">${t}</option>`).join('')}
-          </select>
-        </div>
-        <div class="form-group">
-          <label for="color">Color:</label>
-          <select id="color" name="color">
-            ${producto.colores.map(c => `<option value="${c}">${c}</option>`).join('')}
-          </select>
-        </div>
-        <div class="form-group">
-          <label for="cantidad">Cantidad:</label>
-          <input type="number" id="cantidad" name="cantidad" value="1" min="1">
-        </div>
-      </div>
+    switch ($orden?.value) {
+      case "precio-asc":
+        out.sort((a, b) => (a.precio || 0) - (b.precio || 0));
+        break;
+      case "precio-desc":
+        out.sort((a, b) => (b.precio || 0) - (a.precio || 0));
+        break;
+      case "nombre-asc":
+        out.sort((a, b) => a.nombre.localeCompare(b.nombre, "es"));
+        break;
+      case "nombre-desc":
+        out.sort((a, b) => b.nombre.localeCompare(a.nombre, "es"));
+        break;
+      default:
+        // "recientes" (no hay fecha en el dataset; si agregas p.fecha, ordénalo aquí)
+        break;
+    }
 
-      <button class="btn btn-primary btn-large" onclick="agregarAlCarritoDetalle(${producto.id})">Añadir al carrito</button>
-    </div>
-  `;
-}
+    pintar(out);
+  }
+
+  // Eventos UI
+  $buscador?.addEventListener("input", filtrarYOrdenar);
+  $orden?.addEventListener("change", filtrarYOrdenar);
+
+  // Delegación para botón "Añadir" (conecta con tu carrito si ya existe)
+  document.addEventListener("click", (e) => {
+    const btn = e.target.closest(".btn-add");
+    if (!btn) return;
+
+    const card = btn.closest(".product-card");
+    const id = card?.dataset?.id;
+    const prod = (window.PRODUCTOS || []).find(p => String(p.id) === String(id));
+    if (!prod) return;
+
+    if (typeof window.agregarAlCarrito === "function") {
+      // ejemplo: tu carrito puede usar {id, cantidad}
+      window.agregarAlCarrito({ id: prod.id, cantidad: 1 });
+    } else {
+      // fallback simple
+      alert(`Añadido: ${prod.nombre}`);
+    }
+  });
+
+  // Primera pintura
+  filtrarYOrdenar();
+})();

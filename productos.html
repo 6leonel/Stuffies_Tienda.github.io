@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Stuffies — Productos</title>
+
+  <!-- Estilos del proyecto -->
+  <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:wght@400;700&display=swap" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootswatch@5.3.3/dist/morph/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body style="background:#0b0b0b;">
+  <!-- Header (ajústalo si ya tienes uno común) -->
+  <header>
+    <div class="container header-content">
+      <div class="logo">
+        <a href="Tienda_Stuffiess.html">
+          <img src="https://stuffiesconcept.com/cdn/shop/files/output-onlinegiftools_1.gif?v=1723763811&width=500"
+               alt="Logo Stuffies" class="logo-img">
+        </a>
+        <h1><a class="stu" href="Tienda_Stuffiess.html">STUFFIES</a></h1>
+      </div>
+      <nav class="main-nav">
+        <ul>
+          <li><a href="Tienda_Stuffiess.html">Home</a></li>
+          <li><a href="productos.html" class="active">Productos</a></li>
+          <li><a href="nosotros.html">Nosotros</a></li>
+          <li><a href="blogs.html">Blogs</a></li>
+          <li><a href="contacto.html">Contacto</a></li>
+        </ul>
+      </nav>
+      <div class="header-actions">
+        <a href="carrito.html" class="cart-icon">
+          <span class="cart-count">0</span> 🛒
+        </a>
+        <a href="login.html" class="btn btn-outline">Iniciar Sesión</a>
+      </div>
+    </div>
+  </header>
+
+  <main class="py-4">
+    <section class="container">
+      <h2 class="mb-3 text-light">Todos los productos</h2>
+
+      <!-- Filtros que tu main.js ya reconoce -->
+      <div class="row g-2 mb-4">
+        <div class="col-12 col-md-4">
+          <label class="form-label text-light">Categoría</label>
+          <select id="filtro-categoria" class="form-select">
+            <option value="todos">Todas</option>
+            <option value="poleras">Poleras</option>
+            <option value="polerones">Polerones</option>
+            <option value="deportiva">Deportiva</option>
+            <option value="accesorios">Accesorios</option>
+          </select>
+        </div>
+
+        <div class="col-12 col-md-4">
+          <label class="form-label text-light">Precio</label>
+          <select id="filtro-precio" class="form-select">
+            <option value="todos">Todos</option>
+            <option value="menor-20">Menor a $20.000</option>
+            <option value="20-30">$20.000 – $30.000</option>
+            <option value="30-40">$30.000 – $40.000</option>
+            <option value="mayor-40">Mayor a $40.000</option>
+          </select>
+        </div>
+
+        <div class="col-12 col-md-4 d-flex align-items-end">
+          <button id="aplicar-filtros" class="btn btn-primary w-100">Aplicar filtros</button>
+        </div>
+      </div>
+
+      <!-- Aquí tu main.js pintará las tarjetas -->
+      <div id="todos-productos" class="products-grid"></div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container">
+      <div class="footer-content">
+        <div class="footer-section">
+          <h3>STUFFIES</h3>
+          <p>Tienda online de ropa urbana y casual en Chile</p>
+        </div>
+        <div class="footer-section">
+          <h4>Enlaces</h4>
+          <ul>
+            <li><a href="Tienda_Stuffiess.html">Home</a></li>
+            <li><a href="productos.html">Productos</a></li>
+            <li><a href="nosotros.html">Nosotros</a></li>
+            <li><a href="blogs.html">Blogs</a></li>
+            <li><a href="contacto.html">Contacto</a></li>
+          </ul>
+        </div>
+        <div class="footer-section">
+          <h4>Contacto</h4>
+          <p>Email: info@stuffies.cl</p>
+          <p>Teléfono: +56 9 1234 5678</p>
+        </div>
+        <div class="footer-section">
+          <h4>Suscríbete</h4>
+          <form class="subscribe-form" id="subscribe-form">
+            <input type="email" placeholder="Ingresa tu email" required>
+            <button type="submit">Suscribirse</button>
+          </form>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2024 Stuffies. Todos los derechos reservados.</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- JS (tu lógica está en main.js) -->
+  <script src="js/main.js"></script>
+</body>
+</html>
