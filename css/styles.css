@@ -8,10 +8,11 @@
     --success-color: #000000;
     --warning-color: #000000;
     --danger-color: #000000;
-    --font-main: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    --font-main: 'Inter', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     --shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     --transition: all 0.3s ease;
 }
+
 .stu{
     text-decoration: none;
     color: black;
@@ -30,6 +31,18 @@ body {
     background-color: #000000;
 }
 
+/* Títulos más marcados */
+h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-main);
+    font-weight: 700;
+}
+
+p, li, a, span, input, textarea, select {
+    font-family: var(--font-main);
+    font-weight: 400;
+}
+
+/* Resto del CSS se mantiene igual */
 .container {
     width: 90%;
     max-width: 1200px;
@@ -251,7 +264,6 @@ header {
 .about-text h2 {
     font-size: 2rem;
     margin-bottom: 1rem;
-    color: var(--primary-color);
     color: white;
 }
 
@@ -299,15 +311,13 @@ footer {
 }
 
 .footer-section a {
-    color: var(--light-color);
+    color: white;
     text-decoration: none;
     transition: var(--transition);
-    color: white;
 }
 
 .footer-section a:hover {
     color: var(--secondary-color);
-    color: white;
 }
 
 .subscribe-form {
@@ -325,7 +335,7 @@ footer {
 }
 
 .subscribe-form button {
-    background-color: var(white);
+    background-color: white;
     color: rgb(0, 0, 0);
     border: none;
     padding: 0.5rem 1rem;
@@ -490,42 +500,44 @@ footer {
         text-align: center;
     }
 }
+
+/* Logo y Carrusel se mantienen iguales */
 .logo {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-        
-        .logo h1 {
-            margin: 0;
-            font-size: 1.8rem;
-            color: #000000;
-        }
-        
-        .logo-img {
-            width: 50px; 
-            height: auto;
-            border-radius: 5px;
-        }
-        
-        .header-content {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 1rem 0;
-        }
-        
-        /* Mejoras responsive */
-        @media (max-width: 768px) {
-            .logo h1 {
-                font-size: 1.5rem;
-            }
-            
-            .logo-img {
-                width: 40px;
-            }
-        }
-        /* Carrusel */
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.logo h1 {
+    margin: 0;
+    font-size: 1.8rem;
+    color: #000000;
+}
+
+.logo-img {
+    width: 50px; 
+    height: auto;
+    border-radius: 5px;
+}
+
+.header-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 0;
+}
+
+@media (max-width: 768px) {
+    .logo h1 {
+        font-size: 1.5rem;
+    }
+    
+    .logo-img {
+        width: 40px;
+    }
+}
+
+/* Carrusel */
 .carousel-section {
     margin: 3rem 0;
 }
@@ -577,4 +589,7 @@ footer {
         font-size: 0.9rem;
         padding: 0.5rem 1rem;
     }
+}
+:root {
+    --font-main: 'Libre Baskerville', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
