@@ -1,16 +1,75 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:wght@400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/login.css">
     <link href="https://cdn.jsdelivr.net/npm/bootswatch@5.3.3/dist/morph/bootstrap.min.css" rel="stylesheet">
-    <title>Inicio de sesión</title>
+    <title>Inicio de sesión - STUFFIES</title>
 </head>
 <body>
+    <header>
+        <div class="container header-content">
+            <div class="logo">
+                <a href="Tienda_Stuffiess.html">
+                    <img src="https://stuffiesconcept.com/cdn/shop/files/output-onlinegiftools_1.gif?v=1723763811&width=500"
+                    alt="Logo Stuffies" class="logo-img">
+                </a>
+                <h1><a class="stu" href="Tienda_Stuffiess.html">STUFFIES</a></h1>
+            </div>
+            <nav class="main-nav">
+                <ul>
+                    <li><a href="Tienda_Stuffiess.html" class="active"></a></li>
+                    <li><a href="productos.html">Productos</a></li>
+                    <li><a href="nosotros.html">Nosotros</a></li>
+                    <li><a href="blogs.html">Blogs</a></li>
+                    <li><a href="contacto.html">Contacto</a></li>
+                </ul>
+            </nav>
+            <div class="header-actions">
+                <a href="carrito.html" class="cart-icon">
+                    <span class="cart-count">0</span>
+                    🛒
+                </a>
+                <a href="login.html" class="btn btn-outline">Iniciar Sesión</a>
+            </div>
+        </div>
+    </header>
 
-    
+    <main class="login-main">
+        <div class="container">
+            <div class="login-container">
+                <div class="login-header">
+                    <h2>Iniciar Sesión</h2>
+                    <p>Ingresa a tu cuenta de STUFFIES</p>
+                </div>
+                <form class="login-form">
+                    <div class="form-group">
+                        <label for="email">Usuario o correo electrónico</label>
+                        <input type="text" id="email" name="email" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="password">Contraseña</label>
+                        <input type="password" id="password" name="password" required>
+                    </div>
+                    <div class="form-options">
+                        <label class="remember-me">
+                            <input type="checkbox" name="remember">
+                            <span>Recordarme</span>
+                        </label>
+                        <a href="#" class="forgot-password">¿Olvidaste tu contraseña?</a>
+                    </div>
+                    <button type="submit" class="btn-login">Iniciar Sesión</button>
+                </form>
+                <div class="login-footer">
+                    <p>¿No tienes una cuenta? <a href="registro.html">Regístrate aquí</a></p>
+                </div>
+            </div>
+        </div>
+    </main>
+
     <footer>
         <div class="container">
             <div class="footer-content">
@@ -21,7 +80,7 @@
                 <div class="footer-section">
                     <h4>Enlaces</h4>
                     <ul>
-                        <li><a href="index.html">Home</a></li>
+                        <li><a href="Tienda_Stuffiess.html">Home</a></li>
                         <li><a href="productos.html">Productos</a></li>
                         <li><a href="nosotros.html">Nosotros</a></li>
                         <li><a href="blogs.html">Blogs</a></li>
@@ -47,9 +106,9 @@
         </div>
     </footer>
 
-    <!-- Bootstrap JS requerido para el carrusel -->
+    <!-- Bootstrap JS -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-</body>
-</html>
+    <!-- JS personalizado para login -->
+    <script src="js/login.js"></script>
 </body>
 </html>
