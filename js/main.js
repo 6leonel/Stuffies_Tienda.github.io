@@ -14,8 +14,8 @@ const productos = [
     {
         id: 2,
         nombre: "Star Player 'Blue Team't-shirt",
-        precio: 21990,
-        categoria: "polera",
+        precio: 10990,
+        categoria: "deportiva",
         imagen: "https://stuffiesconcept.com/cdn/shop/files/1_594f01e1-55e5-4516-b0af-d2befc1aa113.png?v=1748653006&width=600",
         imagenHover: "https://stuffiesconcept.com/cdn/shop/files/2_221c9cfc-6049-4eb1-b7ec-3b19bd755c48.png?v=1748653006&width=600",
         descripcion: "La Star Player T-Shirt nace de la unión entre la nostalgia del fútbol clásico y la energía del streetwear actual.",
