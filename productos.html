@@ -11,15 +11,12 @@
   <link rel="stylesheet" href="css/styles.css">
 </head>
 <body style="background:#0b0b0b;">
-  <!-- Header (ajústalo si ya tienes uno común) -->
   <header>
     <div class="container header-content">
       <div class="logo">
         <a href="Tienda_Stuffiess.html">
-          <img src="https://stuffiesconcept.com/cdn/shop/files/output-onlinegiftools_1.gif?v=1723763811&width=500"
-               alt="Logo Stuffies" class="logo-img">
+          <img src="https://stuffiesconcept.com/cdn/shop/files/output-onlinegiftools_1.gif?v=1723763811&width=500" alt="Stuffies" height="60">
         </a>
-        <h1><a class="stu" href="Tienda_Stuffiess.html">STUFFIES</a></h1>
       </div>
       <nav class="main-nav">
         <ul>
@@ -43,7 +40,7 @@
     <section class="container">
       <h2 class="mb-3 text-light">Todos los productos</h2>
 
-      <!-- Filtros que tu main.js ya reconoce -->
+      <!-- Filtros -->
       <div class="row g-2 mb-4">
         <div class="col-12 col-md-4">
           <label class="form-label text-light">Categoría</label>
@@ -59,11 +56,11 @@
         <div class="col-12 col-md-4">
           <label class="form-label text-light">Precio</label>
           <select id="filtro-precio" class="form-select">
-            <option value="todos">Todos</option>
-            <option value="menor-20">Menor a $20.000</option>
-            <option value="20-30">$20.000 – $30.000</option>
-            <option value="30-40">$30.000 – $40.000</option>
-            <option value="mayor-40">Mayor a $40.000</option>
+            <option value="*">Todos</option>
+            <option value="0-20000">Hasta $20.000</option>
+            <option value="20000-35000">$20.000 - $35.000</option>
+            <option value="35000-50000">$35.000 - $50.000</option>
+            <option value="50000-">Más de $50.000</option>
           </select>
         </div>
 
@@ -72,48 +69,22 @@
         </div>
       </div>
 
-      <!-- Aquí tu main.js pintará las tarjetas -->
+      <!-- Contenedor de productos -->
       <div id="todos-productos" class="products-grid"></div>
     </section>
   </main>
 
   <footer>
     <div class="container">
-      <div class="footer-content">
-        <div class="footer-section">
-          <h3>STUFFIES</h3>
-          <p>Tienda online de ropa urbana y casual en Chile</p>
-        </div>
-        <div class="footer-section">
-          <h4>Enlaces</h4>
-          <ul>
-            <li><a href="Tienda_Stuffiess.html">Home</a></li>
-            <li><a href="productos.html">Productos</a></li>
-            <li><a href="nosotros.html">Nosotros</a></li>
-            <li><a href="blogs.html">Blogs</a></li>
-            <li><a href="contacto.html">Contacto</a></li>
-          </ul>
-        </div>
-        <div class="footer-section">
-          <h4>Contacto</h4>
-          <p>Email: info@stuffies.cl</p>
-          <p>Teléfono: +56 9 1234 5678</p>
-        </div>
-        <div class="footer-section">
-          <h4>Suscríbete</h4>
-          <form class="subscribe-form" id="subscribe-form">
-            <input type="email" placeholder="Ingresa tu email" required>
-            <button type="submit">Suscribirse</button>
-          </form>
-        </div>
-      </div>
+      <div class="footer-content"></div>
       <div class="footer-bottom">
         <p>&copy; 2024 Stuffies. Todos los derechos reservados.</p>
       </div>
     </div>
   </footer>
 
-  <!-- JS (tu lógica está en main.js) -->
+  <!-- JS -->
   <script src="js/main.js"></script>
+  <script src="js/carrito.js"></script>
 </body>
 </html>
