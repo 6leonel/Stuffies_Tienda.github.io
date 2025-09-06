@@ -83,6 +83,19 @@ const productos = [
     colores: ["Gris"],
     destacado: true
   }
+,{
+  id: 8,
+  nombre: "HOODIE BOXIFIT PINK DICE V2",
+  precio: 35990,
+  categoria: "polerones",
+  imagen: "https://stuffiesconcept.com/cdn/shop/files/PinkDice1.png?v=1753404299&width=600",
+  imagenHover: "https://stuffiesconcept.com/cdn/shop/files/PinkDice2.png?v=1753404299&width=600",
+  descripcion: "Gorra urbana estilo minimalista con logo bordado Stuffies.",
+  tallas: ["S", "M", "L", "XL"],
+  colores: ["cafe"],
+  destacado: false
+}
+
 ];
 
 document.addEventListener('DOMContentLoaded', function() {

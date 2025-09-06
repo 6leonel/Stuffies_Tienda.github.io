@@ -4,9 +4,6 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Stuffies - Blogs</title>
-  <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:wght@400;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="css/styles.css">
-  <link href="https://cdn.jsdelivr.net/npm/bootswatch@5.3.3/dist/morph/bootstrap.min.css" rel="stylesheet">
   <meta name="description" content="Historias, estilo y novedades de Stuffies. Moda urbana chilena que inspira a vestir distinto.">
   <meta name="keywords" content="stuffies, moda urbana, streetwear, poleras, polerones, chile, blogs">
   <meta property="og:title" content="Stuffies - Blogs">
@@ -15,7 +12,7 @@
   <meta property="og:image" content="https://stuffiesconcept.com/cdn/shop/files/WhiteDice1.png?v=1753404231&width=1200">
   <meta property="og:url" content="https://tudominio.cl/blogs.html">
   <meta name="twitter:card" content="summary_large_image">
-
+  <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:wght@400;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/styles.css">
   <link href="https://cdn.jsdelivr.net/npm/bootswatch@5.3.3/dist/morph/bootstrap.min.css" rel="stylesheet">
 </head>
@@ -32,9 +29,8 @@
         <ul>
           <li><a href="Tienda_Stuffiess.html">Home</a></li>
           <li><a href="productos.html">Productos</a></li>
-          <li><a href="nosotros.html">Nosotros</a></li>
           <li><a href="blogs.html" class="active">Blogs</a></li>
-          <li><a href="contacto.html">Contacto</a></li>
+
         </ul>
       </nav>
       <div class="header-actions">
@@ -57,7 +53,6 @@
       </div>
     </section>
 
-    <!-- Carrusel -->
     <section class="carousel-section">
       <div class="container">
         <div id="stuffiesCarousel" class="carousel slide" data-bs-ride="carousel">
@@ -101,8 +96,6 @@
       </div>
     </section>
 
-
-
     <section class="blogs-list py-5">
       <div class="container">
         <div class="d-flex flex-column flex-md-row gap-2 justify-content-between align-items-md-end mb-3">
@@ -132,36 +125,12 @@
       </div>
     </section>
 
- 
-    <div class="modal fade" id="blogModal" tabindex="-1" aria-hidden="true">
-      <div class="modal-dialog modal-dialog-centered modal-lg">
-        <div class="modal-content bg-dark text-light">
-          <div class="modal-header">
-            <h5 class="modal-title" id="blogModalTitle">Título</h5>
-            <button class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Cerrar"></button>
-          </div>
-          <div class="modal-body">
-            <img id="blogModalImg" src="" alt="" class="img-fluid rounded mb-3">
-            <p class="text-secondary mb-1">
-              <span id="blogModalCat"></span> • <span id="blogModalDate"></span> • <span id="blogModalRead"></span>
-            </p>
-            <div id="blogModalContent" class="mt-2"></div>
-          </div>
-          <div class="modal-footer">
-            <a id="blogModalCTA" href="productos.html" class="btn btn-primary">Ver productos relacionados</a>
-            <button class="btn btn-outline-light" data-bs-dismiss="modal">Cerrar</button>
-          </div>
-        </div>
-      </div>
-    </div>
-  </main>
-      <section class="about-preview">
+    <section class="about-preview">
       <div class="container">
         <div class="about-content">
           <div class="about-text">
             <h2>Stuffies - Moda Urbana Chilena</h2>
             <p>Desde nuestro lanzamiento en junio de 2024, nos dedicamos a crear ropa moderna y de calidad con estilo estadounidense para que todos puedan vestir a la última moda.</p>
-            <a href="nosotros.html" class="btn btn-outline">Conoce más</a>
           </div>
           <div class="about-image">
             <img src="https://i.postimg.cc/R0phZ77L/ESTRELLA-BLANCA.png" alt="Estrella Stuffies">
@@ -169,6 +138,7 @@
         </div>
       </div>
     </section>
+  </main>
 
   <footer>
     <div class="container">
@@ -182,16 +152,11 @@
           <ul>
             <li><a href="Tienda_Stuffiess.html">Home</a></li>
             <li><a href="productos.html">Productos</a></li>
-            <li><a href="nosotros.html">Nosotros</a></li>
             <li><a href="blogs.html">Blogs</a></li>
-            <li><a href="contacto.html">Contacto</a></li>
+ 
           </ul>
         </div>
-        <div class="footer-section">
-          <h4>Contacto</h4>
-          <p>Email: info@stuffies.cl</p>
-          <p>Teléfono: +56 9 1234 5678</p>
-        </div>
+
         <div class="footer-section">
           <h4>Suscríbete</h4>
           <form class="subscribe-form" id="subscribe-form">
@@ -206,10 +171,8 @@
     </div>
   </footer>
 
+
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-
-
   <script src="js/blogs.js"></script>
-  
 </body>
 </html>
