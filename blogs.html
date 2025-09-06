@@ -1,148 +1,217 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="css/styles.css">
-    <link href="https://cdn.jsdelivr.net/npm/bootswatch@5.3.3/dist/morph/bootstrap.min.css" rel="stylesheet">
-    <title>Stuffies - Blogs</title>
-</head> 
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Stuffies - Blogs</title>
+
+  <!-- Metadatos SEO/OG (Punto 1) -->
+  <meta name="description" content="Historias, estilo y novedades de Stuffies. Moda urbana chilena que inspira a vestir distinto.">
+  <meta name="keywords" content="stuffies, moda urbana, streetwear, poleras, polerones, chile, blogs">
+  <meta property="og:title" content="Stuffies - Blogs">
+  <meta property="og:description" content="Más que ropa: historias, estilos y novedades para vestir distinto.">
+  <meta property="og:type" content="website">
+  <meta property="og:image" content="https://stuffiesconcept.com/cdn/shop/files/WhiteDice1.png?v=1753404231&width=1200">
+  <meta property="og:url" content="https://tudominio.cl/blogs.html">
+  <meta name="twitter:card" content="summary_large_image">
+
+  <!-- Estilos -->
+  <link rel="stylesheet" href="css/styles.css">
+  <link href="https://cdn.jsdelivr.net/npm/bootswatch@5.3.3/dist/morph/bootstrap.min.css" rel="stylesheet">
+</head>
 <body>
-        <header>
-        <div class="container header-content">
-            <div class="logo">
-                <a href="Tienda_Stuffiess.html">
-                    <img src="https://stuffiesconcept.com/cdn/shop/files/output-onlinegiftools_1.gif?v=1723763811&width=500"
-                    alt="Logo Stuffies" class="logo-img">
-                </a>
-                <h1><a class="stu" href="Tienda_Stuffiess.html">STUFFIES</a></h1>
-            </div>
-            <nav class="main-nav">
-                <ul>
-                    <li><a href="Tienda_Stuffiess.html" class="active"></a></li>
-                    <li><a href="productos.html">Productos</a></li>
-                    <li><a href="nosotros.html">Nosotros</a></li>
-                    <li><a href="blogs.html">Blogs</a></li>
-                    <li><a href="contacto.html">Contacto</a></li>
-                </ul>
-            </nav>
-            <div class="header-actions">
-                <a href="carrito.html" class="cart-icon">
-                    <span class="cart-count">0</span>
-                    🛒
-                </a>
-                <a href="login.html" class="btn btn-outline">Iniciar Sesión</a>
-            </div>
+  <header>
+    <div class="container header-content">
+      <div class="logo">
+        <a href="Tienda_Stuffiess.html">
+          <img src="https://stuffiesconcept.com/cdn/shop/files/output-onlinegiftools_1.gif?v=1723763811&width=500" alt="Logo Stuffies" class="logo-img">
+        </a>
+        <h1><a class="stu" href="Tienda_Stuffiess.html">STUFFIES</a></h1>
+      </div>
+      <nav class="main-nav">
+        <ul>
+          <li><a href="Tienda_Stuffiess.html">Home</a></li>
+          <li><a href="productos.html">Productos</a></li>
+          <li><a href="nosotros.html">Nosotros</a></li>
+          <li><a href="blogs.html" class="active">Blogs</a></li>
+          <li><a href="contacto.html">Contacto</a></li>
+        </ul>
+      </nav>
+      <div class="header-actions">
+        <a href="carrito.html" class="cart-icon">
+          <span class="cart-count">0</span> 🛒
+        </a>
+        <a href="login.html" class="btn btn-outline">Iniciar Sesión</a>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <!-- Hero -->
+    <section class="hero">
+      <div class="container">
+        <div class="hero-content">
+          <h2>BLOGS</h2>
+          <p>“Más que ropa: historias, estilos y novedades que te inspiran a vestir distinto.”</p>
+          <a href="productos.html" class="btn btn-primary">Ver productos</a>
         </div>
-    </header>
+      </div>
+    </section>
 
-    <main>
-        <section class="hero">
-            <div class="container">
-                <div class="hero-content">
-                    <h2>BLOGS</h2>
-                    <p>“Más que ropa: historias, estilos y novedades que te inspiran a vestir distinto.”</p>
-                    <a href="productos.html" class="btn btn-primary">Ver productos</a>
-                </div>
+    <!-- Carrusel -->
+    <section class="carousel-section">
+      <div class="container">
+        <div id="stuffiesCarousel" class="carousel slide" data-bs-ride="carousel">
+          <div class="carousel-indicators">
+            <button type="button" data-bs-target="#stuffiesCarousel" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+            <button type="button" data-bs-target="#stuffiesCarousel" data-bs-slide-to="1" aria-label="Slide 2"></button>
+            <button type="button" data-bs-target="#stuffiesCarousel" data-bs-slide-to="2" aria-label="Slide 3"></button>
+          </div>
+          <div class="carousel-inner">
+            <div class="carousel-item active">
+              <img src="https://i.postimg.cc/PxD35Mgg/DADOS.png" class="d-block w-100" alt="Nuestra Historia">
+              <div class="carousel-caption d-none d-md-block">
+                <h5>Blogs</h5>
+                <p>"Descubre las historias que tenemos para contar."</p>
+              </div>
             </div>
-        </section>
-
-         <!-- Carrusel agregado -->
-        <section class="carousel-section">
-            <div class="container">
-                <div id="stuffiesCarousel" class="carousel slide" data-bs-ride="carousel">
-                    <div class="carousel-indicators">
-                        <button type="button" data-bs-target="#stuffiesCarousel" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
-                        <button type="button" data-bs-target="#stuffiesCarousel" data-bs-slide-to="1" aria-label="Slide 2"></button>
-                        <button type="button" data-bs-target="#stuffiesCarousel" data-bs-slide-to="2" aria-label="Slide 3"></button>
-                    </div>
-                    <div class="carousel-inner">
-                        <div class="carousel-item active">
-                            <img src="https://via.placeholder.com/1200x400.png?text=Promo+1" class="d-block w-100" alt="Nuestra Historia">
-                            <div class="carousel-caption d-none d-md-block">
-                                <h5>Blogs</h5>
-                                <p>"Descubre las historias que tenemos para contar."</p>
-                            </div>
-                        </div>
-                        <div class="carousel-item">
-                            <img src="https://via.placeholder.com/1200x400.png?text=Promo+2" class="d-block w-100" alt="Promo 2">
-                            <div class="carousel-caption d-none d-md-block">
-                                <h5>Historias que Visten Distinto</h5>
-                                <p>“Moda, creatividad y experiencias que trascienden la ropa.”</p>
-                            </div>
-                        </div>
-                        <div class="carousel-item">
-                            <img src="https://via.placeholder.com/1200x400.png?text=Promo+3" class="d-block w-100" alt="Promo 3">
-                            <div class="carousel-caption d-none d-md-block">
-                                <h5>Estilo y Cultura Urbana</h5>
-                                <p>“Tendencias, consejos y novedades para inspirar tu look diario.”</p>
-                            </div>
-                        </div>
-                    </div>
-                    <button class="carousel-control-prev" type="button" data-bs-target="#stuffiesCarousel" data-bs-slide="prev">
-                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                        <span class="visually-hidden">Anterior</span>
-                    </button>
-                    <button class="carousel-control-next" type="button" data-bs-target="#stuffiesCarousel" data-bs-slide="next">
-                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                        <span class="visually-hidden">Siguiente</span>
-                    </button>
-                </div>
+            <div class="carousel-item">
+              <img src="https://i.postimg.cc/Dz8pthBy/448330999-1571729430349986-3007445543010160619-n.jpg" class="d-block w-100" alt="Promo 2">
+              <div class="carousel-caption d-none d-md-block">
+                <h5>Historias que Visten Distinto</h5>
+                <p>“Moda, creatividad y experiencias que trascienden la ropa.”</p>
+              </div>
             </div>
-        </section>
-
-        <section class="about-preview">
-            <div class="container">
-                <div class="about-content">
-                    <div class="about-text">
-                        <h2>Stuffies - Moda Urbana Chilena</h2>
-                        <p>Desde nuestro lanzamiento en junio de 2024, nos dedicamos a crear ropa moderna y de calidad con estilo estadounidense para que todos puedan vestir a la última moda.</p>
-                        <a href="nosotros.html" class="btn btn-outline">Conoce más</a>
-                    </div>
-                    <div class="about-image">
-                        <img src="https://media.discordapp.net/attachments/1075143701560557609/1412915127598055535/ESTRELLA_BLANCA.png?ex=68ba0741&is=68b8b5c1&hm=8cf912fba4dd8ad946803a7688d3d36b55c312a78e4340346ceb5efd42a4252a&=&format=webp&quality=lossless" alt="">
-                    </div>
-                </div>
+            <div class="carousel-item">
+              <img src="https://i.postimg.cc/DwCYj0QM/IMG-1162-2.jpg" class="d-block w-100" alt="Promo 3">
+              <div class="carousel-caption d-none d-md-block">
+                <h5>Estilo y Cultura Urbana</h5>
+                <p>“Tendencias, consejos y novedades para inspirar tu look diario.”</p>
+              </div>
             </div>
-        </section>
-
-
-
-
-        <footer>
-        <div class="container">
-            <div class="footer-content">
-                <div class="footer-section">
-                    <h3>STUFFIES</h3>
-                    <p>Tienda online de ropa urbana y casual en Chile</p>
-                </div>
-                <div class="footer-section">
-                    <h4>Enlaces</h4>
-                    <ul>
-                        <li><a href="index.html">Home</a></li>
-                        <li><a href="productos.html">Productos</a></li>
-                        <li><a href="nosotros.html">Nosotros</a></li>
-                        <li><a href="blogs.html">Blogs</a></li>
-                        <li><a href="contacto.html">Contacto</a></li>
-                    </ul>
-                </div>
-                <div class="footer-section">
-                    <h4>Contacto</h4>
-                    <p>Email: info@stuffies.cl</p>
-                    <p>Teléfono: +56 9 1234 5678</p>
-                </div>
-                <div class="footer-section">
-                    <h4>Suscríbete</h4>
-                    <form class="subscribe-form" id="subscribe-form">
-                        <input type="email" placeholder="Ingresa tu email" required>
-                        <button type="submit">Suscribirse</button>
-                    </form>
-                </div>
-            </div>
-            <div class="footer-bottom">
-                <p>&copy; 2024 Stuffies. Todos los derechos reservados.</p>
-            </div>
+          </div>
+          <button class="carousel-control-prev" type="button" data-bs-target="#stuffiesCarousel" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Anterior</span>
+          </button>
+          <button class="carousel-control-next" type="button" data-bs-target="#stuffiesCarousel" data-bs-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Siguiente</span>
+          </button>
         </div>
-    </footer>
+      </div>
+    </section>
+
+    <!-- About preview -->
+    <section class="about-preview">
+      <div class="container">
+        <div class="about-content">
+          <div class="about-text">
+            <h2>Stuffies - Moda Urbana Chilena</h2>
+            <p>Desde nuestro lanzamiento en junio de 2024, nos dedicamos a crear ropa moderna y de calidad con estilo estadounidense para que todos puedan vestir a la última moda.</p>
+            <a href="nosotros.html" class="btn btn-outline">Conoce más</a>
+          </div>
+          <div class="about-image">
+            <img src="https://media.discordapp.net/attachments/1075143701560557609/1412915127598055535/ESTRELLA_BLANCA.png?format=webp&quality=lossless" alt="Estrella Stuffies">
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Listado de entradas + Filtros + Paginación (Punto 2) -->
+    <section class="blogs-list py-5">
+      <div class="container">
+        <div class="d-flex flex-column flex-md-row gap-2 justify-content-between align-items-md-end mb-3">
+          <div>
+            <h3 class="text-light m-0">Últimas entradas</h3>
+            <small class="text-secondary">Historias, tendencias y consejos.</small>
+          </div>
+          <div class="d-flex gap-2">
+            <input id="blog-search" class="form-control" placeholder="Buscar en blogs...">
+            <select id="blog-category" class="form-select">
+              <option value="*">Todas</option>
+              <option value="Noticias">Noticias</option>
+              <option value="Estilo">Estilo</option>
+              <option value="Tutoriales">Tutoriales</option>
+            </select>
+            <button id="blog-apply" class="btn btn-primary">Filtrar</button>
+          </div>
+        </div>
+
+        <div id="blogs-grid" class="row g-4"></div>
+
+        <div class="d-flex justify-content-center mt-4 gap-2">
+          <button id="prev-page" class="btn btn-outline-secondary">Anterior</button>
+          <span id="page-indicator" class="text-secondary d-flex align-items-center"></span>
+          <button id="next-page" class="btn btn-outline-secondary">Siguiente</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- Modal Leer más (Punto 2) -->
+    <div class="modal fade" id="blogModal" tabindex="-1" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered modal-lg">
+        <div class="modal-content bg-dark text-light">
+          <div class="modal-header">
+            <h5 class="modal-title" id="blogModalTitle">Título</h5>
+            <button class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+          </div>
+          <div class="modal-body">
+            <img id="blogModalImg" src="" alt="" class="img-fluid rounded mb-3">
+            <p class="text-secondary mb-1">
+              <span id="blogModalCat"></span> • <span id="blogModalDate"></span> • <span id="blogModalRead"></span>
+            </p>
+            <div id="blogModalContent" class="mt-2"></div>
+          </div>
+          <div class="modal-footer">
+            <a id="blogModalCTA" href="productos.html" class="btn btn-primary">Ver productos relacionados</a>
+            <button class="btn btn-outline-light" data-bs-dismiss="modal">Cerrar</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <footer>
+    <div class="container">
+      <div class="footer-content">
+        <div class="footer-section">
+          <h3>STUFFIES</h3>
+          <p>Tienda online de ropa urbana y casual en Chile</p>
+        </div>
+        <div class="footer-section">
+          <h4>Enlaces</h4>
+          <ul>
+            <li><a href="Tienda_Stuffiess.html">Home</a></li>
+            <li><a href="productos.html">Productos</a></li>
+            <li><a href="nosotros.html">Nosotros</a></li>
+            <li><a href="blogs.html">Blogs</a></li>
+            <li><a href="contacto.html">Contacto</a></li>
+          </ul>
+        </div>
+        <div class="footer-section">
+          <h4>Contacto</h4>
+          <p>Email: info@stuffies.cl</p>
+          <p>Teléfono: +56 9 1234 5678</p>
+        </div>
+        <div class="footer-section">
+          <h4>Suscríbete</h4>
+          <form class="subscribe-form" id="subscribe-form">
+            <input type="email" placeholder="Ingresa tu email" required>
+            <button type="submit">Suscribirse</button>
+          </form>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2025 Stuffies. Todos los derechos reservados.</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Bootstrap JS (necesario para carrusel y modal) -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+  <!-- Lógica de blogs (Punto 3) -->
+  <script src="js/blogs.js"></script>
 </body>
 </html>

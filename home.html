@@ -1,160 +1,212 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Stuffies - Tienda de Ropa Urbana</title>
-    <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:wght@400;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="css/styles.css">
-    <link href="https://cdn.jsdelivr.net/npm/bootswatch@5.3.3/dist/morph/bootstrap.min.css" rel="stylesheet">
-    <script src="js/main.js"></script>
-    <script src="js/productos.js"></script>
-    <script src="js/carrito.js"></script>
-    <script src="js/validaciones.js"></script>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Stuffies - Tienda de Ropa Urbana</title>
+
+  <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/styles.css">
+  <link href="https://cdn.jsdelivr.net/npm/bootswatch@5.3.3/dist/morph/bootstrap.min.css" rel="stylesheet">
+
+  <!-- 🔧 Overrides mínimos para que hover no mate los clicks -->
+  <style>
+    /* Botones visibles sobre la imagen */
+    .product-info { position: relative; z-index: 2; }
+    /* La capa IMG no intercepta clics; el contenedor sí permite :hover */
+    .product-image img { pointer-events: none; }
+    /* (opcional) cursor de mano en botones y links */
+    .product-actions .btn, a.btn { cursor: pointer; }
+  </style>
+
+  <!-- Scripts de tu proyecto -->
+  <script src="js/main.js"></script>
+  <script src="js/productos.js"></script>
+  <script src="js/carrito.js"></script>
+  <script src="js/validaciones.js"></script>
+  <script src="js/blogs.js"></script>
+  <script src="detalle-producto.html"></script>
 </head>
 <body>
-    <header>
-        <div class="container header-content">
-            <div class="logo">
-                <a href="Tienda_Stuffiess.html">
-                    <img src="https://stuffiesconcept.com/cdn/shop/files/output-onlinegiftools_1.gif?v=1723763811&width=500"
-                    alt="Logo Stuffies" class="logo-img">
-                </a>
-                <h1><a class="stu" href="Tienda_Stuffiess.html">STUFFIES</a></h1>
-            </div>
-            <nav class="main-nav">
-                <ul>
-                    <li><a href="Tienda_Stuffiess.html" class="active"></a></li>
-                    <li><a href="productos.html">Productos</a></li>
-                    <li><a href="nosotros.html">Nosotros</a></li>
-                    <li><a href="blogs.html">Blogs</a></li>
-                    <li><a href="contacto.html">Contacto</a></li>
-                </ul>
-            </nav>
-            <div class="header-actions">
-                <a href="carrito.html" class="cart-icon">
-                    <span class="cart-count">0</span>
-                    🛒
-                </a>
-                <a href="login.html" class="btn btn-outline">Iniciar Sesión</a>
-            </div>
+  <header>
+    <div class="container header-content">
+      <div class="logo">
+        <a href="Tienda_Stuffiess.html">
+          <img src="https://stuffiesconcept.com/cdn/shop/files/output-onlinegiftools_1.gif?v=1723763811&width=500"
+               alt="Logo Stuffies" class="logo-img">
+        </a>
+        <h1><a class="stu" href="Tienda_Stuffiess.html">STUFFIES</a></h1>
+      </div>
+      <nav class="main-nav">
+        <ul>
+          <li><a href="Tienda_Stuffiess.html" class="active">Home</a></li>
+          <li><a href="productos.html">Productos</a></li>
+          <li><a href="nosotros.html">Nosotros</a></li>
+          <li><a href="blogs.html">Blogs</a></li>
+          <li><a href="contacto.html">Contacto</a></li>
+        </ul>
+      </nav>
+      <div class="header-actions">
+        <a href="carrito.html" class="cart-icon">
+          <span class="cart-count">0</span> 🛒
+        </a>
+        <a href="login.html" class="btn btn-outline">Iniciar Sesión</a>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="container">
+        <div class="hero-content">
+          <h2>ROPA URBANA CON ESTILO</h2>
+          <p>Descubre nuestra colección de poleras, polerones, jeans y accesorios con estilo estadounidense</p>
+          <a href="productos.html" class="btn btn-primary">Ver productos</a>
         </div>
-    </header>
- 
-    <main>
-        <section class="hero">
-            <div class="container">
-                <div class="hero-content">
-                    <h2>ROPA URBANA CON ESTILO</h2>
-                    <p>Descubre nuestra colección de poleras, polerones, jeans y accesorios con estilo estadounidense</p>
-                    <a href="productos.html" class="btn btn-primary">Ver productos</a>
-                </div>
-            </div>
-        </section>
+      </div>
+    </section>
 
-        <!-- Carrusel agregado -->
-        <section class="carousel-section">
-            <div class="container">
-                <div id="stuffiesCarousel" class="carousel slide" data-bs-ride="carousel">
-                    <div class="carousel-indicators">
-                        <button type="button" data-bs-target="#stuffiesCarousel" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
-                        <button type="button" data-bs-target="#stuffiesCarousel" data-bs-slide-to="1" aria-label="Slide 2"></button>
-                        <button type="button" data-bs-target="#stuffiesCarousel" data-bs-slide-to="2" aria-label="Slide 3"></button>
-                    </div>
-                    <div class="carousel-inner">
-                        <div class="carousel-item active">
-                            <img src="https://media.discordapp.net/attachments/1075143701560557609/1412956158368550963/IMG_1164.JPG?ex=68ba2d77&is=68b8dbf7&hm=faa861eebd228ea91bcecf416b0774698d284b34f5a6fed36ff33695818d2f3f&=&format=webp&width=570&height=856" class="d-block w-100" alt="Promo 1">
-                            <div class="carousel-caption d-none d-md-block">
-                                <h5>Promoción de Poleras</h5>
-                                <p>Descubre nuestras poleras urbanas con estilo único.</p>
-                            </div>
-                        </div>
-                        <div class="carousel-item">
-                            <img src="https://via.placeholder.com/1200x400.png?text=Promo+2" class="d-block w-100" alt="Promo 2">
-                            <div class="carousel-caption d-none d-md-block">
-                                <h5>Polerones Exclusivos</h5>
-                                <p>La comodidad y estilo que estabas buscando.</p>
-                            </div>
-                        </div>
-                        <div class="carousel-item">
-                            <img src="https://via.placeholder.com/1200x400.png?text=Promo+3" class="d-block w-100" alt="Promo 3">
-                            <div class="carousel-caption d-none d-md-block">
-                                <h5>Accesorios Urbanos</h5>
-                                <p>Complementa tu outfit con los mejores accesorios.</p>
-                            </div>
-                        </div>
-                    </div>
-                    <button class="carousel-control-prev" type="button" data-bs-target="#stuffiesCarousel" data-bs-slide="prev">
-                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                        <span class="visually-hidden">Anterior</span>
-                    </button>
-                    <button class="carousel-control-next" type="button" data-bs-target="#stuffiesCarousel" data-bs-slide="next">
-                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                        <span class="visually-hidden">Siguiente</span>
-                    </button>
-                </div>
+    <!-- Carrusel -->
+    <section class="carousel-section">
+      <div class="container">
+        <div id="stuffiesCarousel"
+             class="carousel slide"
+             data-bs-ride="carousel"
+             data-bs-interval="3000"
+             data-bs-pause="false"
+             data-bs-touch="true">
+          <div class="carousel-indicators">
+            <button type="button" data-bs-target="#stuffiesCarousel" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+            <button type="button" data-bs-target="#stuffiesCarousel" data-bs-slide-to="1" aria-label="Slide 2"></button>
+            <button type="button" data-bs-target="#stuffiesCarousel" data-bs-slide-to="2" aria-label="Slide 3"></button>
+          </div>
+          <div class="carousel-inner">
+            <div class="carousel-item active">
+              <img src="https://i.postimg.cc/J45FXPsm/santia-Asco.png" class="d-block w-100" alt="Promo 1">
+              <div class="carousel-caption d-none d-md-block">
+                <h5>Promoción de Poleras</h5>
+                <p>Descubre nuestras poleras urbanas con estilo único.</p>
+              </div>
             </div>
-        </section>
-
-        <section class="featured-products">
-            <div class="container">
-                <h2>Productos Destacados</h2>
-                <div class="products-grid" id="featured-products">
-                </div>
+            <div class="carousel-item">
+              <img src="https://i.postimg.cc/GpVgRf5P/IMG-1164.jpg" class="d-block w-100" alt="Promo 2">
+              <div class="carousel-caption d-none d-md-block">
+                <h5>Polerones Exclusivos</h5>
+                <p>La comodidad y estilo que estabas buscando.</p>
+              </div>
             </div>
-        </section>
-
-        <section class="about-preview">
-            <div class="container">
-                <div class="about-content">
-                    <div class="about-text">
-                        <h2>Stuffies - Moda Urbana Chilena</h2>
-                        <p>Desde nuestro lanzamiento en junio de 2024, nos dedicamos a crear ropa moderna y de calidad con estilo estadounidense para que todos puedan vestir a la última moda.</p>
-                        <a href="nosotros.html" class="btn btn-outline">Conoce más</a>
-                    </div>
-                    <div class="about-image">
-                        <img src="https://media.discordapp.net/attachments/1075143701560557609/1412915127598055535/ESTRELLA_BLANCA.png?ex=68ba0741&is=68b8b5c1&hm=8cf912fba4dd8ad946803a7688d3d36b55c312a78e4340346ceb5efd42a4252a&=&format=webp&quality=lossless" alt="">
-                    </div>
-                </div>
+            <div class="carousel-item">
+              <img src="https://media.discordapp.net/attachments/1390908661106344058/1413930225385078784/476928810_17887865937208902_5206449320773511412_n.jpg?ex=68bdb8a3&is=68bc6723&hm=96d1c0579197c51f1c3cebd39743b1725348e6500a80ed1b82b58f5de47bb722&=&format=webp" class="d-block w-100" alt="Promo 3">
+              <div class="carousel-caption d-none d-md-block">
+                <h5>Accesorios Urbanos</h5>
+                <p>Complementa tu outfit con los mejores accesorios.</p>
+              </div>
             </div>
-        </section>
-    </main>
-
-    <footer>
-        <div class="container">
-            <div class="footer-content">
-                <div class="footer-section">
-                    <h3>STUFFIES</h3>
-                    <p>Tienda online de ropa urbana y casual en Chile</p>
-                </div>
-                <div class="footer-section">
-                    <h4>Enlaces</h4>
-                    <ul>
-                        <li><a href="index.html">Home</a></li>
-                        <li><a href="productos.html">Productos</a></li>
-                        <li><a href="nosotros.html">Nosotros</a></li>
-                        <li><a href="blogs.html">Blogs</a></li>
-                        <li><a href="contacto.html">Contacto</a></li>
-                    </ul>
-                </div>
-                <div class="footer-section">
-                    <h4>Contacto</h4>
-                    <p>Email: info@stuffies.cl</p>
-                    <p>Teléfono: +56 9 1234 5678</p>
-                </div>
-                <div class="footer-section">
-                    <h4>Suscríbete</h4>
-                    <form class="subscribe-form" id="subscribe-form">
-                        <input type="email" placeholder="Ingresa tu email" required>
-                        <button type="submit">Suscribirse</button>
-                    </form>
-                </div>
-            </div>
-            <div class="footer-bottom">
-                <p>&copy; 2024 Stuffies. Todos los derechos reservados.</p>
-            </div>
+          </div>
+          <button class="carousel-control-prev" type="button" data-bs-target="#stuffiesCarousel" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Anterior</span>
+          </button>
+          <button class="carousel-control-next" type="button" data-bs-target="#stuffiesCarousel" data-bs-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Siguiente</span>
+          </button>
         </div>
-    </footer>
+      </div>
+    </section>
 
+    <section class="featured-products">
+      <div class="container">
+        <h2>Productos Destacados</h2>
+        <!-- main.js pintará aquí las tarjetas con:
+             <a href="detalle-producto.html?id=ID">Ver detalles</a>
+             <button onclick="agregarAlCarrito(ID)">Añadir</button>
+        -->
+        <div class="products-grid" id="featured-products"></div>
+      </div>
+    </section>
+
+    <section class="about-preview">
+      <div class="container">
+        <div class="about-content">
+          <div class="about-text">
+            <h2>Stuffies - Moda Urbana Chilena</h2>
+            <p>Desde nuestro lanzamiento en junio de 2024, nos dedicamos a crear ropa moderna y de calidad con estilo estadounidense para que todos puedan vestir a la última moda.</p>
+            <a href="nosotros.html" class="btn btn-outline">Conoce más</a>
+          </div>
+          <div class="about-image">
+            <img src="https://i.postimg.cc/R0phZ77L/ESTRELLA-BLANCA.png" alt="">
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container">
+      <div class="footer-content">
+        <div class="footer-section">
+          <h3>STUFFIES</h3>
+          <p>Tienda online de ropa urbana y casual en Chile</p>
+        </div>
+        <div class="footer-section">
+          <h4>Enlaces</h4>
+          <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="productos.html">Productos</a></li>
+            <li><a href="nosotros.html">Nosotros</a></li>
+            <li><a href="blogs.html">Blogs</a></li>
+            <li><a href="contacto.html">Contacto</a></li>
+          </ul>
+        </div>
+        <div class="footer-section">
+          <h4>Contacto</h4>
+          <p>Email: info@stuffies.cl</p>
+          <p>Teléfono: +56 9 1234 5678</p>
+        </div>
+        <div class="footer-section">
+          <h4>Suscríbete</h4>
+          <form class="subscribe-form" id="subscribe-form">
+            <input type="email" placeholder="Ingresa tu email" required>
+            <button type="submit">Suscribirse</button>
+          </form>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2024 Stuffies. Todos los derechos reservados.</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Bootstrap JS requerido para el carrusel -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+  <!-- 🛡️ Fallbacks: forzar “Ver detalles” y “Añadir” si algo bloquea el click -->
+  <script>
+    document.addEventListener('click', (e) => {
+      /* Forzar navegación a detalle */
+      const link = e.target.closest('a[href^="detalle-producto.html?id="]');
+      if (link) {
+        e.preventDefault();
+        const href = link.getAttribute('href');
+        if (href) window.location.href = href;
+        return;
+      }
+
+      /* Fallback para botón “Añadir” si el onclick no dispara */
+      const addBtn = e.target.closest('.product-card .btn.btn-primary');
+      if (addBtn && addBtn.textContent.toLowerCase().includes('añadir')) {
+        const card = addBtn.closest('.product-card');
+        const linkDetalle = card?.querySelector('a[href^="detalle-producto.html?id="]');
+        if (linkDetalle) {
+          const url = new URL(linkDetalle.getAttribute('href'), window.location.origin);
+          const id = Number(url.searchParams.get('id'));
+          if (!isNaN(id) && typeof window.agregarAlCarrito === 'function') {
+            window.agregarAlCarrito(id);
+          }
+        }
+      }
+    });
+  </script>
 </body>
 </html>
