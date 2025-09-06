@@ -24,6 +24,6 @@ document.addEventListener('DOMContentLoaded', function() {
             // Aquí iría la lógica de autenticación para usuarios normales
             // Por ahora, redirigimos a la página principal
             window.location.href = 'Tienda_Stuffiess.html';
-        });
+        });z
     }
 });
