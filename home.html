@@ -90,7 +90,7 @@
               </div>
             </div>
             <div class="carousel-item">
-              <img src="https://media.discordapp.net/attachments/1390908661106344058/1413930225385078784/476928810_17887865937208902_5206449320773511412_n.jpg?format=webp" class="d-block w-100" alt="Promo 3">
+              <img src="https://i.postimg.cc/ht451Tmm/476928810-17887865937208902-5206449320773511412-n.jpg" class="d-block w-100" alt="Promo 3">
               <div class="carousel-caption d-none d-md-block">
                 <h5>Accesorios Urbanos</h5>
                 <p>Complementa tu outfit con los mejores accesorios.</p>
@@ -179,6 +179,72 @@
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 
   <!-- Fallbacks click detalle/añadir (opcional) -->
+  <script>
+    document.addEventListener('click', (e) => {
+      const link = e.target.closest('a[href^="detalle-producto.html?id="]');
+      if (link) {
+        e.preventDefault();
+        const href = link.getAttribute('href');
+        if (href) window.location.href = href;
+        return;
+      }
+      const addBtn = e.target.closest('.product-card .btn.btn-primary');
+      if (addBtn && addBtn.textContent.toLowerCase().includes('añadir')) {
+        const card = addBtn.closest('.product-card');
+        const linkDetalle = card?.querySelector('a[href^="detalle-producto.html?id="]');
+        if (linkDetalle) {
+          const url = new URL(linkDetalle.getAttribute('href'), window.location.origin);
+          const id = Number(url.searchParams.get('id'));
+          if (!isNaN(id) && typeof window.agregarAlCarrito === 'function') {
+            window.agregarAlCarrito(id);
+          }
+        }
+      }
+    });
+  </script>
+</body>
+</html>
+
+
+
+  <footer>
+    <div class="container">
+      <div class="footer-content">
+        <div class="footer-section">
+          <h3>STUFFIES</h3>
+          <p>Tienda online de ropa urbana y casual en Chile</p>
+        </div>
+        <div class="footer-section">
+          <h4>Enlaces</h4>
+          <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="productos.html">Productos</a></li>
+            <li><a href="nosotros.html">Nosotros</a></li>
+            <li><a href="blogs.html">Blogs</a></li>
+            <li><a href="contacto.html">Contacto</a></li>
+          </ul>
+        </div>
+        <div class="footer-section">
+          <h4>Contacto</h4>
+          <p>Email: info@stuffies.cl</p>
+          <p>Teléfono: +56 9 1234 5678</p>
+        </div>
+        <div class="footer-section">
+          <h4>Suscríbete</h4>
+          <form class="subscribe-form" id="subscribe-form">
+            <input type="email" placeholder="Ingresa tu email" required>
+            <button type="submit">Suscribirse</button>
+          </form>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2024 Stuffies. Todos los derechos reservados.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
   <script>
     document.addEventListener('click', (e) => {
       const link = e.target.closest('a[href^="detalle-producto.html?id="]');
