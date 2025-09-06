@@ -4,8 +4,9 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Stuffies - Blogs</title>
-
-  <!-- Metadatos SEO/OG (Punto 1) -->
+  <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/styles.css">
+  <link href="https://cdn.jsdelivr.net/npm/bootswatch@5.3.3/dist/morph/bootstrap.min.css" rel="stylesheet">
   <meta name="description" content="Historias, estilo y novedades de Stuffies. Moda urbana chilena que inspira a vestir distinto.">
   <meta name="keywords" content="stuffies, moda urbana, streetwear, poleras, polerones, chile, blogs">
   <meta property="og:title" content="Stuffies - Blogs">
@@ -15,7 +16,6 @@
   <meta property="og:url" content="https://tudominio.cl/blogs.html">
   <meta name="twitter:card" content="summary_large_image">
 
-  <!-- Estilos -->
   <link rel="stylesheet" href="css/styles.css">
   <link href="https://cdn.jsdelivr.net/npm/bootswatch@5.3.3/dist/morph/bootstrap.min.css" rel="stylesheet">
 </head>
@@ -47,7 +47,6 @@
   </header>
 
   <main>
-    <!-- Hero -->
     <section class="hero">
       <div class="container">
         <div class="hero-content">
@@ -102,23 +101,8 @@
       </div>
     </section>
 
-    <!-- About preview -->
-    <section class="about-preview">
-      <div class="container">
-        <div class="about-content">
-          <div class="about-text">
-            <h2>Stuffies - Moda Urbana Chilena</h2>
-            <p>Desde nuestro lanzamiento en junio de 2024, nos dedicamos a crear ropa moderna y de calidad con estilo estadounidense para que todos puedan vestir a la última moda.</p>
-            <a href="nosotros.html" class="btn btn-outline">Conoce más</a>
-          </div>
-          <div class="about-image">
-            <img src="https://media.discordapp.net/attachments/1075143701560557609/1412915127598055535/ESTRELLA_BLANCA.png?format=webp&quality=lossless" alt="Estrella Stuffies">
-          </div>
-        </div>
-      </div>
-    </section>
 
-    <!-- Listado de entradas + Filtros + Paginación (Punto 2) -->
+
     <section class="blogs-list py-5">
       <div class="container">
         <div class="d-flex flex-column flex-md-row gap-2 justify-content-between align-items-md-end mb-3">
@@ -148,7 +132,7 @@
       </div>
     </section>
 
-    <!-- Modal Leer más (Punto 2) -->
+ 
     <div class="modal fade" id="blogModal" tabindex="-1" aria-hidden="true">
       <div class="modal-dialog modal-dialog-centered modal-lg">
         <div class="modal-content bg-dark text-light">
@@ -171,6 +155,20 @@
       </div>
     </div>
   </main>
+      <section class="about-preview">
+      <div class="container">
+        <div class="about-content">
+          <div class="about-text">
+            <h2>Stuffies - Moda Urbana Chilena</h2>
+            <p>Desde nuestro lanzamiento en junio de 2024, nos dedicamos a crear ropa moderna y de calidad con estilo estadounidense para que todos puedan vestir a la última moda.</p>
+            <a href="nosotros.html" class="btn btn-outline">Conoce más</a>
+          </div>
+          <div class="about-image">
+            <img src="https://i.postimg.cc/R0phZ77L/ESTRELLA-BLANCA.png" alt="Estrella Stuffies">
+          </div>
+        </div>
+      </div>
+    </section>
 
   <footer>
     <div class="container">
@@ -208,10 +206,10 @@
     </div>
   </footer>
 
-  <!-- Bootstrap JS (necesario para carrusel y modal) -->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 
-  <!-- Lógica de blogs (Punto 3) -->
+
   <script src="js/blogs.js"></script>
+  
 </body>
 </html>

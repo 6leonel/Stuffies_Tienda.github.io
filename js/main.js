@@ -1,129 +1,150 @@
 const productos = [
-    {
-        id: 1,
-        nombre: "HOODIE BOXIFIT WHITE DICE V2",
-        precio: 39990,
-        categoria: "polerones",
-        imagen: "https://stuffiesconcept.com/cdn/shop/files/WhiteDice1.png?v=1753404231&width=600",
-        imagenHover: "https://stuffiesconcept.com/cdn/shop/files/WhiteDice2.png?v=1753404231&width=1426",
-        descripcion: "POLERÓN BOXIFIT AZUL MARINO 'WHITE DICE'.",
-        tallas: ["S", "M", "L", "XL"],
-        colores: ["Negro", "Blanco", "Gris"],
-        destacado: true
-    },
-    {
-        id: 2,
-        nombre: "Star Player 'Blue Team't-shirt",
-        precio: 10990,
-        categoria: "deportiva",
-        imagen: "https://stuffiesconcept.com/cdn/shop/files/1_594f01e1-55e5-4516-b0af-d2befc1aa113.png?v=1748653006&width=600",
-        imagenHover: "https://stuffiesconcept.com/cdn/shop/files/2_221c9cfc-6049-4eb1-b7ec-3b19bd755c48.png?v=1748653006&width=600",
-        descripcion: "La Star Player T-Shirt nace de la unión entre la nostalgia del fútbol clásico y la energía del streetwear actual.",
-        tallas: ["M", "L", "XL"],
-        colores: ["Gris", "Negro"],
-        destacado: true
-    },
-    {
-        id: 3,
-        nombre: "Stella Chroma Zip Hoodie",
-        precio: 55990,
-        categoria: "polerones",
-        imagen: "https://stuffiesconcept.com/cdn/shop/files/1_8ee3f1b2-2f8a-45ba-bb78-a2f4ba49c4d5.png?v=1756936574&width=600",
-        imagenHover: "https://stuffiesconcept.com/cdn/shop/files/2_1c0d6df0-c713-49a3-b2bd-b07d19c392ee.png?v=1756936574&width=600",
-        descripcion: "Hoodie con cierre frontal y bolsillos.",
-        tallas: ["S", "M", "L"],
-        colores: ["Negro"],
-        destacado: true
-    },
-    {
-        id: 4,
-        nombre: "Stella Boxy-Slim White Tee",
-        precio: 22990,
-        categoria: "poleras",
-        imagen: "https://stuffiesconcept.com/cdn/shop/files/3_0f38dc89-f9f8-4998-be22-b2e0122e8816.png?v=1756936601&width=600   ",
-        imagenHover: "https://stuffiesconcept.com/cdn/shop/files/4_8a500939-3d78-4b9c-aaab-fc34db0d117d.png?v=1756936601&width=600",
-        descripcion: "Camiseta blanca corte boxy-slim.",
-        tallas: ["S", "M", "L", "XL"],
-        colores: ["Blanco"],
-        destacado: false
-    }
+  {
+    id: 1,
+    nombre: "HOODIE BOXIFIT WHITE DICE V2",
+    precio: 39990,
+    categoria: "polerones",
+    imagen: "https://stuffiesconcept.com/cdn/shop/files/WhiteDice1.png?v=1753404231&width=600",
+    imagenHover: "https://stuffiesconcept.com/cdn/shop/files/WhiteDice2.png?v=1753404231&width=1426",
+    descripcion: "POLERÓN BOXIFIT AZUL MARINO 'WHITE DICE'.",
+    tallas: ["S", "M", "L", "XL"],
+    colores: ["azul"],
+    destacado: false
+  },
+  {
+    id: 2,
+    nombre: "Star Player 'Blue Team' T-Shirt",
+    precio: 10990,
+    categoria: "deportiva",
+    imagen: "https://stuffiesconcept.com/cdn/shop/files/1_594f01e1-55e5-4516-b0af-d2befc1aa113.png?v=1748653006&width=600",
+    imagenHover: "https://stuffiesconcept.com/cdn/shop/files/2_221c9cfc-6049-4eb1-b7ec-3b19bd755c48.png?v=1748653006&width=600",
+    descripcion: "La Star Player T-Shirt nace de la unión entre la nostalgia del fútbol clásico y la energía del streetwear actual.",
+    tallas: ["M", "L", "XL"],
+    colores: ["diseño unico"],
+    destacado: false
+  },
+  {
+    id: 3,
+    nombre: "Stella Chroma Zip Hoodie",
+    precio: 55990,
+    categoria: "polerones",
+    imagen: "https://stuffiesconcept.com/cdn/shop/files/1_8ee3f1b2-2f8a-45ba-bb78-a2f4ba49c4d5.png?v=1756936574&width=600",
+    imagenHover: "https://stuffiesconcept.com/cdn/shop/files/2_1c0d6df0-c713-49a3-b2bd-b07d19c392ee.png?v=1756936574&width=600",
+    descripcion: "Hoodie con cierre frontal y bolsillos.",
+    tallas: ["S", "M", "L", "XL"],
+    colores: ["Negro"],
+    destacado: true
+  },
+  {
+    id: 4,
+    nombre: "Stella Boxy-Slim White Tee",
+    precio: 22990,
+    categoria: "poleras",
+    imagen: "https://stuffiesconcept.com/cdn/shop/files/3_0f38dc89-f9f8-4998-be22-b2e0122e8816.png?v=1756936601&width=600",
+    imagenHover: "https://stuffiesconcept.com/cdn/shop/files/4_8a500939-3d78-4b9c-aaab-fc34db0d117d.png?v=1756936601&width=600",
+    descripcion: "Camiseta blanca corte boxy-slim.",
+    tallas: ["S", "M", "L", "XL"],
+    colores: ["Blanco"],
+    destacado: false
+  },
+  {
+    id: 5,
+    nombre: "Stella Boxy-Slim Black Tee",
+    precio: 15990,
+    categoria: "accesorios",
+    imagen: "https://stuffiesconcept.com/cdn/shop/files/5.png?v=1756936590&width=493",
+    imagenHover: "https://stuffiesconcept.com/cdn/shop/files/6.png?v=1756936591&width=493",
+    descripcion: "Gorra ajustable con logo bordado.",
+    tallas: ["S", "M", "L", "XL"],
+    colores: ["Negro",],
+    destacado: true
+  },
+  {
+    id: 6,
+    nombre: "HOODIE BOXIFIT RED DICE V2",
+    precio: 32990,
+    categoria: "deportiva",
+    imagen: "https://stuffiesconcept.com/cdn/shop/files/RedDice1.png?v=1753404319&width=600",
+    imagenHover: "https://stuffiesconcept.com/cdn/shop/files/RedDice2.png?v=1753404319&width=600",
+    descripcion: "Chaqueta ligera, perfecta para entrenar.",
+    tallas: ["S", "M", "L", "XL"],
+    colores: ["Negro"],
+    destacado: true
+  },
+  {
+    id: 7,
+    nombre: "Star Player 'Black Team' t-shirt",
+    precio: 37990,
+    categoria: "polerones",
+    imagen: "https://stuffiesconcept.com/cdn/shop/files/3_f5bf3ad8-c122-436f-8eee-1483a3f383da.png?v=1748652948&width=600",
+    imagenHover: "https://stuffiesconcept.com/cdn/shop/files/4_b9bc3afc-97e9-4636-94f4-1a863738d755.png?v=1748652948&width=600",
+    descripcion: "Polerón clásico con bolsillo canguro.",
+    tallas: ["S", "M", "L", "XL"],
+    colores: ["Gris"],
+    destacado: true
+  }
 ];
 
 document.addEventListener('DOMContentLoaded', function() {
-    console.log('Página cargada correctamente');
-    
-    if (document.getElementById('featured-products')) {
-        cargarProductosDestacados();
-    }
-    
-    if (document.getElementById('todos-productos')) {
-        cargarTodosLosProductos();
-        configurarFiltros(); // <-- ahora existe y funciona
-    }
-    
-    if (document.getElementById('detalle-producto')) {
-        cargarDetalleProducto(); // <-- ahora existe y funciona
-    }
-    
-    const subscribeForm = document.getElementById('subscribe-form');
-    if (subscribeForm) {
-        subscribeForm.addEventListener('submit', manejarSuscripcion);
-    }
-    
-    actualizarContadorCarrito?.();
-    configurarNavegacionMovil();
+  console.log('Página cargada correctamente');
+
+  if (document.getElementById('featured-products')) {
+    cargarProductosDestacados();
+  }
+
+  if (document.getElementById('todos-productos')) {
+    cargarTodosLosProductos();
+    configurarFiltros(); // filtros funcionando
+  }
+
+  if (document.getElementById('detalle-producto')) {
+    cargarDetalleProducto(); // detalle funcionando
+  }
+
+  const subscribeForm = document.getElementById('subscribe-form');
+  if (subscribeForm) {
+    subscribeForm.addEventListener('submit', manejarSuscripcion);
+  }
+
+  actualizarContadorCarrito?.();
+  configurarNavegacionMovil();
 });
 
-function cargarProductosDestacados() {
-    const contenedor = document.getElementById('featured-products');
-    if (!contenedor) return;
-
-    const destacados = productos.filter(p => p.destacado);
-    contenedor.innerHTML = destacados.map(producto => `
-        <div class="product-card">
-            <div class="product-image">
-                <img src="${producto.imagen}" alt="${producto.nombre}" class="img-main"
-                     onerror="this.src='https://via.placeholder.com/250x200?text=Imagen+no+disponible'">
-                <img src="${producto.imagenHover || producto.imagen}" alt="${producto.nombre}" class="img-hover">
-            </div>
-            <div class="product-info">
-                <h3 class="product-title">${producto.nombre}</h3>
-                <p class="product-price">$${producto.precio.toLocaleString('es-CL')}</p>
-                <div class="product-actions">
-                    <a href="detalle-producto.html?id=${producto.id}" class="btn btn-outline">Ver detalles</a>
-                    <button class="btn btn-primary" onclick="agregarAlCarrito(${producto.id})">Añadir</button>
-                </div>
-            </div>
+function tarjetaProductoHTML(producto) {
+  return `
+    <div class="product-card">
+      <div class="product-image">
+        <img src="${producto.imagen}" alt="${producto.nombre}" class="img-main"
+             onerror="this.src='https://via.placeholder.com/250x200?text=Imagen+no+disponible'">
+        <img src="${producto.imagenHover || producto.imagen}" alt="${producto.nombre}" class="img-hover">
+      </div>
+      <div class="product-info">
+        <h3 class="product-title">${producto.nombre}</h3>
+        <p class="product-price">$${producto.precio.toLocaleString('es-CL')}</p>
+        <div class="product-actions">
+          <a href="detalle-producto.html?id=${producto.id}" class="btn btn-outline">Ver detalles</a>
+          <button class="btn btn-primary" onclick="agregarAlCarrito(${producto.id})">Añadir</button>
         </div>
-    `).join('');
+      </div>
+    </div>
+  `;
 }
 
-// Cargar todos los productos
-function cargarTodosLosProductos() {
-    const contenedor = document.getElementById('todos-productos');
-    if (!contenedor) return;
+function cargarProductosDestacados() {
+  const contenedor = document.getElementById('featured-products');
+  if (!contenedor) return;
+  const destacados = productos.filter(p => p.destacado);
+  contenedor.innerHTML = destacados.map(tarjetaProductoHTML).join('');
+}
 
-    contenedor.innerHTML = productos.map(producto => `
-        <div class="product-card">
-            <div class="product-image">
-                <img src="${producto.imagen}" alt="${producto.nombre}" class="img-main"
-                     onerror="this.src='https://via.placeholder.com/250x200?text=Imagen+no+disponible'">
-                <img src="${producto.imagenHover || producto.imagen}" alt="${producto.nombre}" class="img-hover">
-            </div>
-            <div class="product-info">
-                <h3 class="product-title">${producto.nombre}</h3>
-                <p class="product-price">$${producto.precio.toLocaleString('es-CL')}</p>
-                <div class="product-actions">
-                    <a href="detalle-producto.html?id=${producto.id}" class="btn btn-outline">Ver detalles</a>
-                    <button class="btn btn-primary" onclick="agregarAlCarrito(${producto.id})">Añadir</button>
-                </div>
-            </div>
-        </div>
-    `).join('');
+function cargarTodosLosProductos() {
+  const contenedor = document.getElementById('todos-productos');
+  if (!contenedor) return;
+  contenedor.innerHTML = productos.map(tarjetaProductoHTML).join('');
 }
 
 /* =========================
-   NUEVO: Filtros / Detalle / Carrito
+   Filtros / Detalle / Carrito
    ========================= */
 
 // Param de la URL
@@ -141,23 +162,7 @@ function configurarFiltros() {
   if (!contenedor || !selCat || !selPrecio || !btn) return;
 
   function pintar(lista) {
-    contenedor.innerHTML = lista.map(producto => `
-      <div class="product-card">
-        <div class="product-image">
-          <img src="${producto.imagen}" alt="${producto.nombre}" class="img-main"
-               onerror="this.src='https://via.placeholder.com/250x200?text=No+image'">
-          <img src="${producto.imagenHover || producto.imagen}" alt="${producto.nombre}" class="img-hover">
-        </div>
-        <div class="product-info">
-          <h3 class="product-title">${producto.nombre}</h3>
-          <p class="product-price">$${producto.precio.toLocaleString('es-CL')}</p>
-          <div class="product-actions">
-            <a href="detalle-producto.html?id=${producto.id}" class="btn btn-outline">Ver detalles</a>
-            <button class="btn btn-primary" onclick="agregarAlCarrito(${producto.id})">Añadir</button>
-          </div>
-        </div>
-      </div>
-    `).join('');
+    contenedor.innerHTML = lista.map(tarjetaProductoHTML).join('');
   }
 
   function dentroDeRango(precio, valorSelect) {

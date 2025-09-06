@@ -6,7 +6,7 @@ const BLOGS = [
     categoria: "Estilo",
     fecha: "2025-08-20",
     lecturaMin: 4,
-    imagen: "https://via.placeholder.com/900x500.png?text=Streetwear+Chileno",
+    imagen: "https://i.postimg.cc/DZ8ZJxnw/471439700-1320291502318476-2747705394923225044-n.jpg",
     resumen: "Cómo se vive la cultura urbana en Chile y por qué influye en nuestra ropa.",
     contenidoHTML: `
       <p>El streetwear chileno mezcla influencias globales con identidad local. En Stuffies nos enfocamos en cortes cómodos, tipografías limpias y materiales durables.</p>
@@ -23,7 +23,7 @@ const BLOGS = [
     categoria: "Tutoriales",
     fecha: "2025-08-05",
     lecturaMin: 3,
-    imagen: "https://via.placeholder.com/900x500.png?text=Guia+Hoodie",
+    imagen: "https://i.postimg.cc/ZR2qr65F/IMG-1170.jpg",
     resumen: "Telas, pesos y fits que marcan la diferencia al comprar un polerón.",
     contenidoHTML: `
       <p>Fíjate en el gramaje (g/m²), el fit (boxy, regular) y detalles como costuras reforzadas o cierres metálicos. Un hoodie bien hecho te acompaña años.</p>
@@ -35,7 +35,7 @@ const BLOGS = [
     categoria: "Noticias",
     fecha: "2025-09-01",
     lecturaMin: 2,
-    imagen: "https://via.placeholder.com/900x500.png?text=Drop+Septiembre",
+    imagen: "https://i.postimg.cc/Xq5YxXZM/fotos-1097.jpg",
     resumen: "Colores neutros, logos minimalistas y una cápsula limitada.",
     contenidoHTML: `
       <p>Este mes lanzamos una cápsula limitada con colores tierra y logos bordados. ¡Stock acotado!</p>
@@ -47,7 +47,7 @@ const BLOGS = [
     categoria: "Estilo",
     fecha: "2025-07-15",
     lecturaMin: 5,
-    imagen: "https://via.placeholder.com/900x500.png?text=Polera+Blanca",
+    imagen: "https://i.postimg.cc/c1tCdkFD/465774227-1555299911858674-8770776235640415682-n.jpg",
     resumen: "Versatilidad total: de casual a smart-casual con una sola prenda.",
     contenidoHTML: `
       <ol>
