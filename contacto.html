@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Stuffies — Contacto</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootswatch@5.3.3/dist/morph/bootstrap.min.css" rel="stylesheet">
+</head>
+<body class="bg-dark text-light">
+  <header class="p-3 bg-black text-white">
+    <div class="container d-flex justify-content-between">
+      <h1>STUFFIES</h1>
+      <nav><a href="Tienda_Stuffiess.html" class="text-white">Home</a></nav>
+    </div>
+  </header>
+
+  <main class="container py-5">
+    <h2>Contáctanos</h2>
+    <form id="formContacto" novalidate>
+      <div class="mb-3">
+        <label for="conNombre" class="form-label">Nombre</label>
+        <input id="conNombre" class="form-control" maxlength="100" required>
+        <div class="invalid-feedback"></div>
+      </div>
+      <div class="mb-3">
+        <label for="conCorreo" class="form-label">Correo (opcional)</label>
+        <input id="conCorreo" type="email" class="form-control" maxlength="100">
+        <div class="invalid-feedback"></div>
+      </div>
+      <div class="mb-3">
+        <label for="conComentario" class="form-label">Comentario</label>
+        <textarea id="conComentario" class="form-control" maxlength="500" required></textarea>
+        <div class="invalid-feedback"></div>
+      </div>
+      <button type="submit" class="btn btn-primary">Enviar</button>
+      <div id="okMsg" class="alert alert-success mt-3 d-none">¡Gracias! Te contactaremos pronto.</div>
+    </form>
+  </main>
+
+  <script src="js/validaciones.js"></script>
+  <script>
+    Validaciones.wireContactoForm('#formContacto');
+    document.getElementById('formContacto').addEventListener('submit', e=>{
+      if (!e.target.checkValidity()) return;
+      e.preventDefault();
+      document.getElementById('okMsg').classList.remove('d-none');
+      e.target.reset();
+    });
+  </script>
+</body>
+</html>
