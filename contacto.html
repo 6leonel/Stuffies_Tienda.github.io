@@ -1,50 +1,187 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8"/>
+  <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Stuffies — Contacto</title>
+
+  <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/styles.css">
   <link href="https://cdn.jsdelivr.net/npm/bootswatch@5.3.3/dist/morph/bootstrap.min.css" rel="stylesheet">
+
+  <style>
+    body{ background:#0b0b0b; }
+    .avatar-img{ width:38px; height:38px; border-radius:50%; object-fit:cover; border:2px solid #000; }
+    .user-dropdown .dropdown-toggle{ background:transparent; border:none; padding:0; }
+    .user-dropdown .dropdown-menu{ min-width:180px; }
+    .cardx{ background:#fff; border-radius:16px; padding:24px; box-shadow:0 8px 24px rgba(0,0,0,.25); }
+  </style>
+
+  <script src="js/validaciones.js" defer></script>
 </head>
-<body class="bg-dark text-light">
-  <header class="p-3 bg-black text-white">
-    <div class="container d-flex justify-content-between">
-      <h1>STUFFIES</h1>
-      <nav><a href="Tienda_Stuffiess.html" class="text-white">Home</a></nav>
+<body>
+  <!-- HEADER igual que en Tienda_Stuffiess.html -->
+  <header>
+    <div class="container header-content">
+      <div class="logo">
+        <a href="Tienda_Stuffiess.html">
+          <img src="https://stuffiesconcept.com/cdn/shop/files/output-onlinegiftools_1.gif?v=1723763811&width=500" alt="Logo Stuffies" class="logo-img">
+        </a>
+        <h1><a class="stu" href="Tienda_Stuffiess.html">STUFFIES</a></h1>
+      </div>
+
+      <nav class="main-nav">
+        <ul>
+          <li><a href="Tienda_Stuffiess.html">Home</a></li>
+          <li><a href="productos.html">Productos</a></li>
+          <li><a href="blogs.html">Blogs</a></li>
+          <li><a href="nosotros.html">Nosotros</a></li>
+          <li><a href="contacto.html" class="active">Contacto</a></li>
+        </ul>
+      </nav>
+
+      <div class="header-actions d-flex align-items-center gap-3">
+        <a href="carrito.html" class="cart-icon">
+          <span class="cart-count">0</span> 🛒
+        </a>
+        <a href="login.html" id="loginBtn" class="btn btn-outline">Iniciar Sesión</a>
+
+        <div id="userDropdown" class="dropdown user-dropdown d-none">
+          <button class="dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" title="Cuenta">
+            <img id="userAvatar" class="avatar-img" src="https://i.postimg.cc/qRdn8fDv/LOGO-ESTRELLA-SIMPLE-CON-ESTRELLITAS.png" alt="Usuario">
+          </button>
+          <ul class="dropdown-menu dropdown-menu-end">
+            <li class="px-3 py-2 small text-muted" id="helloUser">Hola</li>
+            <li><a class="dropdown-item" href="perfil.html">Perfil</a></li>
+            <li><hr class="dropdown-divider"></li>
+            <li><button id="logoutBtn" class="dropdown-item">Cerrar sesión</button></li>
+          </ul>
+        </div>
+      </div>
     </div>
   </header>
 
-  <main class="container py-5">
-    <h2>Contáctanos</h2>
-    <form id="formContacto" novalidate>
-      <div class="mb-3">
-        <label for="conNombre" class="form-label">Nombre</label>
-        <input id="conNombre" class="form-control" maxlength="100" required>
-        <div class="invalid-feedback"></div>
+  <main>
+    <!-- Hero pequeño para título -->
+    <section class="hero py-5">
+      <div class="container">
+        <h2 class="text-white">Contacto</h2>
+        <p class="lead">¿Dudas o comentarios? Completa el formulario y te responderemos.</p>
       </div>
-      <div class="mb-3">
-        <label for="conCorreo" class="form-label">Correo (opcional)</label>
-        <input id="conCorreo" type="email" class="form-control" maxlength="100">
-        <div class="invalid-feedback"></div>
+    </section>
+
+    <!-- Formulario en tarjeta blanca -->
+    <section class="py-4">
+      <div class="container">
+        <div class="cardx">
+          <form id="formContacto" novalidate>
+            <div class="row g-3">
+              <div class="col-md-6 form-group">
+                <label for="conNombre" class="form-label">Nombre</label>
+                <input id="conNombre" class="form-control" maxlength="100" required>
+                <div class="invalid-feedback"></div>
+              </div>
+              <div class="col-md-6 form-group">
+                <label for="conCorreo" class="form-label">Correo (opcional)</label>
+                <input id="conCorreo" type="email" class="form-control" maxlength="100" placeholder="nombre@duoc.cl">
+                <div class="invalid-feedback"></div>
+              </div>
+              <div class="col-12 form-group">
+                <label for="conComentario" class="form-label">Comentario</label>
+                <textarea id="conComentario" class="form-control" maxlength="500" rows="5" required></textarea>
+                <div class="invalid-feedback"></div>
+              </div>
+            </div>
+
+            <div class="mt-3 d-flex gap-2">
+              <button type="submit" class="btn btn-primary">Enviar</button>
+              <button type="reset" class="btn btn-outline-dark">Limpiar</button>
+            </div>
+
+            <div id="okMsg" class="alert alert-success mt-3 d-none">¡Gracias! Te contactaremos pronto.</div>
+          </form>
+        </div>
       </div>
-      <div class="mb-3">
-        <label for="conComentario" class="form-label">Comentario</label>
-        <textarea id="conComentario" class="form-control" maxlength="500" required></textarea>
-        <div class="invalid-feedback"></div>
+    </section>
+
+    <!-- Bloque about coherente -->
+    <section class="about-preview">
+      <div class="container">
+        <div class="about-content">
+          <div class="about-text">
+            <h2>Stuffies - Moda Urbana Chilena</h2>
+            <p>Desde nuestro lanzamiento en junio de 2024, nos dedicamos a crear ropa moderna y de calidad con estilo estadounidense para que todos puedan vestir a la última moda.</p>
+          </div>
+          <div class="about-image">
+            <img src="https://i.postimg.cc/R0phZ77L/ESTRELLA-BLANCA.png" alt="">
+          </div>
+        </div>
       </div>
-      <button type="submit" class="btn btn-primary">Enviar</button>
-      <div id="okMsg" class="alert alert-success mt-3 d-none">¡Gracias! Te contactaremos pronto.</div>
-    </form>
+    </section>
   </main>
 
-  <script src="js/validaciones.js"></script>
+  <!-- FOOTER igual -->
+  <footer>
+    <div class="container">
+      <div class="footer-content">
+        <div class="footer-section">
+          <h3>STUFFIES</h3>
+          <p>Tienda online de ropa urbana y casual en Chile</p>
+        </div>
+        <div class="footer-section">
+          <h4>Enlaces</h4>
+          <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="productos.html">Productos</a></li>
+            <li><a href="blogs.html">Blogs</a></li>
+            <li><a href="nosotros.html">Nosotros</a></li>
+            <li><a href="contacto.html">Contacto</a></li>
+          </ul>
+        </div>
+        <div class="footer-section">
+          <h4>Suscríbete</h4>
+          <form class="subscribe-form" id="subscribe-form">
+            <input type="email" placeholder="Ingresa tu email" required>
+            <button type="submit">Suscribirse</button>
+          </form>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2024 Stuffies. Todos los derechos reservados.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
   <script>
-    Validaciones.wireContactoForm('#formContacto');
-    document.getElementById('formContacto').addEventListener('submit', e=>{
-      if (!e.target.checkValidity()) return;
+    // Header: sesión (igual a tu home)
+    (function renderHeaderSession(){
+      const loginBtn  = document.getElementById("loginBtn");
+      const dropdown  = document.getElementById("userDropdown");
+      const avatar    = document.getElementById("userAvatar");
+      const hello     = document.getElementById("helloUser");
+      const session = JSON.parse(localStorage.getItem("stuffies_session") || "null");
+      if (session) {
+        loginBtn?.classList.add("d-none");
+        if (session.avatar) avatar.src = session.avatar;
+        if (hello) hello.textContent = "Hola, " + (session.name || session.user || "usuario");
+        dropdown.classList.remove("d-none");
+        document.getElementById("logoutBtn").addEventListener("click", () => {
+          localStorage.removeItem("stuffies_session");
+          window.location.href = "login.html";
+        });
+      }
+    })();
+
+    // Validaciones y éxito
+    if (window.Validaciones) {
+      Validaciones.wireContactoForm('#formContacto');
+    }
+    document.getElementById('formContacto').addEventListener('submit', function(e){
+      if (!this.checkValidity()) return; // respeta los required/maxlength del navegador
       e.preventDefault();
       document.getElementById('okMsg').classList.remove('d-none');
-      e.target.reset();
+      this.reset();
     });
   </script>
 </body>
