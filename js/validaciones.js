@@ -1,4 +1,3 @@
-/* ======= validaciones.js ======= */
 window.setError = (el, msg) => {
   const help = el.closest('.form-group, .mb-3, div')?.querySelector('.invalid-feedback')
             || el.parentElement.querySelector('.invalid-feedback');
@@ -52,7 +51,6 @@ function requeridoMax(value, max, nombre='Campo') {
   return { ok:true };
 }
 
-/* ====== Enlazadores ====== */
 function wireLoginForm(formSel='#loginForm') {
   const form = document.querySelector(formSel);
   if (!form) return;
@@ -123,7 +121,7 @@ function wireContactoForm(formSel='#formContacto') {
       const vCor = validarDominioCorreo(correo.value.trim());
       if (!vCor.ok) { setError(correo, vCor.msg); ok=false; }
     }
-    const vCom = requeridoMax(comentario.value.trim(), 500, 'Comentario'); 
+    const vCom = requeridoMax(comentario.value.trim(), 500, 'Comentario');
     if (!vCom.ok) { setError(comentario, vCom.msg); ok=false; }
 
     if (!ok) e.preventDefault();

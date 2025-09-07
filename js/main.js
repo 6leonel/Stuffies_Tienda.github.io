@@ -1,6 +1,3 @@
-/* =========================
-   Catálogo de productos
-   ========================= */
 const productos = [
   { id: 1, nombre: "HOODIE BOXIFIT WHITE DICE V2", precio: 39990, categoria: "polerones",
     imagen: "https://stuffiesconcept.com/cdn/shop/files/WhiteDice1.png?v=1753404231&width=600",
@@ -37,9 +34,6 @@ const productos = [
     descripcion: "Gorra urbana estilo minimalista con logo bordado Stuffies.", tallas:["S","M","L","XL"], colores:["cafe"], destacado:false }
 ];
 
-/* =========================
-   Utils carrito + formato
-   ========================= */
 const CART_KEY = 'carrito';
 const CLP = new Intl.NumberFormat('es-CL');
 const $ = (s) => document.querySelector(s);
@@ -56,28 +50,20 @@ function actualizarContadorCarrito(){
   const { cantidad, total } = getCartTotals();
   const badge = document.querySelector('.cart-count');
   if (badge) badge.textContent = cantidad;
-  const mini = document.getElementById('cart-total-mini'); // opcional
+  const mini = document.getElementById('cart-total-mini');
   if (mini) mini.textContent = '$' + CLP.format(total);
 }
 window.actualizarContadorCarrito = actualizarContadorCarrito;
 
-/* =========================
-   Boot
-   ========================= */
 document.addEventListener('DOMContentLoaded', () => {
   if (document.getElementById('featured-products')) cargarProductosDestacados();
   if (document.getElementById('todos-productos')) { cargarTodosLosProductos(); configurarFiltros(); }
   if (document.getElementById('detalle-producto')) cargarDetalleProducto();
-
   const subscribeForm = document.getElementById('subscribe-form');
   if (subscribeForm) subscribeForm.addEventListener('submit', (e)=>{ e.preventDefault(); alert('Gracias por suscribirte.'); });
-
   actualizarContadorCarrito?.();
 });
 
-/* =========================
-   Listados / Tarjetas
-   ========================= */
 function tarjetaProductoHTML(p){
   return `
     <div class="product-card">
@@ -105,9 +91,6 @@ function cargarTodosLosProductos(){
   c.innerHTML = productos.map(tarjetaProductoHTML).join('');
 }
 
-/* =========================
-   Filtros / Detalle
-   ========================= */
 function getQueryParam(name){ return new URL(window.location.href).searchParams.get(name); }
 
 function configurarFiltros(){
@@ -185,9 +168,6 @@ function cargarDetalleProducto(){
   });
 }
 
-/* =========================
-   Carrito (añadir)
-   ========================= */
 function agregarAlCarrito(id, talla = null, color = null, cantidad = 1){
   const p = productos.find(x => Number(x.id) === Number(id));
   if(!p) return;
@@ -201,9 +181,7 @@ function agregarAlCarrito(id, talla = null, color = null, cantidad = 1){
   const idx = cart.findIndex(x => x.id === item.id && x.talla === item.talla && x.color === item.color);
   if(idx >= 0) cart[idx].cantidad += item.cantidad; else cart.push(item);
   setCart(cart);
-
   actualizarContadorCarrito();
-
   try {
     if (window.bootstrap && bootstrap.Toast) {
       const { total } = getCartTotals();

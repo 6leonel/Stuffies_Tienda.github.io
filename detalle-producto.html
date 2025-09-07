@@ -9,22 +9,48 @@
   <link rel="stylesheet" href="css/styles.css">
   <link rel="stylesheet" href="css/login.css">
   <link href="https://cdn.jsdelivr.net/npm/bootswatch@5.3.3/dist/morph/bootstrap.min.css" rel="stylesheet">
-  <style> body{background:#0b0b0b;} .avatar-img{width:38px;height:38px;border-radius:50%;object-fit:cover;border:2px solid #000;} .product-detail-card{display:grid;grid-template-columns:1fr 1fr;gap:20px;background:#fff;border-radius:16px;padding:20px;box-shadow:0 6px 20px rgba(0,0,0,.3);} .detail-image img{width:100%;border-radius:12px;} </style>
+
+  <style>
+    body{ background:#0b0b0b; }
+    .avatar-img{ width:38px; height:38px; border-radius:50%; object-fit:cover; border:2px solid #000; }
+    .product-detail-card{ display:grid; grid-template-columns:1fr 1fr; gap:20px; background:#fff; border-radius:16px; padding:20px; box-shadow:0 6px 20px rgba(0,0,0,.3); }
+    .detail-image img{ width:100%; border-radius:12px; }
+  </style>
 </head>
 <body>
   <header>
     <div class="container header-content">
       <div class="logo">
-        <a href="Tienda_Stuffiess.html"><img src="https://stuffiesconcept.com/cdn/shop/files/output-onlinegiftools_1.gif?v=1723763811&width=500" class="logo-img" alt=""></a>
+        <a href="Tienda_Stuffiess.html">
+          <img src="https://stuffiesconcept.com/cdn/shop/files/output-onlinegiftools_1.gif?v=1723763811&width=500" class="logo-img" alt="">
+        </a>
         <h1><a class="stu" href="Tienda_Stuffiess.html">STUFFIES</a></h1>
       </div>
-      <nav class="main-nav"><ul><li><a href="Tienda_Stuffiess.html">Home</a></li><li><a href="productos.html">Productos</a></li><li><a href="blogs.html">Blogs</a></li></ul></nav>
+      <nav class="main-nav">
+        <ul>
+          <li><a href="Tienda_Stuffiess.html">Home</a></li>
+          <li><a href="productos.html">Productos</a></li>
+          <li><a href="blogs.html">Blogs</a></li>
+          <li><a href="nosotros.html">Nosotros</a></li>
+          <li><a href="contacto.html">Contacto</a></li>
+        </ul>
+      </nav>
       <div class="header-actions d-flex align-items-center gap-3">
-        <a href="carrito.html" class="cart-icon"><span class="cart-count">0</span> 🛒 <small id="cart-total-mini" class="ms-2"></small></a>
+        <a href="carrito.html" class="cart-icon">
+          <span class="cart-count">0</span> 🛒
+          <small id="cart-total-mini" class="ms-2"></small>
+        </a>
         <a href="login.html" id="loginBtn" class="btn btn-outline">Iniciar Sesión</a>
         <div id="userDropdown" class="dropdown user-dropdown d-none">
-          <button class="dropdown-toggle" data-bs-toggle="dropdown"><img id="userAvatar" class="avatar-img" src="https://i.postimg.cc/R0phZ77L/ESTRELLA-BLANCA.png" alt=""></button>
-          <ul class="dropdown-menu dropdown-menu-end"><li class="px-3 py-2 small text-muted" id="helloUser">Hola</li><li><a class="dropdown-item" href="perfil.html">Perfil</a></li><li><hr class="dropdown-divider"></li><li><button id="logoutBtn" class="dropdown-item">Cerrar sesión</button></li></ul>
+          <button class="dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" title="Cuenta">
+            <img id="userAvatar" class="avatar-img" src="https://i.postimg.cc/R0phZ77L/ESTRELLA-BLANCA.png" alt="">
+          </button>
+          <ul class="dropdown-menu dropdown-menu-end">
+            <li class="px-3 py-2 small text-muted" id="helloUser">Hola</li>
+            <li><a class="dropdown-item" href="perfil.html">Perfil</a></li>
+            <li><hr class="dropdown-divider"></li>
+            <li><button id="logoutBtn" class="dropdown-item">Cerrar sesión</button></li>
+          </ul>
         </div>
       </div>
     </div>
@@ -34,45 +60,19 @@
     <div id="detalle-producto"></div>
   </main>
 
-  <footer>
-    <div class="container"><div class="footer-bottom"><p class="text-center text-white-50">&copy; 2024 Stuffies.</p></div></div>
-  </footer>
-
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-  <script src="js/main.js"></script>
-  <script>
-    // Sesión en header
-    (function(){
-      const loginBtn = document.getElementById("loginBtn");
-      const dd = document.getElementById("userDropdown");
-      const av = document.getElementById("userAvatar");
-      const hello = document.getElementById("helloUser");
-      const s = JSON.parse(localStorage.getItem("stuffies_session") || "null");
-      if (s){
-        loginBtn?.classList.add("d-none");
-        if (s.avatar) av.src = s.avatar;
-        if (hello) hello.textContent = "Hola, " + (s.name || s.user);
-        dd.classList.remove("d-none");
-        document.getElementById("logoutBtn").onclick = () => { localStorage.removeItem("stuffies_session"); location.href="login.html"; };
-      }
-    })();
-  </script>
-</body>
-</html>
-    <section class="about-preview">
-      <div class="container">
-        <div class="about-content">
-          <div class="about-text">
-            <h2>Stuffies - Moda Urbana Chilena</h2>
-            <p>Desde nuestro lanzamiento en junio de 2024, nos dedicamos a crear ropa moderna y de calidad con estilo estadounidense para que todos puedan vestir a la última moda.</p>
-          </div>
-          <div class="about-image">
-            <img src="https://i.postimg.cc/R0phZ77L/ESTRELLA-BLANCA.png" alt="">
-          </div>
+  <section class="about-preview">
+    <div class="container">
+      <div class="about-content">
+        <div class="about-text">
+          <h2>Stuffies - Moda Urbana Chilena</h2>
+          <p>Desde nuestro lanzamiento en junio de 2024, nos dedicamos a crear ropa moderna y de calidad con estilo estadounidense para que todos puedan vestir a la última moda.</p>
+        </div>
+        <div class="about-image">
+          <img src="https://i.postimg.cc/R0phZ77L/ESTRELLA-BLANCA.png" alt="">
         </div>
       </div>
-    </section>
-  </main>
+    </div>
+  </section>
 
   <footer>
     <div class="container">
@@ -106,23 +106,19 @@
   </footer>
 
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-
-  <!-- Este script muestra/oculta el icono de login según la sesión -->
+  <script src="js/main.js"></script>
   <script>
     (function renderHeaderSession(){
       const loginBtn  = document.getElementById("loginBtn");
       const dropdown  = document.getElementById("userDropdown");
       const avatar    = document.getElementById("userAvatar");
       const hello     = document.getElementById("helloUser");
-
       const session = JSON.parse(localStorage.getItem("stuffies_session") || "null");
       if (session) {
         if (loginBtn) loginBtn.classList.add("d-none");
         if (session.avatar) avatar.src = session.avatar;
         if (hello) hello.textContent = "Hola, " + (session.name || session.user || "usuario");
         dropdown.classList.remove("d-none");
-
-        // Cerrar sesión
         document.getElementById("logoutBtn").addEventListener("click", () => {
           localStorage.removeItem("stuffies_session");
           window.location.href = "login.html";
@@ -130,7 +126,6 @@
       }
     })();
 
-    // Mantener tu comportamiento de “Ver detalles / Añadir”
     document.addEventListener('click', (e) => {
       const link = e.target.closest('a[href^="detalle-producto.html?id="]');
       if (link) {

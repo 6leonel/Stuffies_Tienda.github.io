@@ -17,7 +17,6 @@
   </style>
 </head>
 <body>
-  <!-- ======= HEADER ======= -->
   <header>
     <div class="container header-content">
       <div class="logo">
@@ -42,10 +41,8 @@
           <span class="cart-count" id="cartCount">0</span> 🛒
         </a>
 
-        <!-- Botón normal -->
         <a href="login.html" id="loginBtn" class="btn btn-outline">Iniciar Sesión</a>
 
-        <!-- Avatar / menú -->
         <div id="userDropdown" class="dropdown user-dropdown d-none">
           <button class="dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" title="Cuenta">
             <img id="userAvatar" class="avatar-img" src="https://i.postimg.cc/qRdn8fDv/LOGO-ESTRELLA-SIMPLE-CON-ESTRELLITAS.png" alt="Usuario">
@@ -61,7 +58,6 @@
     </div>
   </header>
 
-  <!-- ======= MAIN ======= -->
   <main class="py-4">
     <section class="container">
       <h2 class="mb-3 text-light">Todos los productos</h2>
@@ -111,6 +107,7 @@
       </div>
     </section>
   </main>
+
   <footer>
     <div class="container">
       <div class="footer-content">
@@ -147,26 +144,22 @@
     </div>
   </footer>
 
-  <!-- ======= SCRIPTS ======= -->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
   <script src="js/main.js"></script>
   <script src="js/carrito.js"></script>
 
   <script>
-    // Mostrar avatar y saludo si hay sesión
-    (function renderHeaderSession(){
+    (function(){
       const loginBtn  = document.getElementById("loginBtn");
       const dropdown  = document.getElementById("userDropdown");
       const avatar    = document.getElementById("userAvatar");
       const hello     = document.getElementById("helloUser");
-
       const session = JSON.parse(localStorage.getItem("stuffies_session") || "null");
       if (session) {
         if (loginBtn) loginBtn.classList.add("d-none");
         if (session.avatar) avatar.src = session.avatar;
         if (hello) hello.textContent = "Hola, " + (session.name || session.user || "usuario");
         dropdown.classList.remove("d-none");
-
         document.getElementById("logoutBtn").addEventListener("click", () => {
           localStorage.removeItem("stuffies_session");
           window.location.href = "login.html";
@@ -174,15 +167,12 @@
       }
     })();
 
-    // Agregar link Admin si es admin
-    (function addAdminLinkIfNeeded(){
+    (function(){
       const s = JSON.parse(localStorage.getItem('stuffies_session') || 'null');
       if (!s || s.role !== 'admin') return;
-
       const actions = document.querySelector('.header-actions');
       if (!actions) return;
       if (actions.querySelector('a[href="admin.html"]')) return;
-
       const a = document.createElement('a');
       a.href = 'admin.html';
       a.className = 'btn btn-warning ms-2';
@@ -190,7 +180,6 @@
       actions.appendChild(a);
     })();
 
-    // Botones "Ver detalles" y "Añadir"
     document.addEventListener('click', (e) => {
       const link = e.target.closest('a[href^="detalle-producto.html?id="]');
       if (link) {

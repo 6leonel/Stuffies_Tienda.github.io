@@ -20,7 +20,6 @@
   <script src="js/validaciones.js" defer></script>
 </head>
 <body>
-  <!-- HEADER igual que en Tienda_Stuffiess.html -->
   <header>
     <div class="container header-content">
       <div class="logo">
@@ -62,7 +61,6 @@
   </header>
 
   <main>
-    <!-- Hero pequeño para título -->
     <section class="hero py-5">
       <div class="container">
         <h2 class="text-white">Contacto</h2>
@@ -70,7 +68,6 @@
       </div>
     </section>
 
-    <!-- Formulario en tarjeta blanca -->
     <section class="py-4">
       <div class="container">
         <div class="cardx">
@@ -104,7 +101,6 @@
       </div>
     </section>
 
-    <!-- Bloque about coherente -->
     <section class="about-preview">
       <div class="container">
         <div class="about-content">
@@ -120,7 +116,6 @@
     </section>
   </main>
 
-  <!-- FOOTER igual -->
   <footer>
     <div class="container">
       <div class="footer-content">
@@ -154,7 +149,6 @@
 
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
   <script>
-    // Header: sesión (igual a tu home)
     (function renderHeaderSession(){
       const loginBtn  = document.getElementById("loginBtn");
       const dropdown  = document.getElementById("userDropdown");
@@ -173,12 +167,11 @@
       }
     })();
 
-    // Validaciones y éxito
     if (window.Validaciones) {
       Validaciones.wireContactoForm('#formContacto');
     }
     document.getElementById('formContacto').addEventListener('submit', function(e){
-      if (!this.checkValidity()) return; // respeta los required/maxlength del navegador
+      if (!this.checkValidity()) return;
       e.preventDefault();
       document.getElementById('okMsg').classList.remove('d-none');
       this.reset();

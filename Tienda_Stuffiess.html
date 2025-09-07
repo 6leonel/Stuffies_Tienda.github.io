@@ -10,17 +10,14 @@
   <link href="https://cdn.jsdelivr.net/npm/bootswatch@5.3.3/dist/morph/bootstrap.min.css" rel="stylesheet">
 
   <style>
-    /* pequeño extra para el avatar */
     .avatar-img{ width:38px; height:38px; border-radius:50%; object-fit:cover; border:2px solid #000; }
     .user-dropdown .dropdown-toggle{ background:transparent; border:none; padding:0; }
     .user-dropdown .dropdown-menu{ min-width:180px; }
-    /* tu ajuste anterior */
     .product-info { position: relative; z-index: 2; }
     .product-image img { pointer-events: none; }
     .product-actions .btn, a.btn { cursor: pointer; }
   </style> 
 
-  <!-- Tus scripts -->
   <script src="js/main.js" defer></script>
   <script src="js/productos.js" defer></script>
   <script src="js/carrito.js" defer></script>
@@ -52,10 +49,8 @@
           <span class="cart-count">0</span> 🛒
         </a>
 
-        <!-- Botón por defecto -->
         <a href="login.html" id="loginBtn" class="btn btn-outline">Iniciar Sesión</a>
 
-        <!-- Icono de login (avatar) cuando hay sesión -->
         <div id="userDropdown" class="dropdown user-dropdown d-none">
           <button class="dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" title="Cuenta">
             <img id="userAvatar" class="avatar-img" src="https://i.postimg.cc/qRdn8fDv/LOGO-ESTRELLA-SIMPLE-CON-ESTRELLITAS.png" alt="Usuario">
@@ -185,7 +180,6 @@
 
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 
-  <!-- Este script muestra/oculta el icono de login según la sesión -->
   <script>
     (function renderHeaderSession(){
       const loginBtn  = document.getElementById("loginBtn");
@@ -200,7 +194,6 @@
         if (hello) hello.textContent = "Hola, " + (session.name || session.user || "usuario");
         dropdown.classList.remove("d-none");
 
-        // Cerrar sesión
         document.getElementById("logoutBtn").addEventListener("click", () => {
           localStorage.removeItem("stuffies_session");
           window.location.href = "login.html";
@@ -208,7 +201,6 @@
       }
     })();
 
-    // Mantener tu comportamiento de “Ver detalles / Añadir”
     document.addEventListener('click', (e) => {
       const link = e.target.closest('a[href^="detalle-producto.html?id="]');
       if (link) {
