@@ -114,7 +114,6 @@
     </div>
   </main>
 
-  <!-- ======= ABOUT ======= -->
   <section class="about-preview">
     <div class="container">
       <div class="about-content">
@@ -129,7 +128,6 @@
     </div>
   </section>
 
-  <!-- ======= FOOTER ======= -->
   <footer>
     <div class="container">
       <div class="footer-content">
@@ -164,10 +162,9 @@
     </div>
   </footer>
 
-  <!-- ======= SCRIPTS ======= -->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
   <script>
-    // Helpers
+
     const $ = s => document.querySelector(s);
     const showMsg = (type, text) => {
       const box = $("#msg");
@@ -176,7 +173,6 @@
       box.classList.remove("d-none");
     };
 
-    // ====== Usuario DEMO por defecto ======
     (function initDemoUser(){
       const USERS_KEY = "stuffies_users";
       const users = JSON.parse(localStorage.getItem(USERS_KEY) || "[]");
@@ -192,7 +188,6 @@
       }
     })();
 
-    // ====== Gestión de sesión en el HEADER ======
     function renderHeaderSession() {
       const loginBtn  = document.getElementById("loginBtn");
       const dropdown  = document.getElementById("userDropdown");
@@ -214,7 +209,6 @@
     }
     renderHeaderSession();
 
-    // ====== Validación Bootstrap del form ======
     (function () {
       const form = document.getElementById("registerForm");
       form.addEventListener("submit", function (e) {
@@ -223,7 +217,6 @@
       }, false);
     })();
 
-    // ====== Registro (guarda en localStorage) ======
     const USERS_KEY = "stuffies_users";
     const loadUsers = () => JSON.parse(localStorage.getItem(USERS_KEY) || "[]");
     const saveUsers = (arr) => localStorage.setItem(USERS_KEY, JSON.stringify(arr));

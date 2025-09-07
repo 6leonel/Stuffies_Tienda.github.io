@@ -151,7 +151,7 @@
   <script src="js/carrito.js"></script>
 
   <script>
-    // Sesión en header
+    // Mostrar avatar y saludo si hay sesión
     (function renderHeaderSession(){
       const loginBtn  = document.getElementById("loginBtn");
       const dropdown  = document.getElementById("userDropdown");
@@ -172,7 +172,23 @@
       }
     })();
 
-    // Botones "Añadir" y "Ver detalles"
+    // Agregar link Admin si es admin
+    (function addAdminLinkIfNeeded(){
+      const s = JSON.parse(localStorage.getItem('stuffies_session') || 'null');
+      if (!s || s.role !== 'admin') return;
+
+      const actions = document.querySelector('.header-actions');
+      if (!actions) return;
+      if (actions.querySelector('a[href="admin.html"]')) return;
+
+      const a = document.createElement('a');
+      a.href = 'admin.html';
+      a.className = 'btn btn-warning ms-2';
+      a.textContent = 'Admin';
+      actions.appendChild(a);
+    })();
+
+    // Botones "Ver detalles" y "Añadir"
     document.addEventListener('click', (e) => {
       const link = e.target.closest('a[href^="detalle-producto.html?id="]');
       if (link) {

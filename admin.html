@@ -1,576 +1,333 @@
-    <!DOCTYPE html>
-    <html lang="es">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:wght@400;700&display=swap" rel="stylesheet">
-        <link rel="stylesheet" href="css/styles.css">
-        <link href="https://cdn.jsdelivr.net/npm/bootswatch@5.3.3/dist/morph/bootstrap.min.css" rel="stylesheet">
-        <title>Panel de Administración - STUFFIES</title>
-        <style>
-            /* Estilos específicos para el panel de administración */
-            .admin-container {
-                max-width: 1200px;
-                margin: 0 auto;
-                padding: 20px;
-            }
-            
-            .admin-header {
-                text-align: center;
-                margin-bottom: 2rem;
-                padding: 1.5rem;
-                background-color: #fff;
-                border-radius: 8px;
-                box-shadow: var(--shadow);
-            }
-            
-            .admin-nav {
-                display: flex;
-                justify-content: center;
-                margin-bottom: 2rem;
-                flex-wrap: wrap;
-                gap: 10px;
-            }
-            
-            .admin-nav-btn {
-                padding: 10px 20px;
-                background-color: #f8f9fa;
-                border: 1px solid #dee2e6;
-                border-radius: 5px;
-                cursor: pointer;
-                transition: var(--transition);
-            }
-            
-            .admin-nav-btn.active, .admin-nav-btn:hover {
-                background-color: var(--secondary-color);
-                color: white;
-            }
-            
-            .admin-section {
-                display: none;
-                background-color: #fff;
-                padding: 20px;
-                border-radius: 8px;
-                box-shadow: var(--shadow);
-                margin-bottom: 2rem;
-            }
-            
-            .admin-section.active {
-                display: block;
-            }
-            
-            .metric-card {
-                background-color: #f8f9fa;
-                padding: 20px;
-                border-radius: 8px;
-                text-align: center;
-                margin-bottom: 20px;
-                box-shadow: var(--shadow);
-            }
-            
-            .metric-value {
-                font-size: 2.5rem;
-                font-weight: bold;
-                color: var(--secondary-color);
-                margin: 10px 0;
-            }
-            
-            .metric-label {
-                color: #6c757d;
-                font-size: 0.9rem;
-            }
-            
-            .table-responsive {
-                overflow-x: auto;
-            }
-            
-            .admin-table {
-                width: 100%;
-                border-collapse: collapse;
-            }
-            
-            .admin-table th, .admin-table td {
-                padding: 12px;
-                text-align: left;
-                border-bottom: 1px solid #dee2e6;
-            }
-            
-            .admin-table th {
-                background-color: #f8f9fa;
-                font-weight: 600;
-            }
-            
-            .status-badge {
-                padding: 4px 8px;
-                border-radius: 4px;
-                font-size: 0.8rem;
-                font-weight: 500;
-            }
-            
-            .status-pendiente {
-                background-color: #fff3cd;
-                color: #856404;
-            }
-            
-            .status-enviado {
-                background-color: #d1ecf1;
-                color: #0c5460;
-            }
-            
-            .status-completado {
-                background-color: #d4edda;
-                color: #155724;
-            }
-            
-            .stock-bajo {
-                color: #dc3545;
-                font-weight: bold;
-            }
-            
-            .chart-container {
-                height: 300px;
-                margin-top: 20px;
-                background-color: #f8f9fa;
-                border-radius: 8px;
-                padding: 15px;
-                display: flex;
-                align-items: center;
-                justify-content: center;
-            }
-            
-            .placeholder-chart {
-                text-align: center;
-                color: #6c757d;
-            }
-            
-            .btn-action {
-                padding: 4px 8px;
-                margin-right: 5px;
-                font-size: 0.8rem;
-            }
-        </style>
-    </head>
-    <body>
-        <header>
-            <div class="container header-content">
-                <div class="logo">
-                    <a href="Tienda_Stuffiess.html">
-                        <img src="https://stuffiesconcept.com/cdn/shop/files/output-onlinegiftools_1.gif?v=1723763811&width=500"
-                        alt="Logo Stuffies" class="logo-img">
-                    </a>
-                    <h1><a class="stu" href="Tienda_Stuffiess.html">STUFFIES</a></h1>
-                </div>
-                <nav class="main-nav">
-                    <ul>
-                        <li><a href="Tienda_Stuffiess.html">Inicio</a></li>
-                        <li><a href="admin.html" class="active">Administración</a></li>
-                    </ul>
-                </nav>
-                <div class="header-actions">
-                    <a href="login.html" class="btn btn-outline">Cerrar Sesión</a>
-                </div>
-            </div>
-        </header>
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Panel Admin — Stuffies</title>
 
-        <main class="admin-main">
-            <div class="admin-container">
-                <div class="admin-header">
-                    <h2>Panel de Administración</h2>
-                    <p>Gestiona tu tienda STUFFIES</p>
-                </div>
-                
-                <div class="admin-nav">
-                    <button class="admin-nav-btn active" data-section="dashboard">Dashboard</button>
-                    <button class="admin-nav-btn" data-section="pedidos">Pedidos</button>
-                    <button class="admin-nav-btn" data-section="productos">Productos</button>
-                    <button class="admin-nav-btn" data-section="ventas">Ventas</button>
-                </div>
-                
-                <!-- Sección Dashboard -->
-                <section id="dashboard" class="admin-section active">
-                    <h3>Resumen General</h3>
-                    <div class="row">
-                        <div class="col-md-4">
-                            <div class="metric-card">
-                                <div class="metric-value">$1,250,800</div>
-                                <div class="metric-label">Ventas del Mes</div>
-                            </div>
-                        </div>
-                        <div class="col-md-4">
-                            <div class="metric-card">
-                                <div class="metric-value">18</div>
-                                <div class="metric-label">Pedidos Pendientes</div>
-                            </div>
-                        </div>
-                        <div class="col-md-4">
-                            <div class="metric-card">
-                                <div class="metric-value">7</div>
-                                <div class="metric-label">Productos con Stock Bajo</div>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <div class="row mt-4">
-                        <div class="col-md-6">
-                            <h4>Pedidos Recientes</h4>
-                            <div class="table-responsive">
-                                <table class="admin-table">
-                                    <thead>
-                                        <tr>
-                                            <th>ID</th>
-                                            <th>Cliente</th>
-                                            <th>Estado</th>
-                                            <th>Total</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <tr>
-                                            <td>#1258</td>
-                                            <td>María González</td>
-                                            <td><span class="status-badge status-pendiente">Pendiente</span></td>
-                                            <td>$59,900</td>
-                                        </tr>
-                                        <tr>
-                                            <td>#1257</td>
-                                            <td>Carlos López</td>
-                                            <td><span class="status-badge status-enviado">Enviado</span></td>
-                                            <td>$42,500</td>
-                                        </tr>
-                                        <tr>
-                                            <td>#1256</td>
-                                            <td>Ana Silva</td>
-                                            <td><span class="status-badge status-completado">Completado</span></td>
-                                            <td>$78,300</td>
-                                        </tr>
-                                    </tbody>
-                                </table>
-                            </div>
-                        </div>
-                        
-                        <div class="col-md-6">
-                            <h4>Productos Populares</h4>
-                            <div class="table-responsive">
-                                <table class="admin-table">
-                                    <thead>
-                                        <tr>
-                                            <th>Producto</th>
-                                            <th>Ventas</th>
-                                            <th>Stock</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <tr>
-                                            <td>Star Player 'Blue Team't-shirt</td>
-                                            <td>45 unidades</td>
-                                            <td>12</td>
-                                        </tr>
-                                        <tr>
-                                            <td>HOODIE BOXIFIT WHITE DICE V2</td>
-                                            <td>38 unidades</td>
-                                            <td class="stock-bajo">3</td>
-                                        </tr>
-                                        <tr>
-                                            <td>Stella Chroma Zip Hoodie</td>
-                                            <td>32 unidades</td>
-                                            <td>15</td>
-                                        </tr>
-                                    </tbody>
-                                </table>
-                            </div>
-                        </div>
-                    </div>
-                </section>
-                
-                <!-- Sección Pedidos -->
-                <section id="pedidos" class="admin-section">
-                    <h3>Gestión de Pedidos</h3>
-                    <div class="table-responsive">
-                        <table class="admin-table">
-                            <thead>
-                                <tr>
-                                    <th>ID</th>
-                                    <th>Fecha</th>
-                                    <th>Cliente</th>
-                                    <th>Productos</th>
-                                    <th>Total</th>
-                                    <th>Estado</th>
-                                    <th>Acciones</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td>#1258</td>
-                                    <td>05/09/2024</td>
-                                    <td>María González</td>
-                                    <td>Star Player 'Blue Team't-shirt (x1)</td>
-                                    <td>$59,900</td>
-                                    <td><span class="status-badge status-pendiente">Pendiente</span></td>
-                                    <td>
-                                        <button class="btn btn-primary btn-action btn-enviar">Marcar Enviado</button>
-                                        <button class="btn btn-success btn-action btn-completar">Completar</button>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>#1257</td>
-                                    <td>04/09/2024</td>
-                                    <td>Carlos López</td>
-                                    <td>HOODIE BOXIFIT WHITE DICE V2 (x1), Stella Chroma Zip Hoodie (x1)</td>
-                                    <td>$42,500</td>
-                                    <td><span class="status-badge status-enviado">Enviado</span></td>
-                                    <td>
-                                        <button class="btn btn-primary btn-action btn-enviar">Marcar Enviado</button>
-                                        <button class="btn btn-success btn-action btn-completar">Completar</button>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>#1256</td>
-                                    <td>03/09/2024</td>
-                                    <td>Ana Silva</td>
-                                    <td>Star Player 'Blue Team't-shirt (x2)</td>
-                                    <td>$78,300</td>
-                                    <td><span class="status-badge status-completado">Completado</span></td>
-                                    <td>
-                                        <button class="btn btn-primary btn-action">Ver</button>
-                                    </td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
-                </section>
-                
-                <!-- Sección Productos -->
-                <section id="productos" class="admin-section">
-                    <h3>Gestión de Productos</h3>
-                    <div class="table-responsive">
-                        <table class="admin-table">
-                            <thead>
-                                <tr>
-                                    <th>ID</th>
-                                    <th>Producto</th>
-                                    <th>Categoría</th>
-                                    <th>Precio</th>
-                                    <th>Stock</th>
-                                    <th>Estado</th>
-                                    <th>Acciones</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td>P001</td>
-                                    <td>Star Player 'Blue Team' T-Shirt</td>
-                                    <td>Poleras</td>
-                                    <td>$29,900</td>
-                                    <td>12</td>
-                                    <td><span class="status-badge status-completado">Activo</span></td>
-                                    <td>
-                                        <button class="btn btn-primary btn-action btn-editar">Editar</button>
-                                        <button class="btn btn-warning btn-action btn-desactivar">Desactivar</button>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>P002</td>
-                                    <td>HOODIE BOXIFIT WHITE DICE V2</td>
-                                    <td>Polerones</td>
-                                    <td>$39,900</td>
-                                    <td class="stock-bajo">3</td>
-                                    <td><span class="status-badge status-completado">Activo</span></td>
-                                    <td>
-                                        <button class="btn btn-primary btn-action btn-editar">Editar</button>
-                                        <button class="btn btn-warning btn-action btn-desactivar">Desactivar</button>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>P003</td>
-                                    <td>Stella Chroma Zip Hoodie</td>
-                                    <td>Polerones</td>
-                                    <td>$49,900</td>
-                                    <td>15</td>
-                                    <td><span class="status-badge status-completado">Activo</span></td>
-                                    <td>
-                                        <button class="btn btn-primary btn-action btn-editar">Editar</button>
-                                        <button class="btn btn-warning btn-action btn-desactivar">Desactivar</button>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>P004</td>
-                                    <td>Stella Boxy-Slim Black Tee</td>
-                                    <td>Poleras</td>
-                                    <td>$14,900</td>
-                                    <td class="stock-bajo">2</td>
-                                    <td><span class="status-badge status-completado">Activo</span></td>
-                                    <td>
-                                        <button class="btn btn-primary btn-action btn-editar">Editar</button>
-                                        <button class="btn btn-warning btn-action btn-desactivar">Desactivar</button>
-                                    </td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
-                </section>
-                
-                <!-- Sección Ventas -->
-                <section id="ventas" class="admin-section">
-                    <h3>Reporte de Ventas</h3>
-                    <div class="row">
-                        <div class="col-md-6">
-                            <div class="metric-card">
-                                <div class="metric-value">$1,250,800</div>
-                                <div class="metric-label">Ventas del Mes Actual</div>
-                            </div>
-                        </div>
-                        <div class="col-md-6">
-                            <div class="metric-card">
-                                <div class="metric-value">$985,400</div>
-                                <div class="metric-label">Ventas del Mes Anterior</div>
-                            </div>
-                        </div>
-                    </div>
+  <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/styles.css">
+  <link href="https://cdn.jsdelivr.net/npm/bootswatch@5.3.3/dist/morph/bootstrap.min.css" rel="stylesheet">
 
-                        </div>
-                    </div>
-                    
-                    <div class="row mt-4">
-                        <div class="col-md-6">
-                            <h4>Productos Más Vendidos</h4>
-                            <div class="table-responsive">
-                                <table class="admin-table">
-                                    <thead>
-                                        <tr>
-                                            <th>Producto</th>
-                                            <th>Unidades Vendidas</th>
-                                            <th>Ingresos</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <tr>
-                                            <td>Star Player 'Blue Team't-shirt</td>
-                                            <td>45</td>
-                                            <td>$1,345,500</td>
-                                        </tr>
-                                        <tr>
-                                            <td>HOODIE BOXIFIT WHITE DICE V2</td>
-                                            <td>38</td>
-                                            <td>$1,516,200</td>
-                                        </tr>
-                                        <tr>
-                                            <td>Stella Chroma Zip Hoodie</td>
-                                            <td>32</td>
-                                            <td>$1,596,800</td>
-                                        </tr>
-                                    </tbody>
-                                </table>
-                            </div>
-                        </div>
-                        
-                        <div class="col-md-6">
-                            <h4>Resumen por Categoría</h4>
-                            <div class="table-responsive">
-                                <table class="admin-table">
-                                    <thead>
-                                        <tr>
-                                            <th>Categoría</th>
-                                            <th>Ventas</th>
-                                            <th>Ingresos</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <tr>
-                                            <td>Poleras</td>
-                                            <td>120 unidades</td>
-                                            <td>$3,588,000</td>
-                                        </tr>
-                                        <tr>
-                                            <td>Jeans</td>
-                                            <td>85 unidades</td>
-                                            <td>$3,391,500</td>
-                                        </tr>
-                                        <tr>
-                                            <td>Polerones</td>
-                                            <td>65 unidades</td>
-                                            <td>$3,243,500</td>
-                                        </tr>
-                                        <tr>
-                                            <td>Accesorios</td>
-                                            <td>42 unidades</td>
-                                            <td>$625,800</td>
-                                        </tr>
-                                    </tbody>
-                                </table>
-                            </div>
-                        </div>
-                    </div>
-                </section>
-            </div>
-        </main>
+  <style>
+    body{ background:#0b0b0b; }
+    .admin-shell{ max-width:1100px; margin:24px auto; }
+    .cardx{ background:#fff; border-radius:16px; padding:18px; box-shadow:0 6px 20px rgba(0,0,0,.25); }
+    .grid{ display:grid; grid-template-columns: 1fr 1fr; gap:16px; }
+    .kpis{ display:grid; grid-template-columns: repeat(4,1fr); gap:12px; margin-bottom:16px; }
+    .kpi{ background:#fff; border-radius:12px; padding:16px; text-align:center; }
+    .kpi h3{ margin:0; font-size:20px; }
+    .kpi span{ display:block; color:#6c757d; font-size:12px; }
+    .avatar-img{ width:38px; height:38px; border-radius:50%; object-fit:cover; border:2px solid #000; }
+    @media (max-width: 900px){
+      .grid{ grid-template-columns: 1fr; }
+      .kpis{ grid-template-columns: repeat(2,1fr); }
+    }
+  </style>
+</head>
+<body>
+  <!-- ======= HEADER (tu estilo) ======= -->
+  <header>
+    <div class="container header-content">
+      <div class="logo">
+        <a href="Tienda_Stuffiess.html">
+          <img src="https://stuffiesconcept.com/cdn/shop/files/output-onlinegiftools_1.gif?v=1723763811&width=500" alt="Logo Stuffies" class="logo-img">
+        </a>
+        <h1><a class="stu" href="Tienda_Stuffiess.html">STUFFIES</a></h1>
+      </div>
+      <nav class="main-nav">
+        <ul>
+          <li><a href="Tienda_Stuffiess.html">Home</a></li>
+          <li><a href="productos.html">Productos</a></li>
+          <li><a href="blogs.html">Blogs</a></li>
+        </ul>
+      </nav>
+      <div class="header-actions d-flex align-items-center gap-3">
+        <a href="carrito.html" class="cart-icon">
+          <span class="cart-count">0</span> 🛒
+        </a>
+        <a href="login.html" id="loginBtn" class="btn btn-outline">Iniciar Sesión</a>
 
-        <footer>
-            <div class="container">
-                <div class="footer-content">
-                    <div class="footer-section">
-                        <h3>STUFFIES</h3>
-                        <p>Tienda online de ropa urbana y casual en Chile</p>
-                    </div>
-                    <div class="footer-section">
-                        <h4>Enlaces</h4>
-                        <ul>
-                            <li><a href="Tienda_Stuffiess.html">Home</a></li>
-                            <li><a href="productos.html">Productos</a></li>
-                            <li><a href="nosotros.html">Nosotros</a></li>
-                            <li><a href="blogs.html">Blogs</a></li>
-                            <li><a href="contacto.html">Contacto</a></li>
-                        </ul>
-                    </div>
-                    <div class="footer-section">
-                        <h4>Contacto</h4>
-                        <p>Email: info@stuffies.cl</p>
-                        <p>Teléfono: +56 9 1234 5678</p>
-                    </div>
-                    <div class="footer-section">
-                        <h4>Suscríbete</h4>
-                        <form class="subscribe-form" id="subscribe-form">
-                            <input type="email" placeholder="Ingresa tu email" required>
-                            <button type="submit">Suscribirse</button>
-                        </form>
-                    </div>
-                </div>
-                <div class="footer-bottom">
-                    <p>&copy; 2024 Stuffies. Todos los derechos reservados.</p>
-                </div>
-            </div>
-        </footer>
+        <div id="userDropdown" class="dropdown user-dropdown d-none">
+          <button class="dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" title="Cuenta">
+            <img id="userAvatar" class="avatar-img" src="https://i.postimg.cc/qRdn8fDv/LOGO-ESTRELLA-SIMPLE-CON-ESTRELLITAS.png" alt="Usuario">
+          </button>
+          <ul class="dropdown-menu dropdown-menu-end">
+            <li class="px-3 py-2 small text-muted" id="helloUser">Hola</li>
+            <li><a class="dropdown-item" href="perfil.html">Perfil</a></li>
+            <li><hr class="dropdown-divider"></li>
+            <li><button id="logoutBtn" class="dropdown-item">Cerrar sesión</button></li>
+          </ul>
+        </div>
 
-        <!-- Bootstrap JS -->
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-        
-        <!-- Script para el panel de administración -->
-        <script>
-            document.addEventListener('DOMContentLoaded', function() {
-                // Navegación entre secciones
-                const navButtons = document.querySelectorAll('.admin-nav-btn');
-                const sections = document.querySelectorAll('.admin-section');
-                
-                navButtons.forEach(button => {
-                    button.addEventListener('click', function() {
-                        const targetSection = this.getAttribute('data-section');
-                        
-                        // Actualizar botones activos
-                        navButtons.forEach(btn => btn.classList.remove('active'));
-                        this.classList.add('active');
-                        
-                        // Mostrar sección correspondiente
-                        sections.forEach(section => {
-                            section.classList.remove('active');
-                            if (section.id === targetSection) {
-                                section.classList.add('active');
-                            }
-                        });
-                    });
-                });
-                
-                // Aquí iría la lógica para cargar datos reales desde una API
-                // Por ahora son datos de ejemplo
-            });
-        </script>
-        <script src="js/admin.js"></script>
-    </body>
-    </html>
+        <!-- Link Admin dentro del admin por si navega -->
+        <a href="admin.html" class="btn btn-warning d-none" id="adminLink">Admin</a>
+      </div>
+    </div>
+  </header>
+
+  <!-- ======= CONTENIDO ======= -->
+  <main class="admin-shell">
+    <h2 class="text-light mb-3">Panel de Estadísticas</h2>
+
+    <!-- KPIs -->
+    <div class="kpis">
+      <div class="kpi"><h3 id="kpiVentas">$0</h3><span>Ventas (últimos 7 días)</span></div>
+      <div class="kpi"><h3 id="kpiPedidos">0</h3><span>Pedidos</span></div>
+      <div class="kpi"><h3 id="kpiTicket">$0</h3><span>Ticket promedio</span></div>
+      <div class="kpi"><h3 id="kpiItems">0</h3><span>Unidades vendidas</span></div>
+    </div>
+
+    <div class="grid">
+      <div class="cardx">
+        <h5>Ventas por día (7d)</h5>
+        <canvas id="chartVentas"></canvas>
+      </div>
+      <div class="cardx">
+        <h5>Top categorías</h5>
+        <canvas id="chartCategorias"></canvas>
+      </div>
+      <div class="cardx">
+        <h5>Top productos</h5>
+        <canvas id="chartProductos"></canvas>
+      </div>
+      <div class="cardx">
+        <div class="d-flex justify-content-between align-items-center">
+          <h5>Acciones</h5>
+          <button id="btnAddDemo" class="btn btn-sm btn-primary">Agregar venta demo</button>
+        </div>
+        <p class="mb-0 text-muted">Usa este botón para generar ventas de ejemplo y ver cómo cambian los gráficos.</p>
+      </div>
+    </div>
+  </main>
+
+  <footer>
+    <div class="container">
+      <div class="footer-bottom">
+        <p class="text-center text-white-50">&copy; 2024 Stuffies. Todos los derechos reservados.</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ======= SCRIPTS ======= -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script src="js/main.js"></script>
+
+  <script>
+    // ======= Protección de ruta: solo admin =======
+    (function guardAdmin(){
+      const s = JSON.parse(localStorage.getItem('stuffies_session') || 'null');
+      if (!s || s.role !== 'admin') {
+        window.location.href = 'Tienda_Stuffiess.html';
+      }
+    })();
+
+    // ======= Header (sesión + mostrar Admin link si corresponde) =======
+    (function renderHeader(){
+      const loginBtn  = document.getElementById("loginBtn");
+      const dropdown  = document.getElementById("userDropdown");
+      const avatar    = document.getElementById("userAvatar");
+      const hello     = document.getElementById("helloUser");
+      const adminLink = document.getElementById("adminLink");
+
+      const s = JSON.parse(localStorage.getItem("stuffies_session") || "null");
+      if (s) {
+        loginBtn?.classList.add("d-none");
+        if (s.avatar) avatar.src = s.avatar;
+        if (hello) hello.textContent = "Hola, " + (s.name || s.user || "usuario");
+        dropdown.classList.remove("d-none");
+        if (s.role === 'admin') adminLink.classList.remove('d-none');
+        document.getElementById("logoutBtn").addEventListener("click", () => {
+          localStorage.removeItem("stuffies_session");
+          window.location.href = "login.html";
+        });
+      }
+    })();
+
+    // ======= Datos: orders en localStorage =======
+    // Estructura:
+    // orders: [
+    //   { id, date: "2025-09-06T12:00:00Z", total: 55990, items:[{id,nombre,precio,cantidad,categoria}] }
+    // ]
+    const ORDERS_KEY = 'orders';
+    const CLP = new Intl.NumberFormat('es-CL');
+
+    function loadOrders(){
+      try { return JSON.parse(localStorage.getItem(ORDERS_KEY) || '[]'); }
+      catch(_){ return []; }
+    }
+    function saveOrders(arr){
+      localStorage.setItem(ORDERS_KEY, JSON.stringify(arr));
+    }
+
+    // Inyecta datos demo si no hay ventas
+    function seedIfEmpty(){
+      const now = new Date();
+      let orders = loadOrders();
+      if (orders.length) return;
+
+      const sample = (d, total, items)=>({
+        id: 'ORD-' + Math.random().toString(36).slice(2,8).toUpperCase(),
+        date: d.toISOString(),
+        total,
+        items
+      });
+      const daysAgo = (n)=> new Date(now.getFullYear(), now.getMonth(), now.getDate() - n, 12, 0, 0);
+
+      orders = [
+        sample(daysAgo(0), 55990, [{id:3,nombre:'Stella Chroma Zip Hoodie',precio:55990,cantidad:1,categoria:'polerones'}]),
+        sample(daysAgo(1), 39990, [{id:1,nombre:'Hoodie White Dice',precio:39990,cantidad:1,categoria:'polerones'}]),
+        sample(daysAgo(2), 48980, [
+          {id:4,nombre:'Boxy-Slim White Tee',precio:22990,cantidad:1,categoria:'poleras'},
+          {id:5,nombre:'Boxy-Slim Black Tee',precio:25990,cantidad:1,categoria:'poleras'},
+        ]),
+        sample(daysAgo(3), 10990, [{id:2,nombre:'Star Player Blue',precio:10990,cantidad:1,categoria:'poleras'}]),
+        sample(daysAgo(4), 68980, [
+          {id:6,nombre:'Hoodie Red Dice',precio:32990,cantidad:2,categoria:'polerones'},
+        ]),
+        sample(daysAgo(5), 37990, [{id:7,nombre:'Star Player Black',precio:37990,cantidad:1,categoria:'poleras'}]),
+        sample(daysAgo(6), 35990, [{id:8,nombre:'Hoodie Pink Dice',precio:35990,cantidad:1,categoria:'polerones'}]),
+      ];
+      saveOrders(orders);
+    }
+
+    // Helpers de fechas
+    function ymd(d){ return d.toISOString().slice(0,10); } // YYYY-MM-DD
+    function lastNDaysLabels(n){
+      const arr=[]; const now=new Date();
+      for(let i=n-1;i>=0;i--){
+        const d=new Date(now.getFullYear(), now.getMonth(), now.getDate()-i);
+        arr.push(ymd(d));
+      }
+      return arr;
+    }
+
+    // Agregaciones
+    function computeStats(orders){
+      const days = lastNDaysLabels(7);
+      const ventasPorDia = Object.fromEntries(days.map(k=>[k,0]));
+      let total7 = 0, pedidos = 0, unidades = 0;
+      const porCategoria = {};
+      const porProducto = {};
+
+      orders.forEach(o=>{
+        const day = ymd(new Date(o.date));
+        if (ventasPorDia[day] != null) {
+          ventasPorDia[day] += Number(o.total||0);
+          total7 += Number(o.total||0);
+          pedidos += 1;
+          (o.items||[]).forEach(it=>{
+            unidades += Number(it.cantidad||0);
+            // cat
+            const c = it.categoria || 'otros';
+            porCategoria[c] = (porCategoria[c]||0) + Number(it.cantidad||0);
+            // prod
+            const key = it.nombre || ('ID '+it.id);
+            porProducto[key] = (porProducto[key]||0) + Number(it.cantidad||0);
+          });
+        }
+      });
+
+      const ticket = pedidos ? Math.round(total7 / pedidos) : 0;
+
+      // top N
+      const entriesCat = Object.entries(porCategoria).sort((a,b)=>b[1]-a[1]).slice(0,6);
+      const entriesPro = Object.entries(porProducto).sort((a,b)=>b[1]-a[1]).slice(0,6);
+
+      return {
+        days,
+        ventasPorDiaArr: days.map(d=>ventasPorDia[d]),
+        total7, pedidos, unidades, ticket,
+        topCatLabels: entriesCat.map(e=>e[0]),
+        topCatValues: entriesCat.map(e=>e[1]),
+        topProLabels: entriesPro.map(e=>e[0]),
+        topProValues: entriesPro.map(e=>e[1]),
+      };
+    }
+
+    // Render KPIs
+    function renderKPIs(stats){
+      document.getElementById('kpiVentas').textContent  = '$' + CLP.format(stats.total7);
+      document.getElementById('kpiPedidos').textContent = stats.pedidos;
+      document.getElementById('kpiTicket').textContent  = '$' + CLP.format(stats.ticket);
+      document.getElementById('kpiItems').textContent   = stats.unidades;
+    }
+
+    // Charts
+    let chartVentas, chartCategorias, chartProductos;
+    function renderCharts(stats){
+      // Ventas 7d
+      if (chartVentas) chartVentas.destroy();
+      chartVentas = new Chart(document.getElementById('chartVentas'), {
+        type: 'bar',
+        data: {
+          labels: stats.days,
+          datasets: [{ label: 'Ventas (CLP)', data: stats.ventasPorDiaArr }]
+        },
+        options: { responsive: true, plugins: { legend: { display: false } } }
+      });
+
+      // Categorías
+      if (chartCategorias) chartCategorias.destroy();
+      chartCategorias = new Chart(document.getElementById('chartCategorias'), {
+        type: 'doughnut',
+        data: {
+          labels: stats.topCatLabels,
+          datasets: [{ data: stats.topCatValues }]
+        },
+        options: { responsive: true }
+      });
+
+      // Productos
+      if (chartProductos) chartProductos.destroy();
+      chartProductos = new Chart(document.getElementById('chartProductos'), {
+        type: 'bar',
+        data: {
+          labels: stats.topProLabels,
+          datasets: [{ label: 'Unidades', data: stats.topProValues }]
+        },
+        options: { indexAxis: 'y', responsive: true, plugins: { legend: { display: false } } }
+      });
+    }
+
+    function rerender(){
+      const orders = loadOrders();
+      const stats = computeStats(orders);
+      renderKPIs(stats);
+      renderCharts(stats);
+    }
+
+    // Botón para agregar ventas demo
+    document.getElementById('btnAddDemo').addEventListener('click', ()=>{
+      const orders = loadOrders();
+      // Simulación rápida
+      const products = [
+        {id:1,nombre:'Hoodie White Dice',precio:39990,categoria:'polerones'},
+        {id:2,nombre:'Star Player Blue',precio:10990,categoria:'poleras'},
+        {id:3,nombre:'Stella Zip Hoodie',precio:55990,categoria:'polerones'},
+        {id:4,nombre:'Boxy-Slim White',precio:22990,categoria:'poleras'},
+      ];
+      const pick = ()=>products[Math.floor(Math.random()*products.length)];
+      const items = Array.from({length: 1 + Math.floor(Math.random()*3)}, ()=>{
+        const p = pick(); 
+        return { id:p.id, nombre:p.nombre, precio:p.precio, cantidad:1+Math.floor(Math.random()*2), categoria:p.categoria };
+      });
+      const total = items.reduce((a,i)=>a + i.precio*i.cantidad, 0);
+      orders.push({
+        id: 'ORD-' + Math.random().toString(36).slice(2,8).toUpperCase(),
+        date: new Date().toISOString(),
+        total, items
+      });
+      saveOrders(orders);
+      rerender();
+    });
+
+    // Boot
+    (function init(){
+      seedIfEmpty();
+      rerender();
+    })();
+  </script>
+</body>
+</html>
