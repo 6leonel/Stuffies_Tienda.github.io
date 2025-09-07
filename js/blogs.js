@@ -1,4 +1,3 @@
-// === Datos de ejemplo (puedes reemplazar por fetch a tu backend/JSON) ===
 const BLOGS = [
   {
     id: 1,
@@ -59,7 +58,6 @@ const BLOGS = [
   }
 ];
 
-// === Estado UI ===
 const state = {
   page: 1,
   pageSize: 6,
@@ -68,7 +66,6 @@ const state = {
   filtered: BLOGS
 };
 
-// === Helpers de elementos ===
 const $grid = () => document.getElementById("blogs-grid");
 const $search = () => document.getElementById("blog-search");
 const $cat = () => document.getElementById("blog-category");
@@ -82,7 +79,6 @@ function formatDate(iso) {
   return d.toLocaleDateString("es-CL", { year: "numeric", month: "long", day: "numeric" });
 }
 
-// === Filtros ===
 function applyFilters() {
   const q = state.search.toLowerCase().trim();
   state.filtered = BLOGS
@@ -98,7 +94,6 @@ function applyFilters() {
   render();
 }
 
-// === Pintado de tarjetas y paginación ===
 function render() {
   const grid = $grid();
   if (!grid) return;
@@ -137,7 +132,6 @@ function render() {
   });
 }
 
-// === Modal ===
 function openModal(id) {
   const b = BLOGS.find(x => x.id === id);
   if (!b) return;
@@ -154,9 +148,8 @@ function openModal(id) {
   window._blogModal.show();
 }
 
-// === Listeners ===
 document.addEventListener("DOMContentLoaded", () => {
-  // Carrusel auto
+
   const carr = document.getElementById("stuffiesCarousel");
   if (carr && window.bootstrap?.Carousel) {
     new bootstrap.Carousel(carr, { interval: 3500, ride: "carousel", pause: false, touch: true, wrap: true });
@@ -173,6 +166,5 @@ document.addEventListener("DOMContentLoaded", () => {
 
   $search()?.addEventListener("keydown", (e) => { if (e.key === "Enter") $apply().click(); });
 
-  // Primera renderización
   applyFilters();
 });

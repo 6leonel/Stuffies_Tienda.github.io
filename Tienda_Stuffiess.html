@@ -13,15 +13,12 @@
     .product-info { position: relative; z-index: 2; }
     .product-image img { pointer-events: none; }
     .product-actions .btn, a.btn { cursor: pointer; }
-  </style>
-
-  <!-- JS del proyecto -->
+  </style> 
   <script src="js/main.js"></script>
   <script src="js/productos.js"></script>
   <script src="js/carrito.js"></script>
   <script src="js/validaciones.js"></script>
   <script src="js/blogs.js"></script>
-  <!-- (removido) <script src="detalle-producto.html"></script> -->
 </head>
 <body>
   <header>
@@ -36,9 +33,7 @@
         <ul>
           <li><a href="Tienda_Stuffiess.html" class="active">Home</a></li>
           <li><a href="productos.html">Productos</a></li>
-          <!-- Eliminado: <li><a href="nosotros.html">Nosotros</a></li> -->
           <li><a href="blogs.html">Blogs</a></li>
-          <!-- Eliminado: <li><a href="contacto.html">Contacto</a></li> -->
         </ul>
       </nav>
       <div class="header-actions">
@@ -115,15 +110,12 @@
         <div class="products-grid" id="featured-products"></div>
       </div>
     </section>
-
-    <!-- About preview sin botón a 'nosotros' -->
     <section class="about-preview">
       <div class="container">
         <div class="about-content">
           <div class="about-text">
             <h2>Stuffies - Moda Urbana Chilena</h2>
             <p>Desde nuestro lanzamiento en junio de 2024, nos dedicamos a crear ropa moderna y de calidad con estilo estadounidense para que todos puedan vestir a la última moda.</p>
-            <!-- Eliminado el botón que llevaba a nosotros.html -->
           </div>
           <div class="about-image">
             <img src="https://i.postimg.cc/R0phZ77L/ESTRELLA-BLANCA.png" alt="">
@@ -147,19 +139,8 @@
             <li><a href="index.html">Home</a></li>
             <li><a href="productos.html">Productos</a></li>
             <li><a href="blogs.html">Blogs</a></li>
-            <!-- Eliminados: Nosotros / Contacto -->
           </ul>
         </div>
-
-        <!-- Eliminada la sección de Contacto completa -->
-        <!--
-        <div class="footer-section">
-          <h4>Contacto</h4>
-          <p>Email: info@stuffies.cl</p>
-          <p>Teléfono: +56 9 1234 5678</p>
-        </div>
-        -->
-
         <div class="footer-section">
           <h4>Suscríbete</h4>
           <form class="subscribe-form" id="subscribe-form">
@@ -175,10 +156,8 @@
     </div>
   </footer>
 
-  <!-- Bootstrap JS -->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 
-  <!-- Fallbacks click detalle/añadir (opcional) -->
   <script>
     document.addEventListener('click', (e) => {
       const link = e.target.closest('a[href^="detalle-producto.html?id="]');
@@ -204,8 +183,6 @@
   </script>
 </body>
 </html>
-
-
 
   <footer>
     <div class="container">
