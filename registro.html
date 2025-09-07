@@ -3,15 +3,14 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Inicio de sesión - STUFFIES</title>
+  <title>Registro - STUFFIES</title>
 
-  <!-- Estilos existentes -->
+  <!-- Mismo look & feel -->
   <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:wght@400;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/styles.css">
   <link rel="stylesheet" href="css/login.css">
   <link href="https://cdn.jsdelivr.net/npm/bootswatch@5.3.3/dist/morph/bootstrap.min.css" rel="stylesheet">
   <style>
-    /* Extras mínimos para el avatar */
     .avatar-img{ width:38px; height:38px; border-radius:50%; object-fit:cover; border:2px solid #000; }
     .user-dropdown .dropdown-toggle{ background:transparent; border:none; padding:0; }
     .user-dropdown .dropdown-menu{ min-width:180px; }
@@ -39,10 +38,8 @@
         <a href="carrito.html" class="cart-icon">
           <span class="cart-count">0</span> 🛒
         </a>
-        <!-- Botón login por defecto -->
         <a href="login.html" id="loginBtn" class="btn btn-outline">Iniciar Sesión</a>
 
-        <!-- Dropdown de usuario (oculto hasta detectar sesión) -->
         <div id="userDropdown" class="dropdown user-dropdown d-none">
           <button class="dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" title="Cuenta">
             <img id="userAvatar" class="avatar-img" src="https://i.postimg.cc/qRdn8fDv/LOGO-ESTRELLA-SIMPLE-CON-ESTRELLITAS.png" alt="Usuario">
@@ -63,58 +60,76 @@
     <div class="container">
       <div class="login-container">
         <div class="login-header">
-          <h2>Iniciar Sesión</h2>
-          <p>Ingresa a tu cuenta de STUFFIES</p>
+          <h2>Crear cuenta</h2>
+          <p>Regístrate para comprar en STUFFIES</p>
         </div>
 
-        <form id="loginForm" class="login-form needs-validation" novalidate>
+        <form id="registerForm" class="needs-validation" novalidate>
           <div class="form-group mb-3">
-            <label for="email">Usuario o correo electrónico</label>
-            <input type="text" id="email" name="email" class="form-control" required>
-            <div class="invalid-feedback">Ingresa tu usuario o correo.</div>
+            <label for="regName">Nombre</label>
+            <input type="text" id="regName" class="form-control" required>
+            <div class="invalid-feedback">Ingresa tu nombre.</div>
           </div>
 
           <div class="form-group mb-3">
-            <label for="password">Contraseña</label>
-            <input type="password" id="password" name="password" class="form-control" required>
-            <div class="invalid-feedback">Ingresa tu contraseña.</div>
+            <label for="regEmail">Correo electrónico</label>
+            <input type="email" id="regEmail" class="form-control" required>
+            <div class="invalid-feedback">Ingresa un correo válido.</div>
           </div>
 
-          <div class="form-options d-flex justify-content-between align-items-center mb-3">
-            <label class="remember-me d-flex align-items-center gap-2 m-0">
-              <input type="checkbox" name="remember" id="remember">
-              <span>Recordarme</span>
-            </label>
-            <a href="#" class="forgot-password">¿Olvidaste tu contraseña?</a>
+          <div class="form-group mb-3">
+            <label for="regUser">Usuario</label>
+            <input type="text" id="regUser" class="form-control" minlength="3" required>
+            <div class="invalid-feedback">El usuario debe tener al menos 3 caracteres.</div>
           </div>
 
-          <button type="submit" class="btn btn-dark w-100 btn-login">Iniciar Sesión</button>
+          <div class="form-group mb-3">
+            <label for="regPass">Contraseña</label>
+            <input type="password" id="regPass" class="form-control" minlength="6" required>
+            <div class="form-text">Mínimo 6 caracteres.</div>
+            <div class="invalid-feedback">La contraseña es muy corta.</div>
+          </div>
+
+          <div class="form-group mb-3">
+            <label for="regPass2">Repetir contraseña</label>
+            <input type="password" id="regPass2" class="form-control" required>
+            <div class="invalid-feedback">Las contraseñas no coinciden.</div>
+          </div>
+
+          <div class="form-check mb-3">
+            <input class="form-check-input" type="checkbox" id="regTerms" required>
+            <label class="form-check-label" for="regTerms">Acepto los <a href="#">términos y condiciones</a>.</label>
+            <div class="invalid-feedback">Debes aceptar los términos.</div>
+          </div>
+
+          <button type="submit" class="btn btn-success w-100">Crear cuenta</button>
 
           <div id="msg" class="alert mt-3 d-none" role="alert"></div>
-        </form>
 
-        <div class="login-footer mt-3">
-          <p>¿No tienes una cuenta? <a href="registro.html">Regístrate aquí</a></p>
-        </div>
+          <p class="text-center mt-3 mb-0">
+            ¿Ya tienes cuenta? <a href="login.html">Inicia sesión</a>
+          </p>
+        </form>
       </div>
     </div>
   </main>
 
-     <section class="about-preview">
-      <div class="container">
-        <div class="about-content">
-          <div class="about-text">
-            <h2>Stuffies - Moda Urbana Chilena</h2>
-            <p>Desde nuestro lanzamiento en junio de 2024, nos dedicamos a crear ropa moderna y de calidad con estilo estadounidense para que todos puedan vestir a la última moda.</p>
-          </div>
-          <div class="about-image">
-            <img src="https://i.postimg.cc/R0phZ77L/ESTRELLA-BLANCA.png" alt="">
-          </div>
+  <!-- ======= ABOUT ======= -->
+  <section class="about-preview">
+    <div class="container">
+      <div class="about-content">
+        <div class="about-text">
+          <h2>Stuffies - Moda Urbana Chilena</h2>
+          <p>Desde nuestro lanzamiento en junio de 2024, nos dedicamos a crear ropa moderna y de calidad con estilo estadounidense para que todos puedan vestir a la última moda.</p>
+        </div>
+        <div class="about-image">
+          <img src="https://i.postimg.cc/R0phZ77L/ESTRELLA-BLANCA.png" alt="">
         </div>
       </div>
-    </section>
-  </main>
+    </div>
+  </section>
 
+  <!-- ======= FOOTER ======= -->
   <footer>
     <div class="container">
       <div class="footer-content">
@@ -131,6 +146,11 @@
           </ul>
         </div>
         <div class="footer-section">
+          <h4>Contacto</h4>
+          <p>Email: info@stuffies.cl</p>
+          <p>Teléfono: +56 9 1234 5678</p>
+        </div>
+        <div class="footer-section">
           <h4>Suscríbete</h4>
           <form class="subscribe-form" id="subscribe-form">
             <input type="email" placeholder="Ingresa tu email" required>
@@ -142,58 +162,6 @@
         <p>&copy; 2024 Stuffies. Todos los derechos reservados.</p>
       </div>
     </div>
-  </footer>
-
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-
-  <!-- Este script muestra/oculta el icono de login según la sesión -->
-  <script>
-    (function renderHeaderSession(){
-      const loginBtn  = document.getElementById("loginBtn");
-      const dropdown  = document.getElementById("userDropdown");
-      const avatar    = document.getElementById("userAvatar");
-      const hello     = document.getElementById("helloUser");
-
-      const session = JSON.parse(localStorage.getItem("stuffies_session") || "null");
-      if (session) {
-        if (loginBtn) loginBtn.classList.add("d-none");
-        if (session.avatar) avatar.src = session.avatar;
-        if (hello) hello.textContent = "Hola, " + (session.name || session.user || "usuario");
-        dropdown.classList.remove("d-none");
-
-        // Cerrar sesión
-        document.getElementById("logoutBtn").addEventListener("click", () => {
-          localStorage.removeItem("stuffies_session");
-          window.location.href = "login.html";
-        });
-      }
-    })();
-
-    // Mantener tu comportamiento de “Ver detalles / Añadir”
-    document.addEventListener('click', (e) => {
-      const link = e.target.closest('a[href^="detalle-producto.html?id="]');
-      if (link) {
-        e.preventDefault();
-        const href = link.getAttribute('href');
-        if (href) window.location.href = href;
-        return;
-      }
-      const addBtn = e.target.closest('.product-card .btn.btn-primary');
-      if (addBtn && addBtn.textContent.toLowerCase().includes('añadir')) {
-        const card = addBtn.closest('.product-card');
-        const linkDetalle = card?.querySelector('a[href^="detalle-producto.html?id="]');
-        if (linkDetalle) {
-          const url = new URL(linkDetalle.getAttribute('href'), window.location.origin);
-          const id = Number(url.searchParams.get('id'));
-          if (!isNaN(id) && typeof window.agregarAlCarrito === 'function') {
-            window.agregarAlCarrito(id);
-          }
-        }
-      }
-    });
-  </script>
-</body>
-</html>
   </footer>
 
   <!-- ======= SCRIPTS ======= -->
@@ -218,7 +186,7 @@
           email: "demo@stuffies.cl",
           user: "demo",
           pass: "123456",
-          avatar: "https://i.postimg.cc/qRdn8fDv/LOGO-ESTRELLA-SIMPLE-CON-ESTRELLITAS.png"
+          avatar: "https://i.postimg.cc/R0phZ77L/ESTRELLA-BLANCA.png"
         });
         localStorage.setItem(USERS_KEY, JSON.stringify(users));
       }
@@ -248,36 +216,46 @@
 
     // ====== Validación Bootstrap del form ======
     (function () {
-      const form = document.getElementById("loginForm");
+      const form = document.getElementById("registerForm");
       form.addEventListener("submit", function (e) {
         if (!form.checkValidity()) { e.preventDefault(); e.stopPropagation(); }
         form.classList.add("was-validated");
       }, false);
     })();
 
-    // ====== Login (usa usuarios en localStorage) ======
+    // ====== Registro (guarda en localStorage) ======
     const USERS_KEY = "stuffies_users";
     const loadUsers = () => JSON.parse(localStorage.getItem(USERS_KEY) || "[]");
+    const saveUsers = (arr) => localStorage.setItem(USERS_KEY, JSON.stringify(arr));
 
-    document.getElementById("loginForm").addEventListener("submit", (e) => {
+    document.getElementById("registerForm").addEventListener("submit", (e) => {
       e.preventDefault();
-      if (!e.target.checkValidity()) return;
 
-      const id = $("#email").value.trim().toLowerCase();
-      const pass = $("#password").value;
+      const name = $("#regName").value.trim();
+      const email = $("#regEmail").value.trim().toLowerCase();
+      const user = $("#regUser").value.trim().toLowerCase();
+      const pass = $("#regPass").value;
+      const pass2 = $("#regPass2").value;
+
+      if (pass !== pass2) {
+        $("#regPass2").setCustomValidity("No coincide");
+        document.getElementById("registerForm").classList.add("was-validated");
+        return;
+      } else {
+        $("#regPass2").setCustomValidity("");
+      }
 
       const users = loadUsers();
-      const found = users.find(u => (u.email === id || u.user === id) && u.pass === pass);
+      const exists = users.find(u => u.email === email || u.user === user);
+      if (exists) { showMsg("warning","Ese correo o usuario ya está registrado."); return; }
 
-      if (!found) { showMsg("danger","Credenciales inválidas. Revisa tus datos."); return; }
+      const defaultAvatar = "https://i.postimg.cc/R0phZ77L/ESTRELLA-BLANCA.png";
+      users.push({ name, email, user, pass, avatar: defaultAvatar });
+      saveUsers(users);
 
-      const avatar = found.avatar || "https://i.postimg.cc/qRdn8fDv/LOGO-ESTRELLA-SIMPLE-CON-ESTRELLITAS.png";
-      localStorage.setItem("stuffies_session", JSON.stringify({ user: found.user, name: found.name, avatar }));
-
-      showMsg("success","¡Bienvenido/a, " + (found.name || found.user) + "! Redirigiendo…");
-      setTimeout(()=>{ window.location.href = "Tienda_Stuffiess.html"; }, 900);
+      showMsg("success","¡Cuenta creada! Te redirigimos al inicio de sesión…");
+      setTimeout(()=>{ window.location.href = "login.html"; }, 1000);
     });
   </script>
 </body>
 </html>
-

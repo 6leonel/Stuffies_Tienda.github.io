@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Carrito - STUFFIES</title>
+  <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/styles.css">
+  <link rel="stylesheet" href="css/login.css">
+  <link href="https://cdn.jsdelivr.net/npm/bootswatch@5.3.3/dist/morph/bootstrap.min.css" rel="stylesheet">
+
+  <style>
+    body{ background:#000000; }
+    .cart-shell{ max-width:980px; margin:40px auto; }
+    .cart-card{ background:#fff; border-radius:16px; padding:24px; box-shadow:0 6px 20px rgba(0, 0, 0, 0.25); }
+    .cart-item{ display:flex; align-items:center; justify-content:space-between; border-bottom:1px solid #ffffff; padding:12px 0; }
+    .cart-item:last-child{ border-bottom:0; }
+    .cart-item img{ width:70px; height:70px; object-fit:cover; border-radius:10px; }
+    .muted{ color:#000000; }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="container header-content">
+      <div class="logo">
+        <a href="Tienda_Stuffiess.html">
+          <img src="https://stuffiesconcept.com/cdn/shop/files/output-onlinegiftools_1.gif?v=1723763811&width=500" alt="Logo Stuffies" class="logo-img">
+        </a>
+        <h1><a class="stu" href="Tienda_Stuffiess.html">STUFFIES</a></h1>
+      </div>
+      <nav class="main-nav">
+        <ul>
+          <li><a href="Tienda_Stuffiess.html" class="active">Home</a></li>
+          <li><a href="productos.html">Productos</a></li>
+          <li><a href="blogs.html">Blogs</a></li>
+        </ul>
+      </nav>
+      <div class="header-actions">
+        <a href="carrito.html" class="cart-icon">
+          <span class="cart-count" id="cartCount">0</span> 🛒
+        </a>
+        <a href="login.html" class="btn btn-outline">Iniciar Sesión</a>
+      </div>
+    </div>
+  </header>
+  <main class="cart-shell">
+    <div class="cart-card">
+      <h2 class="mb-3">🛒 Tu carrito</h2>
+      <div id="cartItems">
+        <p class="muted">Cargando carrito…</p>
+      </div>
+      <div class="d-flex justify-content-between align-items-center mt-3">
+        <h4>Total: $<span id="cartTotal">0</span></h4>
+        <button id="checkoutBtn" class="btn btn-success">Finalizar compra</button>
+      </div>
+    </div>
+  </main>
+
+  <footer>
+    <div class="container">
+      <div class="footer-bottom">
+        <p class="text-center text-white-50">&copy; 2024 Stuffies. Todos los derechos reservados.</p>
+      </div>
+    </div>
+  </footer>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script>
+    const KEY = 'carrito';
+    const CLP = new Intl.NumberFormat('es-CL');
+    function toNumber(v){
+      if (typeof v === 'number') return v;
+      if (typeof v !== 'string') return Number(v) || 0;
+      const cleaned = v.replace(/\./g,'').replace(/\s/g,'').replace(',','.');
+      const n = Number(cleaned);
+      return isNaN(n) ? 0 : n;
+    }
+
+    function readRaw(){
+      try{
+        const v = localStorage.getItem(KEY);
+        const parsed = JSON.parse(v || '[]');
+        if (Array.isArray(parsed)) return parsed;
+        if (parsed && Array.isArray(parsed.items)) return parsed.items;
+      }catch(_){}
+      return [];
+    }
+    function normalize(it){
+      if (!it) return null;
+      return {
+        id:        it.id ?? it.productId ?? null,
+        nombre:    it.nombre ?? it.name ?? 'Producto',
+        precio:    toNumber(it.precio ?? it.price ?? 0),
+        cantidad:  toNumber(it.cantidad ?? it.qty ?? 1),
+        imagen:    it.imagen ?? it.img ?? '',
+        talla:     it.talla ?? it.size ?? 'Única',
+        color:     it.color ?? 'Único'
+      };
+    }
+
+    function load(){ return readRaw().map(normalize).filter(Boolean); }
+    function save(arr){ localStorage.setItem(KEY, JSON.stringify(arr)); }
+
+    function renderCart(){
+      const cart = load();
+      const items = document.getElementById('cartItems');
+      const totalEl = document.getElementById('cartTotal');
+      const countEl = document.getElementById('cartCount');
+
+      items.innerHTML = '';
+
+      if (!cart.length){
+        items.innerHTML = '<p class="muted">Tu carrito está vacío.</p>';
+        totalEl.textContent = '0';
+        countEl.textContent = '0';
+        return;
+      }
+
+      let total = 0, unidades = 0;
+
+      cart.forEach((p, i) => {
+        total += p.precio * p.cantidad;
+        unidades += p.cantidad;
+
+        const row = document.createElement('div');
+        row.className = 'cart-item';
+        row.innerHTML = `
+          <div class="d-flex align-items-center gap-3">
+            <img src="${p.imagen}" alt="${p.nombre}">
+            <div>
+              <h6 class="m-0">${p.nombre}</h6>
+              <small class="text-muted">Talla: ${p.talla} • Color: ${p.color}</small><br>
+              <small>$${CLP.format(p.precio)} x ${p.cantidad}</small>
+            </div>
+          </div>
+          <div>
+            <button class="btn btn-sm btn-outline-secondary me-2" data-act="dec" data-idx="${i}">-</button>
+            <button class="btn btn-sm btn-outline-secondary me-2" data-act="inc" data-idx="${i}">+</button>
+            <button class="btn btn-sm btn-danger" data-act="del" data-idx="${i}">Eliminar</button>
+          </div>`;
+        items.appendChild(row);
+      });
+
+      totalEl.textContent = CLP.format(total);
+      countEl.textContent = unidades;
+    }
+
+    document.addEventListener('click', (e)=>{
+      const btn = e.target.closest('button[data-act]');
+      if (!btn) return;
+      const act = btn.getAttribute('data-act');
+      const idx = Number(btn.getAttribute('data-idx'));
+      const cart = load();
+      if (!cart[idx]) return;
+
+      if (act === 'inc') cart[idx].cantidad += 1;
+      if (act === 'dec') cart[idx].cantidad -= 1;
+      if (act === 'del' || cart[idx].cantidad <= 0) cart.splice(idx,1);
+
+      save(cart);
+      renderCart();
+    });
+
+    document.getElementById('checkoutBtn').addEventListener('click', ()=>{
+      const cart = load();
+      if (!cart.length) { alert('Tu carrito está vacío'); return; }
+      alert('Gracias por tu compra 🛍️ (aquí iría la integración con pago)');
+      localStorage.removeItem(KEY);
+      renderCart();
+    });
+
+    renderCart();
+  </script>
+</body>
+</html>
+
+      </div>
+    </section>
+    <section class="about-preview">
+      <div class="container">
+        <div class="about-content">
+          <div class="about-text">
+            <h2>Stuffies - Moda Urbana Chilena</h2>
+            <p>Desde nuestro lanzamiento en junio de 2024, nos dedicamos a crear ropa moderna y de calidad con estilo estadounidense para que todos puedan vestir a la última moda.</p>
+          </div>
+          <div class="about-image">
+            <img src="https://i.postimg.cc/R0phZ77L/ESTRELLA-BLANCA.png" alt="">
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container">
+      <div class="footer-content">
+        <div class="footer-section">
+          <h3>STUFFIES</h3>
+          <p>Tienda online de ropa urbana y casual en Chile</p>
+        </div>
+
+        <div class="footer-section">
+          <h4>Enlaces</h4>
+          <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="productos.html">Productos</a></li>
+            <li><a href="blogs.html">Blogs</a></li>
+          </ul>
+        </div>
+        <div class="footer-section">
+          <h4>Suscríbete</h4>
+          <form class="subscribe-form" id="subscribe-form">
+            <input type="email" placeholder="Ingresa tu email" required>
+            <button type="submit">Suscribirse</button>
+          </form>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <p>&copy; 2024 Stuffies. Todos los derechos reservados.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+  <script>
+    document.addEventListener('click', (e) => {
+      const link = e.target.closest('a[href^="detalle-producto.html?id="]');
+      if (link) {
+        e.preventDefault();
+        const href = link.getAttribute('href');
+        if (href) window.location.href = href;
+        return;
+      }
+      const addBtn = e.target.closest('.product-card .btn.btn-primary');
+      if (addBtn && addBtn.textContent.toLowerCase().includes('añadir')) {
+        const card = addBtn.closest('.product-card');
+        const linkDetalle = card?.querySelector('a[href^="detalle-producto.html?id="]');
+        if (linkDetalle) {
+          const url = new URL(linkDetalle.getAttribute('href'), window.location.origin);
+          const id = Number(url.searchParams.get('id'));
+          if (!isNaN(id) && typeof window.agregarAlCarrito === 'function') {
+            window.agregarAlCarrito(id);
+          }
+        }
+      }
+    });
+  </script>
+</body>
+</html>
+
+  <footer>
+    <div class="container">
+      <div class="footer-content">
+        <div class="footer-section">
+          <h3>STUFFIES</h3>
+          <p>Tienda online de ropa urbana y casual en Chile</p>
+        </div>
+        <div class="footer-section">
+          <h4>Enlaces</h4>
+          <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="productos.html">Productos</a></li>
+            <li><a href="nosotros.html">Nosotros</a></li>
+            <li><a href="blogs.html">Blogs</a></li>
+            <li><a href="contacto.html">Contacto</a></li>
+          </ul>
+        </div>
+        <div class="footer-section">
+          <h4>Contacto</h4>
+          <p>Email: info@stuffies.cl</p>
+          <p>Teléfono: +56 9 1234 5678</p>
+        </div>
+        <div class="footer-section">
+          <h4>Suscríbete</h4>
+          <form class="subscribe-form" id="subscribe-form">
+            <input type="email" placeholder="Ingresa tu email" required>
+            <button type="submit">Suscribirse</button>
+          </form>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2024 Stuffies. Todos los derechos reservados.</p>
+      </div>
+    </div>
+  </footer>
+
