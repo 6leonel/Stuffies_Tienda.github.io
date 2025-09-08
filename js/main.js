@@ -19,7 +19,7 @@ const productos = [
   { id: 5, nombre: "Stella Boxy-Slim Black Tee", precio: 15990, categoria: "poleras ",
     imagen: "https://stuffiesconcept.com/cdn/shop/files/5.png?v=1756936590&width=493",
     imagenHover: "https://stuffiesconcept.com/cdn/shop/files/6.png?v=1756936591&width=493",
-    descripcion: "Gorra ajustable con logo bordado.", tallas:["S","M","L","XL"], colores:["Negro"], destacado:true },
+    descripcion: "Polera boxy-slim fit negra", tallas:["S","M","L","XL"], colores:["Negro"], destacado:true },
   { id: 6, nombre: "HOODIE BOXIFIT RED DICE V2", precio: 32990, categoria: "polerones",
     imagen: "https://stuffiesconcept.com/cdn/shop/files/RedDice1.png?v=1753404319&width=600",
     imagenHover: "https://stuffiesconcept.com/cdn/shop/files/RedDice2.png?v=1753404319&width=600",
@@ -27,11 +27,11 @@ const productos = [
   { id: 7, nombre: "Star Player 'Black Team' t-shirt", precio: 37990, categoria: "poleras",
     imagen: "https://stuffiesconcept.com/cdn/shop/files/3_f5bf3ad8-c122-436f-8eee-1483a3f383da.png?v=1748652948&width=600",
     imagenHover: "https://stuffiesconcept.com/cdn/shop/files/4_b9bc3afc-97e9-4636-94f4-1a863738d755.png?v=1748652948&width=600",
-    descripcion: "Polerón clásico con bolsillo canguro.", tallas:["S","M","L","XL"], colores:["Gris"], destacado:true },
+    descripcion: "La Star Player T-Shirt nace de la unión entre la nostalgia del fútbol clásico y la energía del streetwear actual..", tallas:["S","M","L","XL"], colores:["Gris"], destacado:true },
   { id: 8, nombre: "HOODIE BOXIFIT PINK DICE V2", precio: 35990, categoria: "polerones",
     imagen: "https://stuffiesconcept.com/cdn/shop/files/PinkDice1.png?v=1753404299&width=600",
     imagenHover: "https://stuffiesconcept.com/cdn/shop/files/PinkDice2.png?v=1753404299&width=600",
-    descripcion: "Gorra urbana estilo minimalista con logo bordado Stuffies.", tallas:["S","M","L","XL"], colores:["cafe"], destacado:false }
+    descripcion: "POLERÓN BOXIFIT BROWN 'PINK DICE'", tallas:["S","M","L","XL"], colores:["cafe"], destacado:false }
 ];
 
 const CART_KEY = 'carrito';
