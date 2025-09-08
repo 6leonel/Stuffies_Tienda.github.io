@@ -4,7 +4,6 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Inicio de sesión - STUFFIES</title>
-
   <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:wght@400;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/styles.css">
   <link rel="stylesheet" href="css/login.css">
@@ -65,14 +64,14 @@
         <form id="loginForm" class="login-form needs-validation" novalidate>
           <div class="form-group mb-3">
             <label for="email">Usuario o correo electrónico</label>
-            <input type="text" id="email" name="email" class="form-control" required>
+            <input type="text" id="email" name="email" class="form-control" maxlength="100" required>
             <div class="invalid-feedback">Ingresa tu usuario o correo.</div>
           </div>
 
           <div class="form-group mb-3">
             <label for="password">Contraseña</label>
-            <input type="password" id="password" name="password" class="form-control" required>
-            <div class="invalid-feedback">Ingresa tu contraseña.</div>
+            <input type="password" id="password" name="password" class="form-control" minlength="4" maxlength="10" required>
+            <div class="invalid-feedback">Ingresa tu contraseña (4–10 caracteres).</div>
           </div>
 
           <div class="form-options d-flex justify-content-between align-items-center mb-3">
@@ -141,6 +140,7 @@
   </footer>
 
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="js/validaciones.js"></script>
   <script>
     const $ = s => document.querySelector(s);
     const showMsg = (type, text) => {
@@ -150,21 +150,6 @@
       box.classList.remove("d-none");
     };
 
-    (function initDemoUser(){
-      const USERS_KEY = "stuffies_users";
-      const users = JSON.parse(localStorage.getItem(USERS_KEY) || "[]");
-      if (!users.find(u => u.user === "demo")) {
-        users.push({
-          name: "Usuario Demo",
-          email: "demo@stuffies.cl",
-          user: "demo",
-          pass: "123456",
-          avatar: "https://i.postimg.cc/qRdn8fDv/LOGO-ESTRELLA-SIMPLE-CON-ESTRELLITAS.png"
-        });
-        localStorage.setItem(USERS_KEY, JSON.stringify(users));
-      }
-    })();
-
     (function renderHeaderSession(){
       const loginBtn  = document.getElementById("loginBtn");
       const dropdown  = document.getElementById("userDropdown");
@@ -172,44 +157,76 @@
       const hello     = document.getElementById("helloUser");
       const session = JSON.parse(localStorage.getItem("stuffies_session") || "null");
       if (session) {
-        if (loginBtn) loginBtn.classList.add("d-none");
+        loginBtn?.classList.add("d-none");
         if (session.avatar) avatar.src = session.avatar;
         if (hello) hello.textContent = "Hola, " + (session.name || session.user || "usuario");
         dropdown.classList.remove("d-none");
-        document.getElementById("logoutBtn").addEventListener("click", () => {
+        document.getElementById("logoutBtn")?.addEventListener("click", () => {
           localStorage.removeItem("stuffies_session");
           window.location.href = "login.html";
         });
       }
     })();
 
-    (function () {
-      const form = document.getElementById("loginForm");
-      form.addEventListener("submit", function (e) {
-        if (!form.checkValidity()) { e.preventDefault(); e.stopPropagation(); }
-        form.classList.add("was-validated");
-      }, false);
-    })();
+(function initAdminUser(){
+  const USERS_KEY = "stuffies_users";
+  const users = JSON.parse(localStorage.getItem(USERS_KEY) || "[]" );
+  if (!users.find(u => (u.user||"").toLowerCase() === "adminstuffies")) {
+    users.push({
+      name: "Administrador Stuffies",
+      email: "adminstuffies@duoc.cl",
+      user: "adminstuffies",
+      pass: "1234",                   
+      role: "admin",
+      avatar: "https://i.postimg.cc/qRdn8fDv/LOGO-ESTRELLA-SIMPLE-CON-ESTRELLITAS.png"
+    });
+    localStorage.setItem(USERS_KEY, JSON.stringify(users));
+  }
+})();
+
+
+    if (window.Validaciones) {
+      Validaciones.wireLoginForm('#loginForm');
+    }
 
     const USERS_KEY = "stuffies_users";
-    const loadUsers = () => JSON.parse(localStorage.getItem(USERS_KEY) || "[]");
+    const getUsers = () => { try { return JSON.parse(localStorage.getItem(USERS_KEY) || "[]"); } catch { return []; } };
 
     document.getElementById("loginForm").addEventListener("submit", (e) => {
+      if (e.defaultPrevented) return;
       e.preventDefault();
-      if (!e.target.checkValidity()) return;
 
-      const id = $("#email").value.trim().toLowerCase();
+      const idRaw = $("#email").value.trim();
+      const id = idRaw.toLowerCase();
       const pass = $("#password").value;
-      const users = loadUsers();
-      const found = users.find(u => (u.email === id || u.user === id) && u.pass === pass);
 
-      if (!found) { showMsg("danger","Credenciales inválidas. Revisa tus datos."); return; }
+      const users = getUsers();
+      const found = users.find(u =>
+        (u.user && u.user.toLowerCase() === id) ||
+        (u.email && u.email.toLowerCase() === id)
+      );
+
+      if (!found || found.pass !== pass) {
+        showMsg("danger","Credenciales inválidas. Revisa tus datos.");
+        return;
+      }
 
       const avatar = found.avatar || "https://i.postimg.cc/qRdn8fDv/LOGO-ESTRELLA-SIMPLE-CON-ESTRELLITAS.png";
-      localStorage.setItem("stuffies_session", JSON.stringify({ user: found.user, name: found.name, avatar }));
+      localStorage.setItem("stuffies_session", JSON.stringify({
+        user: found.user,
+        name: found.name,
+        email: found.email,
+        avatar,
+        role: found.role || "cliente"
+      }));
 
-      showMsg("success","¡Bienvenido/a, " + (found.name || found.user) + "! Redirigiendo…");
-      setTimeout(()=>{ window.location.href = "Tienda_Stuffiess.html"; }, 900);
+      if (found.role === "admin") {
+        showMsg("success","¡Bienvenido/a admin! Redirigiendo al panel…");
+        setTimeout(()=> window.location.href = "admin.html", 800);
+      } else {
+        showMsg("success","¡Bienvenido/a, " + (found.name || found.user) + "! Redirigiendo…");
+        setTimeout(()=> window.location.href = "Tienda_Stuffiess.html", 800);
+      }
     });
   </script>
 </body>

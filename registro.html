@@ -1,18 +1,20 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8" />
+  <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Registro - STUFFIES</title>
+  <title>Stuffies — Registro</title>
+
   <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:wght@400;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/styles.css">
-  <link rel="stylesheet" href="css/login.css">
   <link href="https://cdn.jsdelivr.net/npm/bootswatch@5.3.3/dist/morph/bootstrap.min.css" rel="stylesheet">
+
   <style>
+    body{ background:#0b0b0b; }
     .avatar-img{ width:38px; height:38px; border-radius:50%; object-fit:cover; border:2px solid #000; }
     .user-dropdown .dropdown-toggle{ background:transparent; border:none; padding:0; }
     .user-dropdown .dropdown-menu{ min-width:180px; }
-    body{ background:#0b0b0b; }
+    .cardx{ background:#fff; border-radius:16px; padding:24px; box-shadow:0 8px 24px rgba(0,0,0,.25); }
   </style>
 </head>
 <body>
@@ -24,13 +26,17 @@
         </a>
         <h1><a class="stu" href="Tienda_Stuffiess.html">STUFFIES</a></h1>
       </div>
+
       <nav class="main-nav">
         <ul>
-          <li><a href="Tienda_Stuffiess.html" class="active">Home</a></li>
+          <li><a href="Tienda_Stuffiess.html">Home</a></li>
           <li><a href="productos.html">Productos</a></li>
           <li><a href="blogs.html">Blogs</a></li>
+          <li><a href="nosotros.html">Nosotros</a></li>
+          <li><a href="contacto.html">Contacto</a></li>
         </ul>
       </nav>
+
       <div class="header-actions d-flex align-items-center gap-3">
         <a href="carrito.html" class="cart-icon">
           <span class="cart-count">0</span> 🛒
@@ -51,77 +57,80 @@
       </div>
     </div>
   </header>
-  <main class="login-main">
-    <div class="container">
-      <div class="login-container">
-        <div class="login-header">
-          <h2>Crear cuenta</h2>
-          <p>Regístrate para comprar en STUFFIES</p>
+
+  <main class="container py-5">
+    <div class="row justify-content-center">
+      <div class="col-lg-8">
+        <div class="cardx">
+          <h2 class="mb-3">Crear cuenta</h2>
+
+          <form id="registerForm" novalidate>
+            <div class="row g-3">
+              <div class="col-md-4 form-group">
+                <label for="regRun" class="form-label">RUN (sin puntos ni guion)</label>
+                <input id="regRun" class="form-control" maxlength="9" required>
+                <div class="invalid-feedback"></div>
+              </div>
+              <div class="col-md-4 form-group">
+                <label for="regName" class="form-label">Nombre</label>
+                <input id="regName" class="form-control" maxlength="50" required>
+                <div class="invalid-feedback"></div>
+              </div>
+              <div class="col-md-4 form-group">
+                <label for="regLast" class="form-label">Apellidos</label>
+                <input id="regLast" class="form-control" maxlength="100" required>
+                <div class="invalid-feedback"></div>
+              </div>
+
+              <div class="col-md-6 form-group">
+                <label for="regEmail" class="form-label">Correo</label>
+                <input id="regEmail" type="email" class="form-control" maxlength="100" required>
+                <div class="invalid-feedback"></div>
+              </div>
+              <div class="col-md-6 form-group">
+                <label for="regUser" class="form-label">Usuario</label>
+                <input id="regUser" class="form-control" maxlength="30" required>
+                <div class="invalid-feedback"></div>
+              </div>
+
+              <div class="col-md-6 form-group">
+                <label for="regPass" class="form-label">Contraseña (4–10)</label>
+                <input id="regPass" type="password" class="form-control" minlength="4" maxlength="10" required>
+                <div class="invalid-feedback"></div>
+              </div>
+              <div class="col-md-6 form-group">
+                <label for="regPass2" class="form-label">Repite la contraseña</label>
+                <input id="regPass2" type="password" class="form-control" minlength="4" maxlength="10" required>
+                <div class="invalid-feedback"></div>
+              </div>
+
+              <div class="col-md-6 form-group">
+                <label for="regAddress" class="form-label">Dirección</label>
+                <input id="regAddress" class="form-control" maxlength="300" required>
+                <div class="invalid-feedback"></div>
+              </div>
+              <div class="col-md-6 form-group">
+                <label for="regRole" class="form-label">Tipo de usuario</label>
+                <select id="regRole" class="form-select" required>
+                  <option value="">Seleccione…</option>
+                  <option value="cliente">Cliente</option>
+                  <option value="vendedor">Vendedor</option>
+                  <option value="admin">Administrador</option>
+                </select>
+                <div class="invalid-feedback"></div>
+              </div>
+            </div>
+
+            <div class="mt-3 d-flex gap-2">
+              <button class="btn btn-primary" type="submit">Crear cuenta</button>
+              <a class="btn btn-outline-dark" href="login.html">Ya tengo cuenta</a>
+            </div>
+            <div id="okMsg" class="alert alert-success mt-3 d-none">¡Cuenta creada! Redirigiendo a login…</div>
+          </form>
         </div>
-
-        <form id="registerForm" class="needs-validation" novalidate>
-          <div class="form-group mb-3">
-            <label for="regName">Nombre</label>
-            <input type="text" id="regName" class="form-control" required>
-            <div class="invalid-feedback">Ingresa tu nombre.</div>
-          </div>
-
-          <div class="form-group mb-3">
-            <label for="regEmail">Correo electrónico</label>
-            <input type="email" id="regEmail" class="form-control" required>
-            <div class="invalid-feedback">Ingresa un correo válido.</div>
-          </div>
-
-          <div class="form-group mb-3">
-            <label for="regUser">Usuario</label>
-            <input type="text" id="regUser" class="form-control" minlength="3" required>
-            <div class="invalid-feedback">El usuario debe tener al menos 3 caracteres.</div>
-          </div>
-
-          <div class="form-group mb-3">
-            <label for="regPass">Contraseña</label>
-            <input type="password" id="regPass" class="form-control" minlength="6" required>
-            <div class="form-text">Mínimo 6 caracteres.</div>
-            <div class="invalid-feedback">La contraseña es muy corta.</div>
-          </div>
-
-          <div class="form-group mb-3">
-            <label for="regPass2">Repetir contraseña</label>
-            <input type="password" id="regPass2" class="form-control" required>
-            <div class="invalid-feedback">Las contraseñas no coinciden.</div>
-          </div>
-
-          <div class="form-check mb-3">
-            <input class="form-check-input" type="checkbox" id="regTerms" required>
-            <label class="form-check-label" for="regTerms">Acepto los <a href="#">términos y condiciones</a>.</label>
-            <div class="invalid-feedback">Debes aceptar los términos.</div>
-          </div>
-
-          <button type="submit" class="btn btn-success w-100">Crear cuenta</button>
-
-          <div id="msg" class="alert mt-3 d-none" role="alert"></div>
-
-          <p class="text-center mt-3 mb-0">
-            ¿Ya tienes cuenta? <a href="login.html">Inicia sesión</a>
-          </p>
-        </form>
       </div>
     </div>
   </main>
-
-  <section class="about-preview">
-    <div class="container">
-      <div class="about-content">
-        <div class="about-text">
-          <h2>Stuffies - Moda Urbana Chilena</h2>
-          <p>Desde nuestro lanzamiento en junio de 2024, nos dedicamos a crear ropa moderna y de calidad con estilo estadounidense para que todos puedan vestir a la última moda.</p>
-        </div>
-        <div class="about-image">
-          <img src="https://i.postimg.cc/R0phZ77L/ESTRELLA-BLANCA.png" alt="">
-        </div>
-      </div>
-    </div>
-  </section>
 
   <footer>
     <div class="container">
@@ -136,12 +145,9 @@
             <li><a href="index.html">Home</a></li>
             <li><a href="productos.html">Productos</a></li>
             <li><a href="blogs.html">Blogs</a></li>
+            <li><a href="nosotros.html">Nosotros</a></li>
+            <li><a href="contacto.html">Contacto</a></li>
           </ul>
-        </div>
-        <div class="footer-section">
-          <h4>Contacto</h4>
-          <p>Email: info@stuffies.cl</p>
-          <p>Teléfono: +56 9 1234 5678</p>
         </div>
         <div class="footer-section">
           <h4>Suscríbete</h4>
@@ -158,91 +164,66 @@
   </footer>
 
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="js/validaciones.js"></script>
   <script>
-
-    const $ = s => document.querySelector(s);
-    const showMsg = (type, text) => {
-      const box = $("#msg");
-      box.className = "alert alert-" + type + " mt-3";
-      box.textContent = text;
-      box.classList.remove("d-none");
-    };
-
-    (function initDemoUser(){
-      const USERS_KEY = "stuffies_users";
-      const users = JSON.parse(localStorage.getItem(USERS_KEY) || "[]");
-      if (!users.find(u => u.user === "demo")) {
-        users.push({
-          name: "Usuario Demo",
-          email: "demo@stuffies.cl",
-          user: "demo",
-          pass: "123456",
-          avatar: "https://i.postimg.cc/R0phZ77L/ESTRELLA-BLANCA.png"
-        });
-        localStorage.setItem(USERS_KEY, JSON.stringify(users));
-      }
-    })();
-
-    function renderHeaderSession() {
+    (function renderHeaderSession(){
       const loginBtn  = document.getElementById("loginBtn");
       const dropdown  = document.getElementById("userDropdown");
       const avatar    = document.getElementById("userAvatar");
       const hello     = document.getElementById("helloUser");
-
       const session = JSON.parse(localStorage.getItem("stuffies_session") || "null");
       if (session) {
-        if (loginBtn) loginBtn.classList.add("d-none");
+        loginBtn?.classList.add("d-none");
         if (session.avatar) avatar.src = session.avatar;
-        if (hello) hello.textContent = "Hola, " + (session.name || session.user);
+        if (hello) hello.textContent = "Hola, " + (session.name || session.user || "usuario");
         dropdown.classList.remove("d-none");
-
-        document.getElementById("logoutBtn").addEventListener("click", () => {
+        document.getElementById("logoutBtn")?.addEventListener("click", () => {
           localStorage.removeItem("stuffies_session");
-          window.location.reload();
+          window.location.href = "login.html";
         });
       }
-    }
-    renderHeaderSession();
-
-    (function () {
-      const form = document.getElementById("registerForm");
-      form.addEventListener("submit", function (e) {
-        if (!form.checkValidity()) { e.preventDefault(); e.stopPropagation(); }
-        form.classList.add("was-validated");
-      }, false);
     })();
 
     const USERS_KEY = "stuffies_users";
-    const loadUsers = () => JSON.parse(localStorage.getItem(USERS_KEY) || "[]");
-    const saveUsers = (arr) => localStorage.setItem(USERS_KEY, JSON.stringify(arr));
 
-    document.getElementById("registerForm").addEventListener("submit", (e) => {
-      e.preventDefault();
+    function getUsers(){ try { return JSON.parse(localStorage.getItem(USERS_KEY) || "[]"); } catch { return []; } }
+    function setUsers(arr){ localStorage.setItem(USERS_KEY, JSON.stringify(arr)); }
 
-      const name = $("#regName").value.trim();
-      const email = $("#regEmail").value.trim().toLowerCase();
-      const user = $("#regUser").value.trim().toLowerCase();
-      const pass = $("#regPass").value;
-      const pass2 = $("#regPass2").value;
+    Validaciones?.wireRegistroForm('#registerForm');
 
-      if (pass !== pass2) {
-        $("#regPass2").setCustomValidity("No coincide");
-        document.getElementById("registerForm").classList.add("was-validated");
-        return;
-      } else {
-        $("#regPass2").setCustomValidity("");
+    document.getElementById('registerForm').addEventListener('submit', (e)=>{
+      if (!e.defaultPrevented) {
+        e.preventDefault();
+
+        const run = regRun.value.trim();
+        const users = getUsers();
+        const email = regEmail.value.trim().toLowerCase();
+        const usern = regUser.value.trim().toLowerCase();
+        if (users.some(u => (u.email||'').toLowerCase()===email)) {
+          setError(regEmail, 'Este correo ya está registrado'); return;
+        }
+        if (users.some(u => (u.user||'').toLowerCase()===usern)) {
+          setError(regUser, 'Este usuario ya existe'); return;
+        }
+
+        const newUser = {
+          run,
+          name: regName.value.trim(),
+          last: regLast.value.trim(),
+          email,
+          user: regUser.value.trim(),
+          pass: regPass.value,
+          address: regAddress.value.trim(),
+          role: regRole.value,
+          avatar: "https://i.postimg.cc/qRdn8fDv/LOGO-ESTRELLA-SIMPLE-CON-ESTRELLITAS.png"
+        };
+
+        users.push(newUser);
+        setUsers(users);
+
+        document.getElementById('okMsg').classList.remove('d-none');
+        setTimeout(()=> window.location.href = 'login.html', 800);
       }
-
-      const users = loadUsers();
-      const exists = users.find(u => u.email === email || u.user === user);
-      if (exists) { showMsg("warning","Ese correo o usuario ya está registrado."); return; }
-
-      const defaultAvatar = "https://i.postimg.cc/R0phZ77L/ESTRELLA-BLANCA.png";
-      users.push({ name, email, user, pass, avatar: defaultAvatar });
-      saveUsers(users);
-
-      showMsg("success","¡Cuenta creada! Te redirigimos al inicio de sesión…");
-      setTimeout(()=>{ window.location.href = "login.html"; }, 1000);
     });
   </script>
 </body>
