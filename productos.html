@@ -190,8 +190,7 @@
       }
       const addBtn = e.target.closest('.product-card .btn.btn-primary');
       if (addBtn && addBtn.textContent.toLowerCase().includes('añadir')) {
-        const card = addBtn.closest('.product-card');
-        const linkDetalle = card?.querySelector('a[href^="detalle-producto.html?id="]');
+       //aqui estaba el problema se llama dos veces el const card = addBtn.closest('.product-card'); const linkDetalle = card?.querySelector('a[href^="detalle-producto.html?id="]'); if (linkDetalle) { y por eso multiplicaba el añadir porductos//
         if (linkDetalle) {
           const url = new URL(linkDetalle.getAttribute('href'), window.location.origin);
           const id = Number(url.searchParams.get('id'));
