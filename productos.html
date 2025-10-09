@@ -14,6 +14,11 @@
     .avatar-img{ width:38px; height:38px; border-radius:50%; object-fit:cover; border:2px solid #000; }
     .user-dropdown .dropdown-toggle{ background:transparent; border:none; padding:0; }
     .user-dropdown .dropdown-menu{ min-width:180px; }
+
+    .product-card .card-img-top{ object-fit:cover; height:220px; }
+    .size-select{ min-width:140px; }
+    .stock-badge{ font-weight:700; }
+    .agotado{ color:#c62828; font-weight:700; }
   </style>
 </head>
 <body>
@@ -71,6 +76,8 @@
             <option value="polerones">Polerones</option>
             <option value="deportiva">Deportiva</option>
             <option value="accesorios">Accesorios</option>
+            <option value="pantalones">Pantalones</option>
+            <option value="gorros">Gorros</option>
           </select>
         </div>
 
@@ -90,7 +97,7 @@
         </div>
       </div>
 
-      <div id="todos-productos" class="products-grid"></div>
+      <div id="todos-productos" class="row g-4"></div>
     </section>
 
     <section class="about-preview">
@@ -148,6 +155,8 @@
   <script src="js/main.js"></script>
   <script src="js/carrito.js"></script>
 
+  <script src="js/productos_tallas.js"></script>
+
   <script>
     (function(){
       const loginBtn  = document.getElementById("loginBtn");
@@ -180,7 +189,11 @@
       actions.appendChild(a);
     })();
 
+    
     document.addEventListener('click', (e) => {
+      const addBtnNew = e.target.closest('.btn-add');
+      if (addBtnNew) return; 
+
       const link = e.target.closest('a[href^="detalle-producto.html?id="]');
       if (link) {
         e.preventDefault();
@@ -188,9 +201,12 @@
         if (href) window.location.href = href;
         return;
       }
+
+  
       const addBtn = e.target.closest('.product-card .btn.btn-primary');
       if (addBtn && addBtn.textContent.toLowerCase().includes('añadir')) {
-       //aqui estaba el problema se llama dos veces el const card = addBtn.closest('.product-card'); const linkDetalle = card?.querySelector('a[href^="detalle-producto.html?id="]'); if (linkDetalle) { y por eso multiplicaba el añadir porductos//
+        const card = addBtn.closest('.product-card');
+        const linkDetalle = card?.querySelector('a[href^="detalle-producto.html?id="]');
         if (linkDetalle) {
           const url = new URL(linkDetalle.getAttribute('href'), window.location.origin);
           const id = Number(url.searchParams.get('id'));
